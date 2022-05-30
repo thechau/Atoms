@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="DashBoardTopView" customModule="ATom" customModuleProvider="target">
+            <connections>
+                <outlet property="backButton" destination="xmw-Kx-geJ" id="e1J-Tr-x4J"/>
+                <outlet property="hamburgerButton" destination="Im9-OS-f8u" id="MV9-pN-8PZ"/>
+                <outlet property="logoImage" destination="7XI-bu-Vr1" id="cm0-DQ-Txt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB">
+            <rect key="frame" x="0.0" y="0.0" width="555" height="60"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo" translatesAutoresizingMaskIntoConstraints="NO" id="7XI-bu-Vr1">
+                    <rect key="frame" x="237.5" y="0.0" width="80" height="40"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="40" id="cwy-ds-Eaf"/>
+                        <constraint firstAttribute="width" constant="80" id="j17-pC-IcG"/>
+                    </constraints>
+                </imageView>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xmw-Kx-geJ">
+                    <rect key="frame" x="16" y="8" width="24" height="24"/>
+                    <state key="normal" image="back"/>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Im9-OS-f8u">
+                    <rect key="frame" x="483" y="-7.5" width="56" height="55"/>
+                    <state key="normal" image="ic-setting"/>
+                </button>
+            </subviews>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <constraints>
+                <constraint firstAttribute="trailing" secondItem="Im9-OS-f8u" secondAttribute="trailing" constant="16" id="IEO-Ku-49J"/>
+                <constraint firstItem="Im9-OS-f8u" firstAttribute="centerY" secondItem="7XI-bu-Vr1" secondAttribute="centerY" id="Lfa-WP-ia1"/>
+                <constraint firstItem="xmw-Kx-geJ" firstAttribute="centerY" secondItem="7XI-bu-Vr1" secondAttribute="centerY" id="QJo-Wj-xby"/>
+                <constraint firstItem="xmw-Kx-geJ" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="16" id="bGb-co-jzh"/>
+                <constraint firstItem="7XI-bu-Vr1" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="yEh-1u-KBI"/>
+                <constraint firstItem="7XI-bu-Vr1" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="zAE-Aq-k17"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <point key="canvasLocation" x="-136.95652173913044" y="-758.03571428571422"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="back" width="24" height="24"/>
+        <image name="ic-setting" width="56" height="55"/>
+        <image name="logo" width="205" height="52"/>
+    </resources>
+</document>

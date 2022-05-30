@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15702" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_0" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15704"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="TagFilterView" customModule="ATom" customModuleProvider="target">
+            <connections>
+                <outlet property="circleView" destination="Mew-5y-F4z" id="J1q-7v-g25"/>
+                <outlet property="contentView" destination="Tp9-kb-jGg" id="QjN-mv-j6G"/>
+                <outlet property="typeLabel" destination="P6O-oI-pD4" id="DXo-X7-Sga"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB">
+            <rect key="frame" x="0.0" y="0.0" width="91" height="25"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Tp9-kb-jGg">
+                    <rect key="frame" x="0.0" y="2" width="91" height="21"/>
+                    <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Alert" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="6" translatesAutoresizingMaskIntoConstraints="NO" id="P6O-oI-pD4">
+                            <rect key="frame" x="27" y="0.0" width="46" height="21"/>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="11"/>
+                            <nil key="textColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="a9T-pg-zQk">
+                            <rect key="frame" x="75" y="5" width="11" height="11"/>
+                            <constraints>
+                                <constraint firstAttribute="width" secondItem="a9T-pg-zQk" secondAttribute="height" multiplier="1:1" id="5Yg-zc-kjt"/>
+                            </constraints>
+                            <state key="normal" image="ic-blackCancel"/>
+                        </button>
+                    </subviews>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                    <constraints>
+                        <constraint firstAttribute="bottom" secondItem="a9T-pg-zQk" secondAttribute="bottom" constant="5" id="Iv6-ED-dAC"/>
+                        <constraint firstItem="a9T-pg-zQk" firstAttribute="top" secondItem="Tp9-kb-jGg" secondAttribute="top" constant="5" id="JqB-Yk-ms4"/>
+                        <constraint firstItem="P6O-oI-pD4" firstAttribute="top" secondItem="Tp9-kb-jGg" secondAttribute="top" id="L3b-Dc-4Hk"/>
+                        <constraint firstItem="a9T-pg-zQk" firstAttribute="leading" secondItem="P6O-oI-pD4" secondAttribute="trailing" constant="2" id="Nsf-9P-2fF"/>
+                        <constraint firstAttribute="trailing" secondItem="a9T-pg-zQk" secondAttribute="trailing" constant="5" id="o19-ML-DxN"/>
+                        <constraint firstAttribute="bottom" secondItem="P6O-oI-pD4" secondAttribute="bottom" id="x5P-uV-AMK"/>
+                    </constraints>
+                </view>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Mew-5y-F4z" customClass="circleView" customModule="ATom" customModuleProvider="target">
+                    <rect key="frame" x="0.0" y="0.0" width="25" height="25"/>
+                    <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gTR-Yj-RbZ">
+                            <rect key="frame" x="2" y="2" width="21" height="21"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                    </subviews>
+                    <color key="backgroundColor" systemColor="systemPinkColor" red="1" green="0.1764705882" blue="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <constraints>
+                        <constraint firstItem="gTR-Yj-RbZ" firstAttribute="top" secondItem="Mew-5y-F4z" secondAttribute="top" constant="2" id="NKw-4A-GpJ"/>
+                        <constraint firstAttribute="width" secondItem="Mew-5y-F4z" secondAttribute="height" multiplier="1:1" id="iBY-gw-ZO8"/>
+                        <constraint firstItem="gTR-Yj-RbZ" firstAttribute="leading" secondItem="Mew-5y-F4z" secondAttribute="leading" constant="2" id="tJg-4w-oOA"/>
+                        <constraint firstAttribute="trailing" secondItem="gTR-Yj-RbZ" secondAttribute="trailing" constant="2" id="tNR-PV-4Gc"/>
+                        <constraint firstAttribute="bottom" secondItem="gTR-Yj-RbZ" secondAttribute="bottom" constant="2" id="zXp-sZ-Mei"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <constraints>
+                <constraint firstAttribute="bottom" secondItem="Tp9-kb-jGg" secondAttribute="bottom" constant="2" id="D5c-m9-bCV"/>
+                <constraint firstAttribute="trailing" secondItem="Tp9-kb-jGg" secondAttribute="trailing" id="RJj-ck-Tld"/>
+                <constraint firstItem="Tp9-kb-jGg" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="SJM-mt-sN8"/>
+                <constraint firstItem="Tp9-kb-jGg" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="2" id="Xra-vo-kiJ"/>
+                <constraint firstItem="Mew-5y-F4z" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" id="apK-Zg-Boc"/>
+                <constraint firstItem="P6O-oI-pD4" firstAttribute="leading" secondItem="Mew-5y-F4z" secondAttribute="trailing" constant="2" id="hj6-hY-GgU"/>
+                <constraint firstItem="Mew-5y-F4z" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="yBR-1r-FlD"/>
+                <constraint firstItem="Mew-5y-F4z" firstAttribute="bottom" secondItem="vUN-kp-3ea" secondAttribute="bottom" id="zGw-vn-ZSf"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <point key="canvasLocation" x="147.1875" y="152.64084507042253"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="ic-blackCancel" width="50" height="50"/>
+    </resources>
+</document>

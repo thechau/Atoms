@@ -1,0 +1,311 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Y6W-OH-hqX">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="Roboto-Regular.ttf">
+            <string>Roboto-Regular</string>
+        </array>
+    </customFonts>
+    <scenes>
+        <!--Pop Up View Controller-->
+        <scene sceneID="s0d-6b-0kx">
+            <objects>
+                <viewController id="Y6W-OH-hqX" customClass="PopUpViewController" customModule="ATom" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="5EZ-qb-Rvc">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SYn-eq-ECZ" userLabel="PopUp">
+                                <rect key="frame" x="30" y="198" width="354" height="500"/>
+                                <subviews>
+                                    <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="AqN-BN-LU4">
+                                        <rect key="frame" x="0.0" y="40" width="354" height="460"/>
+                                        <subviews>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1L5-Ll-BIE" userLabel="content">
+                                                <rect key="frame" x="0.0" y="0.0" width="354" height="3650.5"/>
+                                                <subviews>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kC9-SS-19K">
+                                                        <rect key="frame" x="20" y="20" width="314" height="15"/>
+                                                        <attributedString key="attributedText">
+                                                            <fragment content="STEPS TO GET THE PERFECT 12 LEAD ECG ">
+                                                                <attributes>
+                                                                    <color key="NSBackgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                    <color key="NSColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                    <font key="NSFont" size="13" name="Helvetica-Bold"/>
+                                                                    <real key="NSKern" value="0.0"/>
+                                                                    <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="leftToRight" defaultTabInterval="36" tighteningFactorForTruncation="0.0" allowsDefaultTighteningForTruncation="NO">
+                                                                        <tabStops/>
+                                                                    </paragraphStyle>
+                                                                    <color key="NSStrokeColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                    <integer key="NSUnderline" value="1"/>
+                                                                    <color key="NSUnderlineColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                </attributes>
+                                                            </fragment>
+                                                        </attributedString>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Abj-u9-DIg">
+                                                        <rect key="frame" x="20" y="50" width="314" height="98"/>
+                                                        <string key="text">Accurate placement of leads is essential when performing a 12 lead ECG test. Incorrect lead placement may result in false diagnosis of the patient. Here is a step-by-step instruction to correctly place the 10 electrodes on the body to obtain an accurate 12 lead ECG signal. </string>
+                                                        <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="14"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bnY-uP-zrs">
+                                                        <rect key="frame" x="20" y="163" width="314" height="15"/>
+                                                        <attributedString key="attributedText">
+                                                            <fragment content="For Adult Males:">
+                                                                <attributes>
+                                                                    <color key="NSBackgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                    <color key="NSColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                    <font key="NSFont" size="13" name="Helvetica-Bold"/>
+                                                                    <real key="NSKern" value="0.0"/>
+                                                                    <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="leftToRight" defaultTabInterval="36" tighteningFactorForTruncation="0.0" allowsDefaultTighteningForTruncation="NO">
+                                                                        <tabStops/>
+                                                                    </paragraphStyle>
+                                                                    <color key="NSStrokeColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                    <integer key="NSUnderline" value="1"/>
+                                                                    <color key="NSUnderlineColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                </attributes>
+                                                            </fragment>
+                                                        </attributedString>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jae-OB-T8p">
+                                                        <rect key="frame" x="20" y="193" width="314" height="326.5"/>
+                                                        <string key="text">Step 1: Prepare the skin
+Prepare the subject's skin by wiping the chest area thoroughly with skin cleansing (alcohol) swabs. This removes any oil or dirt that may be on the skin and may cause some noise in the ECG signals. Once the skin is clean, find and mark the placements for the electrodes as explained in the next steps. For a hairy chest, shave the area where the electrode is to be placed.
+
+Step 2: Find the 4th intercostal space
+It is especially important to correctly place V1 and V2 because the remaining chest leads are placed in relation to these. Firstly identify the top of the subject's sternum. Nearly 4 cm below this, you should find a ridge. This identifies the second intercostal space. Feeling down, you will come across the 3rd and 4th intercostal spaces. Use a marker to mark this 4th intercostal space.</string>
+                                                        <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="14"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Image 1 (4th ICS)" translatesAutoresizingMaskIntoConstraints="NO" id="OBU-bs-scI">
+                                                        <rect key="frame" x="20" y="539.5" width="314" height="506"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="width" secondItem="OBU-bs-scI" secondAttribute="height" multiplier="216:348" id="CUd-4c-OOd"/>
+                                                        </constraints>
+                                                    </imageView>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ddx-kr-FKG">
+                                                        <rect key="frame" x="20" y="1065.5" width="314" height="261"/>
+                                                        <string key="text">Step 3: Place the chest electrode V1 and V2 
+
+On the 4th intercostal space just besides the sternum, place the chest electrode V1 on the right side and V2 on the left side of the subject. Make sure the electrodes are placed at equal spacing from the sternum (mirror position). 
+
+Step 4: Place the chest electrode V4
+
+Identify the mid-clavicular line (an imaginary line beginning from the middle of the shoulder bone towards the feet) and the 5th intercostal space on the left side of the chest of the subject. Place the electrode V4 at that position where these two meet.</string>
+                                                        <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="14"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Image 2 (position of V4)" translatesAutoresizingMaskIntoConstraints="NO" id="bMN-OQ-zuF">
+                                                        <rect key="frame" x="20" y="1346.5" width="314" height="506"/>
+                                                    </imageView>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9rJ-yz-WU1">
+                                                        <rect key="frame" x="20" y="1872.5" width="314" height="65.5"/>
+                                                        <string key="text">Step 5: Place the chest electrode V6
+
+The electrode V6 is placed directly below the centre of the left armpit on the same level at V4.</string>
+                                                        <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="14"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Image 3 (Position of V6)" translatesAutoresizingMaskIntoConstraints="NO" id="BNh-Lw-NSc">
+                                                        <rect key="frame" x="20" y="1958" width="314" height="505.5"/>
+                                                    </imageView>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="e15-l6-Szd">
+                                                        <rect key="frame" x="20" y="2483.5" width="314" height="212.5"/>
+                                                        <string key="text">Step 6: Place the chest electrodes V3 and V5
+
+The electrode V3 is placed midway between V2 and V4 and similarly V5 is placed midway between V4 and V6.
+
+Step 7: Place the limb leads LA, RA, LL and RL. 
+
+RL -anywhere above the right ankle and below the torso, RA-anywhere between the right shoulder and the wrist, LL-anywhere above the left ankle and below the torso and LA-anywhere between the left shoulder and the wrist</string>
+                                                        <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="14"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Image 4 (all electrodes)" translatesAutoresizingMaskIntoConstraints="NO" id="s3M-P9-XpP">
+                                                        <rect key="frame" x="20" y="2716" width="314" height="506"/>
+                                                    </imageView>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Cvm-ew-wMj">
+                                                        <rect key="frame" x="20" y="3242" width="314" height="15"/>
+                                                        <attributedString key="attributedText">
+                                                            <fragment content="For Adult Females:">
+                                                                <attributes>
+                                                                    <color key="NSBackgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                    <color key="NSColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                    <font key="NSFont" size="13" name="Helvetica-Bold"/>
+                                                                    <real key="NSKern" value="0.0"/>
+                                                                    <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="leftToRight" defaultTabInterval="36" tighteningFactorForTruncation="0.0" allowsDefaultTighteningForTruncation="NO">
+                                                                        <tabStops/>
+                                                                    </paragraphStyle>
+                                                                    <color key="NSStrokeColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                    <integer key="NSUnderline" value="1"/>
+                                                                    <color key="NSUnderlineColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                </attributes>
+                                                            </fragment>
+                                                        </attributedString>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nec-aK-jOg">
+                                                        <rect key="frame" x="20" y="3272" width="314" height="98"/>
+                                                        <string key="text">The limb leads i.e. LA, RA, LL and RL and two of the chest leads i.e. V1 and V2 are placed at the same position as explained above. However, for chest leads V3, V4, V5 and V6, the electrodes are placed under the left breast in correspondence to the above explained anatomical positions.</string>
+                                                        <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="14"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DGQ-5M-vpm">
+                                                        <rect key="frame" x="20" y="3390" width="314" height="29.5"/>
+                                                        <attributedString key="attributedText">
+                                                            <fragment content="For Infants, Toddlers and young Children (Paediatric ECG):">
+                                                                <attributes>
+                                                                    <color key="NSBackgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                    <color key="NSColor" red="0.13333" green="0.13333" blue="0.13333" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                    <font key="NSFont" size="13" name="Arial-BoldMT"/>
+                                                                    <real key="NSKern" value="0.0"/>
+                                                                    <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="leftToRight" defaultTabInterval="36" tighteningFactorForTruncation="0.0" allowsDefaultTighteningForTruncation="NO">
+                                                                        <tabStops/>
+                                                                    </paragraphStyle>
+                                                                    <color key="NSStrokeColor" red="0.13333" green="0.13333" blue="0.13333" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                    <integer key="NSUnderline" value="1"/>
+                                                                    <color key="NSUnderlineColor" red="0.13333" green="0.13333" blue="0.13333" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                </attributes>
+                                                            </fragment>
+                                                        </attributedString>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SEs-H0-wXI">
+                                                        <rect key="frame" x="20" y="3434.5" width="314" height="196"/>
+                                                        <string key="text">For small children, use the nipple line to place the electrodes. The position of the nipple defines the position of V1 and V2. Place V1 on the Nipple line to the right of the sternum (about ½ inch from the midline), V2 on the Nipple line to the left of the sternum (about ½ inch from the midline). V3 will be placed midway between V2 and V4. V4 is placed below the nipple at the midclavicular line. V5 is placed at Anterior axillary line at the same level as V4 (about where the ribs curve back) and V6 is placed at Midaxillary line at the same level as V4 and V5 (should be below the armpit). </string>
+                                                        <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="14"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                </subviews>
+                                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                <constraints>
+                                                    <constraint firstItem="e15-l6-Szd" firstAttribute="centerX" secondItem="1L5-Ll-BIE" secondAttribute="centerX" id="0Na-tf-E5Z"/>
+                                                    <constraint firstItem="bnY-uP-zrs" firstAttribute="leading" secondItem="Abj-u9-DIg" secondAttribute="leading" id="1j9-Za-5E1"/>
+                                                    <constraint firstItem="Abj-u9-DIg" firstAttribute="top" secondItem="kC9-SS-19K" secondAttribute="bottom" constant="15" id="3Gu-b9-cwz"/>
+                                                    <constraint firstItem="nec-aK-jOg" firstAttribute="top" secondItem="Cvm-ew-wMj" secondAttribute="bottom" constant="15" id="3a2-2I-ZLD"/>
+                                                    <constraint firstItem="s3M-P9-XpP" firstAttribute="height" secondItem="BNh-Lw-NSc" secondAttribute="height" id="48a-4b-Ndr"/>
+                                                    <constraint firstItem="Cvm-ew-wMj" firstAttribute="leading" secondItem="e15-l6-Szd" secondAttribute="leading" id="4CH-v3-Wxv"/>
+                                                    <constraint firstItem="s3M-P9-XpP" firstAttribute="top" secondItem="e15-l6-Szd" secondAttribute="bottom" constant="20" id="6Wn-19-Wfe"/>
+                                                    <constraint firstItem="SEs-H0-wXI" firstAttribute="centerX" secondItem="1L5-Ll-BIE" secondAttribute="centerX" id="6ia-IW-L8r"/>
+                                                    <constraint firstItem="Ddx-kr-FKG" firstAttribute="centerX" secondItem="1L5-Ll-BIE" secondAttribute="centerX" id="BbV-yE-QZp"/>
+                                                    <constraint firstItem="bnY-uP-zrs" firstAttribute="centerX" secondItem="1L5-Ll-BIE" secondAttribute="centerX" id="Cu1-gO-GaD"/>
+                                                    <constraint firstItem="OBU-bs-scI" firstAttribute="top" secondItem="jae-OB-T8p" secondAttribute="bottom" constant="20" id="D6a-re-bxe"/>
+                                                    <constraint firstItem="BNh-Lw-NSc" firstAttribute="height" secondItem="bMN-OQ-zuF" secondAttribute="height" id="EFp-N5-mMf"/>
+                                                    <constraint firstItem="bMN-OQ-zuF" firstAttribute="top" secondItem="Ddx-kr-FKG" secondAttribute="bottom" constant="20" id="Ekr-pN-h9Q"/>
+                                                    <constraint firstItem="9rJ-yz-WU1" firstAttribute="top" secondItem="bMN-OQ-zuF" secondAttribute="bottom" constant="20" id="GtP-H8-r8S"/>
+                                                    <constraint firstItem="bMN-OQ-zuF" firstAttribute="height" secondItem="OBU-bs-scI" secondAttribute="height" id="Io1-PR-luG"/>
+                                                    <constraint firstItem="nec-aK-jOg" firstAttribute="centerX" secondItem="1L5-Ll-BIE" secondAttribute="centerX" id="J5z-nK-VTj"/>
+                                                    <constraint firstItem="9rJ-yz-WU1" firstAttribute="centerX" secondItem="1L5-Ll-BIE" secondAttribute="centerX" id="LFg-hr-qKx"/>
+                                                    <constraint firstItem="DGQ-5M-vpm" firstAttribute="top" secondItem="nec-aK-jOg" secondAttribute="bottom" constant="20" id="LIC-no-gvQ"/>
+                                                    <constraint firstItem="s3M-P9-XpP" firstAttribute="width" secondItem="BNh-Lw-NSc" secondAttribute="width" id="Lei-gV-n8r"/>
+                                                    <constraint firstItem="Abj-u9-DIg" firstAttribute="centerX" secondItem="1L5-Ll-BIE" secondAttribute="centerX" id="NSM-Qy-fJ2"/>
+                                                    <constraint firstItem="jae-OB-T8p" firstAttribute="top" secondItem="bnY-uP-zrs" secondAttribute="bottom" constant="15" id="NpJ-i2-xJr"/>
+                                                    <constraint firstAttribute="bottom" secondItem="SEs-H0-wXI" secondAttribute="bottom" constant="20" id="Oon-c5-OOx"/>
+                                                    <constraint firstItem="e15-l6-Szd" firstAttribute="leading" secondItem="9rJ-yz-WU1" secondAttribute="leading" id="SN9-xx-yQO"/>
+                                                    <constraint firstItem="kC9-SS-19K" firstAttribute="top" secondItem="1L5-Ll-BIE" secondAttribute="top" constant="20" id="SVO-dg-ub8"/>
+                                                    <constraint firstItem="Cvm-ew-wMj" firstAttribute="top" secondItem="s3M-P9-XpP" secondAttribute="bottom" constant="20" id="Shx-j9-IwH"/>
+                                                    <constraint firstItem="kC9-SS-19K" firstAttribute="leading" secondItem="1L5-Ll-BIE" secondAttribute="leading" constant="20" id="UWD-rZ-zVX"/>
+                                                    <constraint firstItem="BNh-Lw-NSc" firstAttribute="leading" secondItem="bMN-OQ-zuF" secondAttribute="leading" id="X3T-Da-X0c"/>
+                                                    <constraint firstItem="Ddx-kr-FKG" firstAttribute="top" secondItem="OBU-bs-scI" secondAttribute="bottom" constant="20" id="Xez-8G-epT"/>
+                                                    <constraint firstItem="DGQ-5M-vpm" firstAttribute="centerX" secondItem="1L5-Ll-BIE" secondAttribute="centerX" id="aet-x4-1wR"/>
+                                                    <constraint firstItem="BNh-Lw-NSc" firstAttribute="width" secondItem="bMN-OQ-zuF" secondAttribute="width" id="cQ2-Ln-mym"/>
+                                                    <constraint firstItem="bMN-OQ-zuF" firstAttribute="leading" secondItem="OBU-bs-scI" secondAttribute="leading" id="hS1-Ux-fGT"/>
+                                                    <constraint firstItem="bMN-OQ-zuF" firstAttribute="width" secondItem="OBU-bs-scI" secondAttribute="width" id="izO-xU-VFv"/>
+                                                    <constraint firstItem="OBU-bs-scI" firstAttribute="leading" secondItem="jae-OB-T8p" secondAttribute="leading" id="jDa-gA-Ksk"/>
+                                                    <constraint firstItem="Cvm-ew-wMj" firstAttribute="centerX" secondItem="1L5-Ll-BIE" secondAttribute="centerX" id="lwF-XD-7fi"/>
+                                                    <constraint firstItem="Ddx-kr-FKG" firstAttribute="leading" secondItem="jae-OB-T8p" secondAttribute="leading" id="mAB-Hj-AYG"/>
+                                                    <constraint firstItem="e15-l6-Szd" firstAttribute="top" secondItem="BNh-Lw-NSc" secondAttribute="bottom" constant="20" id="mRw-T2-CgK"/>
+                                                    <constraint firstItem="s3M-P9-XpP" firstAttribute="leading" secondItem="BNh-Lw-NSc" secondAttribute="leading" id="nCy-y1-ElH"/>
+                                                    <constraint firstItem="SEs-H0-wXI" firstAttribute="leading" secondItem="DGQ-5M-vpm" secondAttribute="leading" id="nZq-Yl-Gxp"/>
+                                                    <constraint firstItem="OBU-bs-scI" firstAttribute="centerX" secondItem="1L5-Ll-BIE" secondAttribute="centerX" id="rva-8u-JIt"/>
+                                                    <constraint firstItem="Abj-u9-DIg" firstAttribute="leading" secondItem="kC9-SS-19K" secondAttribute="leading" id="sXB-9b-UmS"/>
+                                                    <constraint firstItem="BNh-Lw-NSc" firstAttribute="top" secondItem="9rJ-yz-WU1" secondAttribute="bottom" constant="20" id="u5L-7G-mOw"/>
+                                                    <constraint firstItem="DGQ-5M-vpm" firstAttribute="leading" secondItem="nec-aK-jOg" secondAttribute="leading" id="uHE-eb-vdT"/>
+                                                    <constraint firstItem="bnY-uP-zrs" firstAttribute="top" secondItem="Abj-u9-DIg" secondAttribute="bottom" constant="15" id="uke-ld-gbz"/>
+                                                    <constraint firstItem="kC9-SS-19K" firstAttribute="centerX" secondItem="1L5-Ll-BIE" secondAttribute="centerX" id="vU0-8N-7jF"/>
+                                                    <constraint firstItem="nec-aK-jOg" firstAttribute="leading" secondItem="Cvm-ew-wMj" secondAttribute="leading" id="wLb-hR-Kdf"/>
+                                                    <constraint firstItem="9rJ-yz-WU1" firstAttribute="leading" secondItem="Ddx-kr-FKG" secondAttribute="leading" id="wcs-q1-P4B"/>
+                                                    <constraint firstItem="SEs-H0-wXI" firstAttribute="top" secondItem="DGQ-5M-vpm" secondAttribute="bottom" constant="15" id="xnt-IJ-KdS"/>
+                                                    <constraint firstItem="jae-OB-T8p" firstAttribute="centerX" secondItem="1L5-Ll-BIE" secondAttribute="centerX" id="yN4-ZL-iGP"/>
+                                                    <constraint firstItem="jae-OB-T8p" firstAttribute="leading" secondItem="bnY-uP-zrs" secondAttribute="leading" id="yVJ-sV-RJY"/>
+                                                </constraints>
+                                            </view>
+                                        </subviews>
+                                        <constraints>
+                                            <constraint firstAttribute="trailing" secondItem="1L5-Ll-BIE" secondAttribute="trailing" id="1lZ-Mg-nWb"/>
+                                            <constraint firstItem="1L5-Ll-BIE" firstAttribute="width" secondItem="AqN-BN-LU4" secondAttribute="width" id="UNg-rC-7Mr"/>
+                                            <constraint firstAttribute="bottom" secondItem="1L5-Ll-BIE" secondAttribute="bottom" id="VJg-3h-Eeg"/>
+                                            <constraint firstItem="1L5-Ll-BIE" firstAttribute="top" secondItem="AqN-BN-LU4" secondAttribute="top" id="cgM-gi-UNT"/>
+                                            <constraint firstItem="1L5-Ll-BIE" firstAttribute="leading" secondItem="AqN-BN-LU4" secondAttribute="leading" id="ghy-W5-X5I"/>
+                                        </constraints>
+                                    </scrollView>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PoD-iP-Txg">
+                                        <rect key="frame" x="324" y="5" width="25" height="25"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="25" id="atf-wr-x5O"/>
+                                            <constraint firstAttribute="width" constant="25" id="bXd-64-2nF"/>
+                                        </constraints>
+                                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                        <state key="normal" image="close"/>
+                                        <connections>
+                                            <action selector="onActionClose:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="GcY-wj-ET5"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstItem="PoD-iP-Txg" firstAttribute="top" secondItem="SYn-eq-ECZ" secondAttribute="top" constant="5" id="RNg-22-Tvf"/>
+                                    <constraint firstItem="AqN-BN-LU4" firstAttribute="leading" secondItem="SYn-eq-ECZ" secondAttribute="leading" id="SjX-PY-j3R"/>
+                                    <constraint firstItem="AqN-BN-LU4" firstAttribute="top" secondItem="SYn-eq-ECZ" secondAttribute="top" constant="40" id="SqN-46-6s5"/>
+                                    <constraint firstAttribute="trailing" secondItem="AqN-BN-LU4" secondAttribute="trailing" id="bil-ch-BDo"/>
+                                    <constraint firstAttribute="trailing" secondItem="PoD-iP-Txg" secondAttribute="trailing" constant="5" id="m6Y-u4-6Dx"/>
+                                    <constraint firstAttribute="height" constant="500" id="tk4-fi-Vyk"/>
+                                    <constraint firstAttribute="bottom" secondItem="AqN-BN-LU4" secondAttribute="bottom" id="wTy-jD-Xn7"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.14999999999999999" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="SYn-eq-ECZ" firstAttribute="centerX" secondItem="5EZ-qb-Rvc" secondAttribute="centerX" id="8Ew-AE-MaZ"/>
+                            <constraint firstItem="SYn-eq-ECZ" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="30" id="VVU-SJ-H2T"/>
+                            <constraint firstItem="SYn-eq-ECZ" firstAttribute="centerY" secondItem="5EZ-qb-Rvc" secondAttribute="centerY" id="kn3-zs-nE4"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="contentView" destination="SYn-eq-ECZ" id="DcZ-U3-afP"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-28" y="6"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="Image 1 (4th ICS)" width="2160" height="3840"/>
+        <image name="Image 2 (position of V4)" width="2160" height="3840"/>
+        <image name="Image 3 (Position of V6)" width="2160" height="3840"/>
+        <image name="Image 4 (all electrodes)" width="2160" height="3840"/>
+        <image name="close" width="32" height="32"/>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>

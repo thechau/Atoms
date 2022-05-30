@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_0" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="Roboto-Regular.ttf">
+            <string>Roboto-Regular</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SwitchView" customModule="ATom" customModuleProvider="target">
+            <connections>
+                <outlet property="contentView" destination="uIf-f8-GIm" id="3ey-58-E2Z"/>
+                <outlet property="selectView" destination="1yQ-AI-1kp" id="UkV-vp-HbH"/>
+                <outlet property="value1Button" destination="RqW-Mm-n9U" id="QyH-Ai-dMT"/>
+                <outlet property="value2Button" destination="vth-Sr-MOF" id="B4n-wn-AxB"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB">
+            <rect key="frame" x="0.0" y="0.0" width="235" height="35"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uIf-f8-GIm">
+                    <rect key="frame" x="2" y="2" width="231" height="31"/>
+                    <subviews>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1yQ-AI-1kp">
+                            <rect key="frame" x="0.0" y="0.0" width="116" height="31"/>
+                            <color key="backgroundColor" red="0.95294117647058818" green="0.95294117647058818" blue="0.95294117647058818" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        </view>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RqW-Mm-n9U">
+                            <rect key="frame" x="0.0" y="0.0" width="115" height="31"/>
+                            <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="16"/>
+                            <state key="normal" title="Button"/>
+                            <connections>
+                                <action selector="selectTypeReportButton:" destination="-1" eventType="touchUpInside" id="5bR-9E-Dhg"/>
+                            </connections>
+                        </button>
+                        <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vth-Sr-MOF">
+                            <rect key="frame" x="116" y="0.0" width="115" height="31"/>
+                            <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="16"/>
+                            <state key="normal" title="Button"/>
+                            <connections>
+                                <action selector="selectTypeReportButton:" destination="-1" eventType="touchUpInside" id="XxN-uZ-Whx"/>
+                            </connections>
+                        </button>
+                    </subviews>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstItem="vth-Sr-MOF" firstAttribute="top" secondItem="uIf-f8-GIm" secondAttribute="top" id="BT8-N1-To0"/>
+                        <constraint firstItem="RqW-Mm-n9U" firstAttribute="width" secondItem="vth-Sr-MOF" secondAttribute="width" id="IVz-5o-goR"/>
+                        <constraint firstAttribute="trailing" secondItem="vth-Sr-MOF" secondAttribute="trailing" id="NVS-WK-e3q"/>
+                        <constraint firstAttribute="bottom" secondItem="1yQ-AI-1kp" secondAttribute="bottom" id="a9X-bk-ZCP"/>
+                        <constraint firstAttribute="bottom" secondItem="vth-Sr-MOF" secondAttribute="bottom" id="aw3-CA-WxH"/>
+                        <constraint firstItem="1yQ-AI-1kp" firstAttribute="leading" secondItem="uIf-f8-GIm" secondAttribute="leading" id="bjZ-0j-pzF"/>
+                        <constraint firstItem="RqW-Mm-n9U" firstAttribute="leading" secondItem="uIf-f8-GIm" secondAttribute="leading" id="h18-nR-bMM"/>
+                        <constraint firstItem="RqW-Mm-n9U" firstAttribute="top" secondItem="uIf-f8-GIm" secondAttribute="top" id="of3-3Y-5t4"/>
+                        <constraint firstItem="1yQ-AI-1kp" firstAttribute="top" secondItem="uIf-f8-GIm" secondAttribute="top" id="rUv-Vt-EFV"/>
+                        <constraint firstItem="vth-Sr-MOF" firstAttribute="leading" secondItem="RqW-Mm-n9U" secondAttribute="trailing" constant="1" id="wyW-f0-I3B"/>
+                        <constraint firstItem="vth-Sr-MOF" firstAttribute="leading" secondItem="1yQ-AI-1kp" secondAttribute="trailing" id="yyg-UX-llv"/>
+                        <constraint firstAttribute="bottom" secondItem="RqW-Mm-n9U" secondAttribute="bottom" id="zsK-uN-udw"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <constraints>
+                <constraint firstItem="uIf-f8-GIm" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="2" id="04D-f0-2EP"/>
+                <constraint firstItem="uIf-f8-GIm" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="2" id="5hb-rb-ljU"/>
+                <constraint firstAttribute="bottom" secondItem="uIf-f8-GIm" secondAttribute="bottom" constant="2" id="cD1-na-Xzo"/>
+                <constraint firstAttribute="trailing" secondItem="uIf-f8-GIm" secondAttribute="trailing" constant="2" id="zm4-Xn-Y6e"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <point key="canvasLocation" x="137.8125" y="148.41549295774649"/>
+        </view>
+    </objects>
+</document>

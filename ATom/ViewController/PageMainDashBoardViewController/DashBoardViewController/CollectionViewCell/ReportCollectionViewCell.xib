@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="Roboto-Light.ttf">
+            <string>Roboto-Light</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell autoresizesSubviews="NO" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="ReportCollectionViewCell" id="nam-2m-E3p" customClass="ReportCollectionViewCell" customModule="ATom" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="395" height="618"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="395" height="618"/>
+                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <subviews>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="doctor" translatesAutoresizingMaskIntoConstraints="NO" id="2zQ-LW-fFb">
+                        <rect key="frame" x="0.0" y="0.0" width="395" height="418"/>
+                    </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Atom" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Rf5-CE-3jQ">
+                        <rect key="frame" x="44" y="426" width="40.5" height="20.5"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Atom" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mEc-ir-D5z">
+                        <rect key="frame" x="44" y="447.5" width="40.5" height="20.5"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KEn-xh-06k">
+                        <rect key="frame" x="156" y="486.5" width="83" height="80"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="83" id="2FO-T6-4pX"/>
+                            <constraint firstAttribute="height" constant="80" id="hF6-4F-Mjo"/>
+                        </constraints>
+                        <state key="normal" image="startECG"/>
+                    </button>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Start ECG" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4QI-PZ-S2a">
+                        <rect key="frame" x="159" y="576.5" width="77" height="21.5"/>
+                        <fontDescription key="fontDescription" name="Roboto-Light" family="Roboto" pointSize="18"/>
+                        <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NQA-dC-m1E">
+                        <rect key="frame" x="326" y="569.5" width="49" height="29"/>
+                        <fontDescription key="fontDescription" name="Roboto-Light" family="Roboto" pointSize="14"/>
+                        <state key="normal" title="Report  ">
+                            <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                        </state>
+                    </button>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gDY-FT-ggr">
+                        <rect key="frame" x="368" y="573" width="21.5" height="22"/>
+                        <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <state key="normal" image="rightarrow">
+                            <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        </state>
+                    </button>
+                </subviews>
+            </view>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <constraints>
+                <constraint firstAttribute="bottom" secondItem="4QI-PZ-S2a" secondAttribute="bottom" constant="20" id="39f-ob-RM3"/>
+                <constraint firstItem="KEn-xh-06k" firstAttribute="centerX" secondItem="4QI-PZ-S2a" secondAttribute="centerX" id="3q3-Jf-Srv"/>
+                <constraint firstItem="hrP-ht-obQ" firstAttribute="bottom" secondItem="mEc-ir-D5z" secondAttribute="bottom" constant="150" id="7Wb-J8-toN"/>
+                <constraint firstAttribute="trailing" secondItem="NQA-dC-m1E" secondAttribute="trailing" constant="20" id="96F-Fg-pvx"/>
+                <constraint firstItem="2zQ-LW-fFb" firstAttribute="leading" secondItem="nam-2m-E3p" secondAttribute="leading" id="Sf4-Ga-PV9"/>
+                <constraint firstItem="4QI-PZ-S2a" firstAttribute="centerX" secondItem="nam-2m-E3p" secondAttribute="centerX" id="Ula-kA-vub"/>
+                <constraint firstItem="mEc-ir-D5z" firstAttribute="leading" secondItem="Rf5-CE-3jQ" secondAttribute="leading" id="Urf-ha-flc"/>
+                <constraint firstAttribute="bottom" secondItem="gDY-FT-ggr" secondAttribute="bottom" constant="23" id="Wj0-O9-Aht"/>
+                <constraint firstItem="NQA-dC-m1E" firstAttribute="centerY" secondItem="gDY-FT-ggr" secondAttribute="centerY" id="Xz1-h4-iv5"/>
+                <constraint firstItem="2zQ-LW-fFb" firstAttribute="top" secondItem="nam-2m-E3p" secondAttribute="top" id="YfQ-HF-6PG"/>
+                <constraint firstAttribute="trailing" secondItem="2zQ-LW-fFb" secondAttribute="trailing" id="bp0-qj-mcf"/>
+                <constraint firstAttribute="bottom" secondItem="2zQ-LW-fFb" secondAttribute="bottom" constant="200" id="cQy-ex-ntp"/>
+                <constraint firstItem="mEc-ir-D5z" firstAttribute="top" secondItem="Rf5-CE-3jQ" secondAttribute="bottom" constant="1" id="fZr-e6-vIW"/>
+                <constraint firstItem="4QI-PZ-S2a" firstAttribute="top" secondItem="KEn-xh-06k" secondAttribute="bottom" constant="10" id="heD-An-iB8"/>
+                <constraint firstItem="KEn-xh-06k" firstAttribute="centerX" secondItem="nam-2m-E3p" secondAttribute="centerX" id="sVR-8b-hK2"/>
+                <constraint firstAttribute="trailing" secondItem="gDY-FT-ggr" secondAttribute="trailing" constant="5.5" id="vZL-bf-q7X"/>
+                <constraint firstItem="4QI-PZ-S2a" firstAttribute="top" secondItem="KEn-xh-06k" secondAttribute="bottom" constant="10" id="woh-j7-Shh"/>
+                <constraint firstItem="Rf5-CE-3jQ" firstAttribute="leading" secondItem="nam-2m-E3p" secondAttribute="leading" constant="44" id="zRH-hG-Ya6"/>
+            </constraints>
+            <viewLayoutGuide key="safeArea" id="hrP-ht-obQ"/>
+            <size key="customSize" width="395" height="618"/>
+            <point key="canvasLocation" x="100.72463768115942" y="143.30357142857142"/>
+        </collectionViewCell>
+    </objects>
+    <resources>
+        <image name="doctor" width="300" height="300"/>
+        <image name="rightarrow" width="21.5" height="16.5"/>
+        <image name="startECG" width="83" height="83"/>
+    </resources>
+</document>

@@ -1,0 +1,12 @@
+${PODS_ROOT}/Target Support Files/Pods-ATom/Pods-ATom-frameworks.sh
+${BUILT_PRODUCTS_DIR}/AFDateHelper/AFDateHelper.framework
+${BUILT_PRODUCTS_DIR}/AssetImportKit/AssetImportKit.framework
+${BUILT_PRODUCTS_DIR}/Assimp/Assimp.framework
+${BUILT_PRODUCTS_DIR}/Charts/Charts.framework
+${BUILT_PRODUCTS_DIR}/JTAppleCalendar/JTAppleCalendar.framework
+${BUILT_PRODUCTS_DIR}/R.swift.Library/Rswift.framework
+${BUILT_PRODUCTS_DIR}/RxCocoa/RxCocoa.framework
+${BUILT_PRODUCTS_DIR}/RxSwift/RxSwift.framework
+${BUILT_PRODUCTS_DIR}/SlideMenuControllerSwift/SlideMenuControllerSwift.framework
+${BUILT_PRODUCTS_DIR}/SwiftAlgorithms/Algorithms.framework
+${BUILT_PRODUCTS_DIR}/SwiftChart/SwiftChart.framework

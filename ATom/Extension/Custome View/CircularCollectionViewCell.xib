@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="Roboto-Regular.ttf">
+            <string>Roboto-Regular</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="Cell" id="gTV-IL-0wX" customClass="CircularCollectionViewCell" customModule="SelectGender" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="177" height="40"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="177" height="40"/>
+                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <subviews>
+                    <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="QgO-oB-kvF">
+                        <rect key="frame" x="0.0" y="0.0" width="177" height="40"/>
+                    </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="|" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Zj6-L6-fr6">
+                        <rect key="frame" x="0.0" y="22" width="177" height="18"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="|" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kkR-tJ-MdD">
+                        <rect key="frame" x="73.5" y="6" width="30" height="20"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="20" id="4ml-u7-cuX"/>
+                            <constraint firstAttribute="width" constant="30" id="D4G-um-7iv"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="16"/>
+                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+            </view>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <constraints>
+                <constraint firstItem="Zj6-L6-fr6" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="6U4-sl-hT4"/>
+                <constraint firstAttribute="bottom" secondItem="QgO-oB-kvF" secondAttribute="bottom" id="JNz-fC-xVx"/>
+                <constraint firstItem="QgO-oB-kvF" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="NN6-KY-VYo"/>
+                <constraint firstItem="kkR-tJ-MdD" firstAttribute="centerX" secondItem="Zj6-L6-fr6" secondAttribute="centerX" id="So9-Eg-bTK"/>
+                <constraint firstAttribute="bottom" secondItem="Zj6-L6-fr6" secondAttribute="bottom" id="Vda-sV-cDl"/>
+                <constraint firstItem="kkR-tJ-MdD" firstAttribute="centerY" secondItem="Zj6-L6-fr6" secondAttribute="centerY" constant="-15" id="Y4X-nI-0pm"/>
+                <constraint firstAttribute="trailing" secondItem="Zj6-L6-fr6" secondAttribute="trailing" id="tN2-7q-rZo"/>
+                <constraint firstAttribute="trailing" secondItem="QgO-oB-kvF" secondAttribute="trailing" id="wSw-9q-VTu"/>
+                <constraint firstItem="QgO-oB-kvF" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="z2k-A5-3jM"/>
+            </constraints>
+            <size key="customSize" width="177" height="184"/>
+            <connections>
+                <outlet property="imageView" destination="QgO-oB-kvF" id="YPk-VG-pqp"/>
+                <outlet property="lbWeight" destination="Zj6-L6-fr6" id="98Q-Mz-BoU"/>
+                <outlet property="lbWeightNumber" destination="kkR-tJ-MdD" id="yyD-cQ-qAy"/>
+            </connections>
+            <point key="canvasLocation" x="500.5" y="453"/>
+        </collectionViewCell>
+    </objects>
+</document>

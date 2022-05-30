@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="Roboto-Light.ttf">
+            <string>Roboto-Light</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="DashBoardElectrodesCollectionViewCell" id="nNW-1C-GhY" customClass="DashBoardElectrodesCollectionViewCell" customModule="ATom" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="452" height="400"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="452" height="400"/>
+                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GMj-CW-G6S">
+                        <rect key="frame" x="0.0" y="0.0" width="452" height="391"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Connected" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jaU-b9-OCN">
+                                <rect key="frame" x="137.5" y="40" width="177.5" height="42"/>
+                                <fontDescription key="fontDescription" name="Roboto-Light" family="Roboto" pointSize="36"/>
+                                <color key="textColor" red="0.29803921568627451" green="0.31764705882352939" blue="0.38431372549019605" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Your device is ready to use." textAlignment="center" lineBreakMode="wordWrap" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="c6K-jv-AsF">
+                                <rect key="frame" x="40" y="142" width="372" height="20.5"/>
+                                <fontDescription key="fontDescription" type="system" weight="light" pointSize="17"/>
+                                <color key="textColor" red="0.47843137254901957" green="0.52156862745098043" blue="0.61176470588235299" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ASl-sF-wIs" customClass="CustomButtom" customModule="ATom" customModuleProvider="target">
+                                <rect key="frame" x="141" y="222.5" width="170" height="45"/>
+                                <color key="backgroundColor" systemColor="linkColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="170" id="0aa-TJ-Ux2"/>
+                                    <constraint firstAttribute="height" constant="45" id="iYb-ft-HlB"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Roboto-Light" family="Roboto" pointSize="18"/>
+                                <state key="normal" title="Next">
+                                    <color key="titleColor" red="0.97647058819999999" green="0.97647058819999999" blue="0.97647058819999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="shadowOpacity">
+                                        <real key="value" value="1"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="maskedCorners">
+                                        <integer key="value" value="6"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="shadowRadius">
+                                        <real key="value" value="2"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="size" keyPath="shadowOffset">
+                                        <size key="value" width="1" height="1"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="shadowColor">
+                                        <color key="value" systemColor="systemBlueColor"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="6"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="onClickNextButton:" destination="nNW-1C-GhY" eventType="touchUpInside" id="YKn-wE-PBe"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="ASl-sF-wIs" firstAttribute="centerX" secondItem="GMj-CW-G6S" secondAttribute="centerX" id="2hZ-B1-wUb"/>
+                            <constraint firstItem="c6K-jv-AsF" firstAttribute="top" secondItem="jaU-b9-OCN" secondAttribute="bottom" constant="60" id="U4r-3r-bGV"/>
+                            <constraint firstAttribute="trailing" secondItem="c6K-jv-AsF" secondAttribute="trailing" constant="40" id="Uar-Bi-qjs"/>
+                            <constraint firstItem="jaU-b9-OCN" firstAttribute="top" secondItem="GMj-CW-G6S" secondAttribute="top" constant="40" id="hSg-72-MGI"/>
+                            <constraint firstItem="c6K-jv-AsF" firstAttribute="leading" secondItem="GMj-CW-G6S" secondAttribute="leading" constant="40" id="iFC-pz-3bM"/>
+                            <constraint firstItem="ASl-sF-wIs" firstAttribute="top" secondItem="c6K-jv-AsF" secondAttribute="bottom" constant="60" id="pRF-Yy-Lo8"/>
+                            <constraint firstAttribute="width" constant="452" id="r85-Bj-Egu"/>
+                            <constraint firstItem="jaU-b9-OCN" firstAttribute="centerX" secondItem="GMj-CW-G6S" secondAttribute="centerX" id="wRW-QH-ibJ"/>
+                        </constraints>
+                    </view>
+                </subviews>
+            </view>
+            <viewLayoutGuide key="safeArea" id="3vh-H7-NtM"/>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <constraints>
+                <constraint firstItem="GMj-CW-G6S" firstAttribute="leading" secondItem="nNW-1C-GhY" secondAttribute="leading" id="S4r-I5-rVZ"/>
+                <constraint firstAttribute="bottom" secondItem="GMj-CW-G6S" secondAttribute="bottom" constant="9" id="W10-oP-El0"/>
+                <constraint firstAttribute="trailing" secondItem="GMj-CW-G6S" secondAttribute="trailing" id="gHs-a8-Twf"/>
+                <constraint firstItem="GMj-CW-G6S" firstAttribute="top" secondItem="nNW-1C-GhY" secondAttribute="top" id="vGr-ez-KJA"/>
+            </constraints>
+            <size key="customSize" width="452" height="526"/>
+            <connections>
+                <outlet property="nextButton" destination="ASl-sF-wIs" id="Fvq-XB-QK6"/>
+            </connections>
+            <point key="canvasLocation" x="-81.159420289855078" y="85.714285714285708"/>
+        </collectionViewCell>
+    </objects>
+    <designables>
+        <designable name="ASl-sF-wIs">
+            <size key="intrinsicContentSize" width="38" height="33"/>
+        </designable>
+    </designables>
+    <resources>
+        <systemColor name="linkColor">
+            <color red="0.0" green="0.47843137254901963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemBlueColor">
+            <color red="0.0" green="0.47843137254901963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+    </resources>
+</document>
