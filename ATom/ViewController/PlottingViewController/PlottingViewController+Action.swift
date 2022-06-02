@@ -16,12 +16,8 @@ extension PlottingViewController {
   
   @IBAction func onActionGridOnOffButton(_ sender: Any) {
     isOnGrid = !isOnGrid
-    if isOnGrid {
-      drawGridBoard()
-    } else {
-      removeGridView()
-    }
-    
+    vwGridBoard.isHidden = !vwGridBoard.isHidden
+    return
   }
   
   @IBAction func onActionAmplitudeButton(_ sender: Any) {
