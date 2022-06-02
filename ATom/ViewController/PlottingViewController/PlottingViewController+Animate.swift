@@ -46,7 +46,7 @@ extension PlottingViewController {
         case (false, true):
             return view.frame.height - 90
         default:
-            return view.frame.height - 169
+            return view.frame.height - 179
         }
     }
     
@@ -62,7 +62,7 @@ extension PlottingViewController {
         if isExpanding {
             return view.frame.height - 90
         } else {
-            return view.frame.height - 169
+            return view.frame.height - 179
         }
     }
     

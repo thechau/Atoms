@@ -14,6 +14,16 @@ extension PlottingViewController {
     showChartEkg(at: indexHighLight)
   }
   
+  @IBAction func onActionGridOnOffButton(_ sender: Any) {
+    isOnGrid = !isOnGrid
+    if isOnGrid {
+      drawGridBoard()
+    } else {
+      removeGridView()
+    }
+    
+  }
+  
   @IBAction func onActionAmplitudeButton(_ sender: Any) {
     if Int(heightChartRatio + 0.2) == 3 {
       heightChartRatio = 1

@@ -1321,7 +1321,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = chau.ATom123;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OBJC_BRIDGING_HEADER = "/Users/mabu/Documents/Personal Project/AtomProject 3/ATom-Bridging-Header.h";
+				SWIFT_OBJC_BRIDGING_HEADER = "/Users/admin/Desktop/AtomsProject/ATom-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -1341,7 +1341,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = chau.ATom123;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OBJC_BRIDGING_HEADER = "/Users/mabu/Documents/Personal Project/AtomProject 3/ATom-Bridging-Header.h";
+				SWIFT_OBJC_BRIDGING_HEADER = "/Users/admin/Desktop/AtomsProject/ATom-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};

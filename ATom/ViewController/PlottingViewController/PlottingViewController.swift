@@ -79,7 +79,7 @@ class PlottingViewController: BaseViewController {
     let displayList: [NumberEkg] = [.oneEkg, .threeEkg, .sixEkg, .twelveEkg]
     var heightChartRatio: Double = 2
     var timeSpeed = 0.025
-    
+  var isOnGrid = true
     override func viewDidLoad() {
         super.viewDidLoad()
         initView()
@@ -218,12 +218,18 @@ class PlottingViewController: BaseViewController {
         }
     }
     
+  func getHeightSignleEkg() -> CGFloat {
+      return vwGridBoard.frame.height - 179
+  }
     func showChartEkg(at indexDisplay: Int) {
         let listDisplay = getListChart()
         var height: CGFloat = 0
-        let heightItem = isExpanding ? caculateHeightItemExpanding() : 200
+        var heightItem = isExpanding ? caculateHeightItemExpanding() : 200
         
-        if isExpanding {
+      if indexTypeDisplay == 0 {
+        heightItem = getHeightSignleEkg()
+      }
+        if isExpanding, indexTypeDisplay != 0 {
             heightChartRatio = heightItem / 120.0
         }
         
