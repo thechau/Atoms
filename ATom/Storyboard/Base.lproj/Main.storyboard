@@ -1965,7 +1965,7 @@
                                                     <constraint firstAttribute="height" constant="44" id="dnY-le-unl"/>
                                                 </constraints>
                                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
-                                                <state key="normal" image="pause"/>
+                                                <state key="normal" image="play-button"/>
                                                 <connections>
                                                     <action selector="onTapPause:" destination="afg-KX-tiP" eventType="touchUpInside" id="53f-cQ-Ext"/>
                                                 </connections>
@@ -2036,10 +2036,10 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AGw-GS-Eeo" customClass="RoundedButtonWithShadow" customModule="ATom" customModuleProvider="target">
-                                <rect key="frame" x="270.5" y="188" width="36" height="33"/>
+                                <rect key="frame" x="270.5" y="188" width="36" height="36"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="36" id="7dN-Qi-trG"/>
-                                    <constraint firstAttribute="width" secondItem="AGw-GS-Eeo" secondAttribute="height" multiplier="12:11" id="UG4-DA-j3E"/>
+                                    <constraint firstAttribute="width" secondItem="AGw-GS-Eeo" secondAttribute="height" id="UG4-DA-j3E"/>
                                 </constraints>
                                 <inset key="imageEdgeInsets" minX="5" minY="5" maxX="5" maxY="5"/>
                                 <state key="normal" image="amplitude_active"/>
@@ -2087,8 +2087,11 @@
                         <outlet property="contentCollectionView" destination="94a-ta-WtO" id="tjD-NE-UNK"/>
                         <outlet property="controlStackView" destination="dzW-ij-fPC" id="WcD-qh-esa"/>
                         <outlet property="expandButton" destination="GW3-Ad-BaI" id="uel-ym-C8R"/>
+                        <outlet property="gridOnLabel" destination="xNx-ba-U98" id="9zZ-qy-UK5"/>
                         <outlet property="heightCollectionView" destination="GMt-sW-t0n" id="vSh-R4-yyi"/>
                         <outlet property="heightStackView" destination="ccB-Ct-ZNy" id="CYr-dJ-uMC"/>
+                        <outlet property="infoStackview" destination="Cmp-Aw-daw" id="Noo-MB-rtP"/>
+                        <outlet property="pauseLabel" destination="Kqo-5U-yL0" id="Btm-UL-58B"/>
                         <outlet property="scaleSwitch" destination="j9b-3a-27E" id="w3F-Io-y0D"/>
                         <outlet property="scrollView" destination="vSa-LO-OZj" id="WNh-DI-kTy"/>
                         <outlet property="stackView" destination="8cB-hc-tpV" id="HIP-d3-Ed1"/>
@@ -2115,17 +2118,17 @@
         <designable name="8Dd-pv-qFl">
             <size key="intrinsicContentSize" width="60" height="16"/>
         </designable>
+        <designable name="AGw-GS-Eeo">
+            <size key="intrinsicContentSize" width="33" height="33"/>
+        </designable>
         <designable name="HSd-ZC-4Xn">
             <size key="intrinsicContentSize" width="61.5" height="16"/>
         </designable>
         <designable name="IdG-69-O5r">
-            <size key="intrinsicContentSize" width="50" height="50"/>
+            <size key="intrinsicContentSize" width="64" height="64"/>
         </designable>
         <designable name="Wcx-bm-DUN">
             <size key="intrinsicContentSize" width="58.5" height="16"/>
-        </designable>
-        <designable name="gJk-be-JQi">
-            <size key="intrinsicContentSize" width="512" height="512"/>
         </designable>
         <designable name="oIO-3L-TjI">
             <size key="intrinsicContentSize" width="33" height="33"/>
@@ -2154,7 +2157,7 @@
         <image name="lead1" width="28.5" height="28.5"/>
         <image name="left_arrow" width="18.5" height="17"/>
         <image name="logo" width="205" height="52"/>
-        <image name="pause" width="50" height="50"/>
+        <image name="play-button" width="64" height="64"/>
         <image name="right_arrow" width="18.5" height="17"/>
         <image name="start" width="16" height="16"/>
         <image name="teen_girl" width="378" height="1242"/>

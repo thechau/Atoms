@@ -11,6 +11,7 @@ import RxSwift
 import Charts
 
 class PlottingViewController: BaseViewController {
+    @IBOutlet weak var infoStackview: UIStackView!
     @IBOutlet weak var heightStackView: NSLayoutConstraint!
     @IBOutlet weak var viewCorners: UIView!
     @IBOutlet weak var viewPanGuesture: UIView!
@@ -24,6 +25,8 @@ class PlottingViewController: BaseViewController {
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var viewPan: UIView!
     @IBOutlet weak var bpmLabel: UILabel!
+    @IBOutlet weak var gridOnLabel: UILabel!
+    @IBOutlet weak var pauseLabel: UILabel!
     @IBOutlet weak var expandButton: UIButton!
     @IBOutlet weak var controlStackView: UIStackView!
     // Chart
@@ -40,7 +43,7 @@ class PlottingViewController: BaseViewController {
     let disposeBag = DisposeBag()
     var chartTimer: Timer?
     let smallColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.7)
-    var duration = 0.025
+    var duration = 0.02
     var isPausing = false
     var indexTypeDisplay = 0
     var indexHighLight = 0 {
@@ -78,8 +81,9 @@ class PlottingViewController: BaseViewController {
     var heightItem = 40.0
     let displayList: [NumberEkg] = [.oneEkg, .threeEkg, .sixEkg, .twelveEkg]
     var heightChartRatio: Double = 2
-    var timeSpeed = 0.025
-  var isOnGrid = true
+    var timeSpeed = 0.02
+    var isOnGrid = true
+    var isPlaying = false
     override func viewDidLoad() {
         super.viewDidLoad()
         initView()

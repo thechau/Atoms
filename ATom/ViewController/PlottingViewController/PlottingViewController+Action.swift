@@ -10,14 +10,14 @@ import UIKit
 
 extension PlottingViewController {
   @IBAction func onActionChangeSpeedSwicthButton(_ sender: Any) {
-    duration = duration == 0.025 ? 0.015 : 0.025
+    duration = duration == 0.02 ? 0.01 : 0.02
     showChartEkg(at: indexHighLight)
   }
   
   @IBAction func onActionGridOnOffButton(_ sender: Any) {
     isOnGrid = !isOnGrid
-    vwGridBoard.isHidden = !vwGridBoard.isHidden
-    return
+    vwGridBoard.isHidden = isOnGrid
+    gridOnLabel.text = isOnGrid ? "Grid On" : "Grid Off"
   }
   
   @IBAction func onActionAmplitudeButton(_ sender: Any) {
@@ -40,6 +40,7 @@ extension PlottingViewController {
       }
       indexTypeDisplay += 1
       changeTypeDisplay()
+      btnAmplitude.isHidden = !(indexTypeDisplay == 0)
   }
   
   @IBAction func onTapBack(_ sender: Any?) {
@@ -48,6 +49,7 @@ extension PlottingViewController {
       }
       indexTypeDisplay -= 1
       changeTypeDisplay()
+      btnAmplitude.isHidden = !(indexTypeDisplay == 0)
   }
   
   @IBAction func onTapExpandButton(_ sender: Any) {
@@ -71,9 +73,15 @@ extension PlottingViewController {
   }
   
   @IBAction func onTapPause(_ sender: Any?) {
+    isPlaying = !isPlaying
+    if isPlaying {
+      btnPause.setImage(UIImage(named: "pause"), for: .normal)
+      pauseLabel.text = "Pause"
+      infoStackview.isHidden = true
+    } else {
+      btnPause.setImage(UIImage(named: "play-button"), for: .normal)
+      pauseLabel.text = "Play"
+      infoStackview.isHidden = false
+    }
   }
-//  
-//  @IBAction func onTapPopButton(_ sender: Any?) {
-//    navigationController?.popViewController(animated: true)
-//  }
 }
