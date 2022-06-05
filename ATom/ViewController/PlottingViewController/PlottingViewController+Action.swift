@@ -11,23 +11,24 @@ import UIKit
 extension PlottingViewController {
   @IBAction func onActionChangeSpeedSwicthButton(_ sender: Any) {
     duration = duration == 0.02 ? 0.01 : 0.02
-    showChartEkg(at: indexHighLight)
+    showChartEkg()
   }
   
   @IBAction func onActionGridOnOffButton(_ sender: Any) {
     isShowingGrid = !isShowingGrid
-      showingGridBoard()
+      showChartEkg()
     vwGridBoard.isHidden = !isShowingGrid
     gridOnLabel.text = isShowingGrid ? "Grid On" : "Grid Off"
   }
   
   @IBAction func onActionAmplitudeButton(_ sender: Any) {
-    if Int(heightChartRatio + 0.2) == 3 {
+    if Int(heightChartRatio + 0.2) == 4 {
       heightChartRatio = 1
     } else {
       heightChartRatio = heightChartRatio + 1
     }
-    showChartEkg(at: indexHighLight)
+      ampValueLabel.text = " " + ampList[Int(heightChartRatio + 0.2)].description + "mm/mV"
+    showChartEkg()
   }
   
     /// show collection list Ekg
@@ -80,7 +81,9 @@ extension PlottingViewController {
       btnPause.setImage(UIImage(named: "play-button"), for: .normal)
       pauseLabel.text = "Play"
       infoStackview.isHidden = true
+        expandChartEkg()
     }
+      showChartEkg()
   }
     
     func expandChartEkg() {
@@ -88,10 +91,6 @@ extension PlottingViewController {
         setupControlStactView()
         setupGridBoard()
         hideDetailIfNeed()
-        showChartEkg(at: indexHighLight)
-    }
-    
-    func showingGridBoard() {
-        showChartEkg(at: indexHighLight)
+        showChartEkg()
     }
 }

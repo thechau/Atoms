@@ -27,6 +27,7 @@ class PlottingViewController: BaseViewController {
     @IBOutlet weak var bpmLabel: UILabel!
     @IBOutlet weak var gridOnLabel: UILabel!
     @IBOutlet weak var pauseLabel: UILabel!
+    @IBOutlet weak var ampValueLabel: UILabel!
     @IBOutlet weak var expandButton: UIButton!
     @IBOutlet weak var controlStackView: UIStackView!
     // Chart
@@ -48,7 +49,7 @@ class PlottingViewController: BaseViewController {
     var indexTypeDisplay = 0
     var indexHighLight = 0 {
         didSet {
-            showChartEkg(at: indexHighLight)
+            showChartEkg()
         }
     }
     
@@ -80,7 +81,8 @@ class PlottingViewController: BaseViewController {
     
     var heightItem = 40.0
     let displayList: [NumberEkg] = [.oneEkg, .threeEkg, .sixEkg, .twelveEkg]
-    var heightChartRatio: Double = 2
+    let ampList = [0, 5, 10, 15, 20]
+    var heightChartRatio: Double = 1
     var timeSpeed = 0.02
     var isShowingGrid = true
     var isPlaying = false
@@ -173,7 +175,7 @@ class PlottingViewController: BaseViewController {
         plottingChartViewaV6.setupChart(viewController: self,
                                         name: "aV6",
                                         timer: chartTimer)
-        showChartEkg(at: indexHighLight)
+        showChartEkg()
         hideDetailIfNeed()
         RunLoop.main
             .add(chartTimer ?? Timer(),
@@ -195,6 +197,7 @@ class PlottingViewController: BaseViewController {
         setupCollectionView()
         hideDetailIfNeed()
         infoStackview.isHidden = true
+        ampValueLabel.text = " " + ampList[Int(heightChartRatio + 0.2)].description + "mm/mV"
     }
     
     func getListChart() -> [[PlottingChartView]] {
@@ -226,7 +229,17 @@ class PlottingViewController: BaseViewController {
   func getHeightSignleEkg() -> CGFloat {
       return vwGridBoard.frame.height - 179
   }
-    func showChartEkg(at indexDisplay: Int) {
+    func showChartEkg() {
+        guard isPlaying else {
+            stackView.subviews.forEach { vi in
+                vi.isHidden = true
+            }
+            return
+        }
+        stackView.subviews.forEach { vi in
+            vi.isHidden = false
+        }
+        let indexDisplay = indexHighLight
         let listDisplay = getListChart()
         var height: CGFloat = 0
         var heightItem = (isExpanding || !isShowingGrid) ? caculateHeightItemExpanding() : 200

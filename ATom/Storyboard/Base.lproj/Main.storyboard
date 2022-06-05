@@ -1653,8 +1653,8 @@
                                                         <color key="textColor" red="0.29803921570000003" green="0.31764705879999999" blue="0.38431372549999998" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="10mm/mv" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZGv-Ob-UV0">
-                                                        <rect key="frame" x="257" y="15" width="62.5" height="17"/>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text=" 5mm/mV" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZGv-Ob-UV0">
+                                                        <rect key="frame" x="258" y="15" width="61.5" height="17"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                         <color key="textColor" red="0.29803921570000003" green="0.31764705879999999" blue="0.38431372549999998" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
                                                         <nil key="highlightedColor"/>
@@ -2080,6 +2080,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="91D-l2-qEt"/>
                     <connections>
+                        <outlet property="ampValueLabel" destination="ZGv-Ob-UV0" id="ZaP-Lu-w8w"/>
                         <outlet property="bpmLabel" destination="ROb-uk-NdY" id="K7h-bn-geh"/>
                         <outlet property="btnAmplitude" destination="AGw-GS-Eeo" id="1Vz-O2-hLk"/>
                         <outlet property="btnPause" destination="IdG-69-O5r" id="3GK-el-l13"/>
@@ -2118,11 +2119,20 @@
         <designable name="8Dd-pv-qFl">
             <size key="intrinsicContentSize" width="60" height="16"/>
         </designable>
+        <designable name="AGw-GS-Eeo">
+            <size key="intrinsicContentSize" width="33" height="33"/>
+        </designable>
         <designable name="HSd-ZC-4Xn">
             <size key="intrinsicContentSize" width="61.5" height="16"/>
         </designable>
+        <designable name="IdG-69-O5r">
+            <size key="intrinsicContentSize" width="64" height="64"/>
+        </designable>
         <designable name="Wcx-bm-DUN">
             <size key="intrinsicContentSize" width="58.5" height="16"/>
+        </designable>
+        <designable name="oIO-3L-TjI">
+            <size key="intrinsicContentSize" width="33" height="33"/>
         </designable>
         <designable name="qWV-SY-4pW">
             <size key="intrinsicContentSize" width="135.5" height="16"/>
