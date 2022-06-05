@@ -15,9 +15,10 @@ extension PlottingViewController {
   }
   
   @IBAction func onActionGridOnOffButton(_ sender: Any) {
-    isOnGrid = !isOnGrid
-    vwGridBoard.isHidden = isOnGrid
-    gridOnLabel.text = isOnGrid ? "Grid On" : "Grid Off"
+    isShowingGrid = !isShowingGrid
+      showingGridBoard()
+    vwGridBoard.isHidden = !isShowingGrid
+    gridOnLabel.text = isShowingGrid ? "Grid On" : "Grid Off"
   }
   
   @IBAction func onActionAmplitudeButton(_ sender: Any) {
@@ -29,6 +30,7 @@ extension PlottingViewController {
     showChartEkg(at: indexHighLight)
   }
   
+    /// show collection list Ekg
   @IBAction func onTapShowInfoDetail(_ sender: Any) {
     isShowingDetail = !isShowingDetail
     showInfoBoard()
@@ -54,11 +56,7 @@ extension PlottingViewController {
   
   @IBAction func onTapExpandButton(_ sender: Any) {
     isExpanding = !isExpanding
-    isShowingDetail = false
-    setupControlStactView()
-    setupGridBoard()
-    hideDetailIfNeed()
-    showChartEkg(at: indexHighLight)
+    expandChartEkg()
   }
   
   func setupGridBoard() {
@@ -77,11 +75,23 @@ extension PlottingViewController {
     if isPlaying {
       btnPause.setImage(UIImage(named: "pause"), for: .normal)
       pauseLabel.text = "Pause"
-      infoStackview.isHidden = true
+      infoStackview.isHidden = false
     } else {
       btnPause.setImage(UIImage(named: "play-button"), for: .normal)
       pauseLabel.text = "Play"
-      infoStackview.isHidden = false
+      infoStackview.isHidden = true
     }
   }
+    
+    func expandChartEkg() {
+        isShowingDetail = false
+        setupControlStactView()
+        setupGridBoard()
+        hideDetailIfNeed()
+        showChartEkg(at: indexHighLight)
+    }
+    
+    func showingGridBoard() {
+        showChartEkg(at: indexHighLight)
+    }
 }

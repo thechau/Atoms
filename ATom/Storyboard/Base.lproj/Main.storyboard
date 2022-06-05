@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="collection view cell content view" minToolsVersion="11.0"/>
@@ -1939,8 +1939,8 @@
                                                     <action selector="onActionGridOnOffButton:" destination="afg-KX-tiP" eventType="touchUpInside" id="2kd-xa-ncb"/>
                                                 </connections>
                                             </button>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Amplitude" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xNx-ba-U98">
-                                                <rect key="frame" x="38" y="49" width="62" height="16"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Grid On" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xNx-ba-U98">
+                                                <rect key="frame" x="45.5" y="49" width="47" height="16"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                                 <color key="textColor" red="0.5725490196078431" green="0.62352941176470589" blue="0.68235294117647061" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
@@ -2118,20 +2118,11 @@
         <designable name="8Dd-pv-qFl">
             <size key="intrinsicContentSize" width="60" height="16"/>
         </designable>
-        <designable name="AGw-GS-Eeo">
-            <size key="intrinsicContentSize" width="33" height="33"/>
-        </designable>
         <designable name="HSd-ZC-4Xn">
             <size key="intrinsicContentSize" width="61.5" height="16"/>
         </designable>
-        <designable name="IdG-69-O5r">
-            <size key="intrinsicContentSize" width="64" height="64"/>
-        </designable>
         <designable name="Wcx-bm-DUN">
             <size key="intrinsicContentSize" width="58.5" height="16"/>
-        </designable>
-        <designable name="oIO-3L-TjI">
-            <size key="intrinsicContentSize" width="33" height="33"/>
         </designable>
         <designable name="qWV-SY-4pW">
             <size key="intrinsicContentSize" width="135.5" height="16"/>

@@ -82,7 +82,7 @@ class PlottingViewController: BaseViewController {
     let displayList: [NumberEkg] = [.oneEkg, .threeEkg, .sixEkg, .twelveEkg]
     var heightChartRatio: Double = 2
     var timeSpeed = 0.02
-    var isOnGrid = true
+    var isShowingGrid = true
     var isPlaying = false
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -194,6 +194,7 @@ class PlottingViewController: BaseViewController {
         viewContainerGridView.roundCorners(corners: [.topLeft, .topRight], radius: 30)
         setupCollectionView()
         hideDetailIfNeed()
+        infoStackview.isHidden = true
     }
     
     func getListChart() -> [[PlottingChartView]] {
@@ -228,12 +229,12 @@ class PlottingViewController: BaseViewController {
     func showChartEkg(at indexDisplay: Int) {
         let listDisplay = getListChart()
         var height: CGFloat = 0
-        var heightItem = isExpanding ? caculateHeightItemExpanding() : 200
+        var heightItem = (isExpanding || !isShowingGrid) ? caculateHeightItemExpanding() : 200
         
       if indexTypeDisplay == 0 {
         heightItem = getHeightSignleEkg()
       }
-        if isExpanding, indexTypeDisplay != 0 {
+        if (isExpanding || !isShowingGrid), indexTypeDisplay != 0 {
             heightChartRatio = heightItem / 120.0
         }
         
