@@ -82,7 +82,7 @@ class PlottingViewController: BaseViewController {
     var heightItem = 40.0
     let displayList: [NumberEkg] = [.oneEkg, .threeEkg, .sixEkg, .twelveEkg]
     let ampList = [0, 5, 10, 15, 20]
-    var heightChartRatio: Double = 1
+    var heightChartRatio: Double = 2
     var timeSpeed = 0.02
     var isShowingGrid = true
     var isPlaying = false
@@ -197,6 +197,8 @@ class PlottingViewController: BaseViewController {
         setupCollectionView()
         hideDetailIfNeed()
         infoStackview.isHidden = true
+        expandButton.isHidden = true
+        btnAmplitude.isHidden = true
         ampValueLabel.text = " " + ampList[Int(heightChartRatio + 0.2)].description + "mm/mV"
     }
     

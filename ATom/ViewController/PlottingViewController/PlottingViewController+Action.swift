@@ -58,6 +58,10 @@ extension PlottingViewController {
   @IBAction func onTapExpandButton(_ sender: Any) {
     isExpanding = !isExpanding
     expandChartEkg()
+      //showInfoBoard()
+//
+//      let y = !isExpanding ? getHeightMax(): getYMinOfDetailView()
+//      setUpBottomCollectionView(y: y)
   }
   
   func setupGridBoard() {
@@ -73,14 +77,15 @@ extension PlottingViewController {
   
   @IBAction func onTapPause(_ sender: Any?) {
     isPlaying = !isPlaying
+    infoStackview.isHidden = !isPlaying
+      expandButton.isHidden = !isPlaying
+      btnAmplitude.isHidden = !isPlaying
     if isPlaying {
       btnPause.setImage(UIImage(named: "pause"), for: .normal)
       pauseLabel.text = "Pause"
-      infoStackview.isHidden = false
     } else {
       btnPause.setImage(UIImage(named: "play-button"), for: .normal)
       pauseLabel.text = "Play"
-      infoStackview.isHidden = true
         expandChartEkg()
     }
       showChartEkg()
