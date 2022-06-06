@@ -18,7 +18,7 @@ class PlottingViewController: BaseViewController {
     @IBOutlet weak var heightCollectionView: NSLayoutConstraint!
     @IBOutlet weak var btnPause: RoundedButtonWithShadow!
     @IBOutlet weak var btnReport: RoundedButtonWithShadow!
-    @IBOutlet weak var btnAmplitude: RoundedButtonWithShadow!
+    @IBOutlet weak var btnAmplitude: UIButton!
     @IBOutlet weak var contentCollectionView: UICollectionView!
     @IBOutlet weak var titleCollectionView: UICollectionView!
     @IBOutlet weak var scaleSwitch: ScaleSwitch!
@@ -26,9 +26,10 @@ class PlottingViewController: BaseViewController {
     @IBOutlet weak var viewPan: UIView!
     @IBOutlet weak var bpmLabel: UILabel!
     @IBOutlet weak var gridOnLabel: UILabel!
+    @IBOutlet weak var girdButton: RoundedButtonWithShadow!
     @IBOutlet weak var pauseLabel: UILabel!
     @IBOutlet weak var ampValueLabel: UILabel!
-    @IBOutlet weak var expandButton: UIButton!
+//    @IBOutlet weak var expandButton: UIButton!
     @IBOutlet weak var controlStackView: UIStackView!
     // Chart
     @IBOutlet weak var vwGridBoard: UIView!
@@ -81,8 +82,8 @@ class PlottingViewController: BaseViewController {
     
     var heightItem = 40.0
     let displayList: [NumberEkg] = [.oneEkg, .threeEkg, .sixEkg, .twelveEkg]
-    let ampList = [0, 5, 10, 15, 20]
-    var heightChartRatio: Double = 1
+    let ampList = [5, 10, 15, 20]
+    var indexHeightChartRatio: Int = 1
     var timeSpeed = 0.02
     var isShowingGrid = true
     var isPlaying = false
@@ -197,7 +198,7 @@ class PlottingViewController: BaseViewController {
         setupCollectionView()
         hideDetailIfNeed()
         infoStackview.isHidden = true
-        ampValueLabel.text = " " + ampList[Int(heightChartRatio + 0.2)].description + "mm/mV"
+        ampValueLabel.text = ampList[indexHeightChartRatio].description + "mm/mV"
     }
     
     func getListChart() -> [[PlottingChartView]] {
@@ -248,14 +249,14 @@ class PlottingViewController: BaseViewController {
         heightItem = getHeightSignleEkg()
       }
         if (isExpanding || !isShowingGrid), indexTypeDisplay != 0 {
-            heightChartRatio = heightItem / 120.0
+            indexHeightChartRatio = indexHeightChartRatio / Int(120.0)
         }
         
         for index in 0 ..< listDisplay.count {
             for charView in listDisplay[index] {
                 charView.isHidden = !(index == indexDisplay)
                 charView.backgroundColor = .clear
-                charView.drawingHeight = heightChart * heightChartRatio
+                charView.drawingHeight = heightChart * CGFloat(indexHeightChartRatio)
                 if !charView.isHidden {
                     height += heightItem
                 }

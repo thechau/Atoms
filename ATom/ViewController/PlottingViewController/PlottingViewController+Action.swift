@@ -18,16 +18,24 @@ extension PlottingViewController {
     isShowingGrid = !isShowingGrid
       showChartEkg()
     vwGridBoard.isHidden = !isShowingGrid
+      if isShowingGrid {
+          gridOnLabel.text = "Grid On"
+          girdButton.setImage(UIImage(named: "Grid On"), for: .normal)
+      } else {
+          gridOnLabel.text = "Grid Off"
+          girdButton.setImage(UIImage(named: "Grid Off"), for: .normal)
+      }
     gridOnLabel.text = isShowingGrid ? "Grid On" : "Grid Off"
+      
   }
   
   @IBAction func onActionAmplitudeButton(_ sender: Any) {
-    if Int(heightChartRatio + 0.2) == 4 {
-      heightChartRatio = 1
+    if indexHeightChartRatio == 3 {
+        indexHeightChartRatio = 0
     } else {
-      heightChartRatio = heightChartRatio + 1
+        indexHeightChartRatio += 1
     }
-      ampValueLabel.text = " " + ampList[Int(heightChartRatio + 0.2)].description + "mm/mV"
+      ampValueLabel.text = " " + ampList[indexHeightChartRatio].description + "mm/mV"
     showChartEkg()
   }
   
@@ -62,10 +70,8 @@ extension PlottingViewController {
   
   func setupGridBoard() {
     if isExpanding {
-      expandButton.setImage(UIImage(named: "zoom-out"), for: .normal)
       removeGridView()
     } else {
-      expandButton.setImage(UIImage(named: "zoom-in"), for: .normal)
       drawGridBoard()
     }
     scrollView.isScrollEnabled = !isExpanding
@@ -81,7 +87,7 @@ extension PlottingViewController {
       btnPause.setImage(UIImage(named: "play-button"), for: .normal)
       pauseLabel.text = "Play"
       infoStackview.isHidden = true
-        expandChartEkg()
+    expandChartEkg()
     }
       showChartEkg()
   }
