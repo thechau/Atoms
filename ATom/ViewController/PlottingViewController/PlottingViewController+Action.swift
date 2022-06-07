@@ -41,9 +41,9 @@ extension PlottingViewController {
     showChartEkg()
   }
   
-    /// show collection list Ekg
-  @IBAction func onTapShowInfoDetail(_ sender: Any) {
-    isShowingDetail = !isShowingDetail
+  /// show collection list Ekg
+  @IBAction func onTapShowSelectionEkg(_ sender: Any) {
+    isShowingSelectionsEkg = !isShowingSelectionsEkg
     showInfoBoard()
   }
   
@@ -105,7 +105,7 @@ extension PlottingViewController {
   }
     
   func expandChartEkg() {
-    isShowingDetail = false
+    isShowingSelectionsEkg = false
     setupControlStactView()
     hideDetailIfNeed()
     }

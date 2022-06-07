@@ -10,7 +10,7 @@ extension PlottingViewController {
     /// animation show detail view
     func showInfoBoard() {
         setupControlStactView()
-        let y = !isShowingDetail ? getHeightMax(): getYMinOfDetailView()
+        let y = !isShowingSelectionsEkg ? getHeightMax(): getYMinOfDetailView()
         setUpBottomCollectionView(y: y)
     }
     
@@ -19,7 +19,7 @@ extension PlottingViewController {
         UIView.animate(withDuration: 0.3,
                        delay: 0,
                        options: .curveEaseInOut) { [weak self] in
-            self?.viewCorners.frame.origin = CGPoint(x: 0, y: y)
+            self?.viewContainSelectionsEkg.frame.origin = CGPoint(x: 0, y: y)
             self?.setHeightCollectionView()
             self?.view.layoutIfNeeded()
         }
@@ -27,24 +27,24 @@ extension PlottingViewController {
     
     /// show-hide control stack view
     func setupControlStactView() {
-        if isShowingDetail {
-            controlStackView.isHidden = false
-        } else {
-            controlStackView.isHidden = isExpanding
-        }
+//      if isShowingSelectionsEkg {
+//        controlStackView.isHidden = false
+//      } else {
+//        controlStackView.isHidden = isExpanding
+//      }
     }
     //
     func hideDetailIfNeed() {
         contentCollectionView.isHidden = false
         setHeightCollectionView()
         heightCollectionView.constant = 0
-        viewCorners.frame.origin = CGPoint(x: 0, y: getYDetailView())
-        viewCorners.layoutSubviews()
+        viewContainSelectionsEkg.frame.origin = CGPoint(x: 0, y: getYDetailView())
+        viewContainSelectionsEkg.layoutSubviews()
         view.layoutSubviews()
     }
     
     func getYDetailView() -> CGFloat {
-        switch (isShowingDetail, isExpanding) {
+        switch (isShowingSelectionsEkg, isExpanding) {
         case (true, _):
             return view.frame.height - getHeightDetailView()
         case (false, true):
@@ -59,7 +59,7 @@ extension PlottingViewController {
     }
     
     func getHeightDetailView() -> CGFloat {
-        return viewCorners.frame.height
+        return viewContainSelectionsEkg.frame.height
     }
     
     func getHeightMax() -> CGFloat {
@@ -79,7 +79,7 @@ extension PlottingViewController {
     
     func changeTypeDisplay() {
         indexHighLight = 0
-        isShowingDetail = false
+        isShowingSelectionsEkg = false
 //        isExpanding = false
         tableviewAction()
         hideDetailIfNeed()

@@ -1738,7 +1738,7 @@
                                     <constraint firstItem="cKO-bZ-iCQ" firstAttribute="leading" secondItem="vSa-LO-OZj" secondAttribute="leading" id="thQ-UX-Cpe"/>
                                 </constraints>
                             </scrollView>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wJH-5I-FPT" userLabel="ViewCorner">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wJH-5I-FPT" userLabel="View selections ekg">
                                 <rect key="frame" x="0.0" y="517" width="414" height="379"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="P3V-z2-cRC">
@@ -1761,7 +1761,7 @@
                                         <rect key="frame" x="70" y="0.0" width="274" height="30"/>
                                         <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                         <connections>
-                                            <action selector="onTapShowInfoDetail:" destination="afg-KX-tiP" eventType="touchUpInside" id="Mha-GK-I14"/>
+                                            <action selector="onTapShowSelectionEkg:" destination="afg-KX-tiP" eventType="touchUpInside" id="VHV-KE-Cyk"/>
                                         </connections>
                                     </button>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="ZRO-Q3-wRI">
@@ -2084,8 +2084,8 @@
                         <outlet property="scrollView" destination="vSa-LO-OZj" id="WNh-DI-kTy"/>
                         <outlet property="stackView" destination="8cB-hc-tpV" id="HIP-d3-Ed1"/>
                         <outlet property="titleCollectionView" destination="8mb-45-yfQ" id="eKq-hL-D7I"/>
+                        <outlet property="viewContainSelectionsEkg" destination="wJH-5I-FPT" id="rlp-sd-7Ap"/>
                         <outlet property="viewContainerGridView" destination="D5a-7o-Z2D" id="DwP-JV-dg8"/>
-                        <outlet property="viewCorners" destination="wJH-5I-FPT" id="Q5a-As-Lsk"/>
                         <outlet property="viewPan" destination="UWZ-fk-JTj" id="Uy5-hZ-eaW"/>
                         <outlet property="viewPanGuesture" destination="P3V-z2-cRC" id="dzy-wZ-sSu"/>
                         <outlet property="vwGridBoard" destination="4wD-3f-sTK" id="EZf-CU-bGf"/>

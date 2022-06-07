@@ -13,7 +13,7 @@ import Charts
 class PlottingViewController: BaseViewController {
     @IBOutlet weak var infoStackview: UIStackView!
     @IBOutlet weak var heightStackView: NSLayoutConstraint!
-    @IBOutlet weak var viewCorners: UIView!
+    @IBOutlet weak var viewContainSelectionsEkg: UIView!
     @IBOutlet weak var viewPanGuesture: UIView!
     @IBOutlet weak var heightCollectionView: NSLayoutConstraint!
     @IBOutlet weak var btnPause: RoundedButtonWithShadow!
@@ -39,8 +39,7 @@ class PlottingViewController: BaseViewController {
     
     private let heightChart: CGFloat = 120
     var isFirstTime = true
-    var isShowingDetail = false
-    var isExpanding = false
+    var isShowingSelectionsEkg = false
     
     let disposeBag = DisposeBag()
     var chartTimer: Timer?
@@ -193,7 +192,7 @@ class PlottingViewController: BaseViewController {
     private func initView() {
         viewPan.layer.cornerRadius = viewPan.frame.height / 2
         viewPan.clipsToBounds = true
-        viewCorners.roundCorners(corners: [.topLeft, .topRight], radius: 30)
+        viewContainSelectionsEkg.roundCorners(corners: [.topLeft, .topRight], radius: 30)
         viewContainerGridView.roundCorners(corners: [.topLeft, .topRight], radius: 30)
         setupCollectionView()
         hideDetailIfNeed()
