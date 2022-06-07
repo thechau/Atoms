@@ -46,7 +46,9 @@ class PlottingViewController: BaseViewController {
     let smallColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.7)
     var duration = 0.02
     var isPausing = false
-    var indexTypeDisplay = 0
+    
+    /// One EKG, Three EKG, Six EKG, Twelve EKG
+    var indexListEkgDisplay = 0
     var indexHighLight = 0 {
         didSet {
             showChartEkg()
@@ -201,7 +203,7 @@ class PlottingViewController: BaseViewController {
     }
     
     func getListChart() -> [[PlottingChartView]] {
-        let typeDisplay = displayList[indexTypeDisplay]
+        let typeDisplay = displayList[indexListEkgDisplay]
         switch typeDisplay {
         case .oneEkg:
             return [[plottingChartViewI], [plottingChartViewII], [plottingChartViewIII],
@@ -227,8 +229,9 @@ class PlottingViewController: BaseViewController {
     }
     
   func getHeightSignleEkg() -> CGFloat {
-      return vwGridBoard.frame.height - 179
+      return vwGridBoard.frame.height - 173
   }
+    
     func showChartEkg() {
         guard isPlaying else {
             stackView.subviews.forEach { vi in
@@ -239,21 +242,22 @@ class PlottingViewController: BaseViewController {
         stackView.subviews.forEach { vi in
             vi.isHidden = false
         }
-        let indexDisplay = indexHighLight
+        if indexListEkgDisplay != 0 {
+            indexHeightChartRatio = 1
+        }
         let listDisplay = getListChart()
         var height: CGFloat = 0
-        var heightItem = !isShowingGrid ? caculateHeightItemExpanding() : 200
+        var heightItem: CGFloat
         
-      if indexTypeDisplay == 0 {
-        heightItem = getHeightSignleEkg()
-      }
-        if !isShowingGrid, indexTypeDisplay != 0 {
+          heightItem = caculateHeightOfOneEkg()
+        
+        if !isShowingGrid, indexListEkgDisplay != 0 {
             indexHeightChartRatio = indexHeightChartRatio / Int(120.0)
         }
         
         for index in 0 ..< listDisplay.count {
             for charView in listDisplay[index] {
-                charView.isHidden = !(index == indexDisplay)
+                charView.isHidden = !(index == indexHighLight)
                 charView.backgroundColor = .clear
                 charView.drawingHeight = heightChart * CGFloat(indexHeightChartRatio)
                 if !charView.isHidden {
@@ -275,23 +279,33 @@ class PlottingViewController: BaseViewController {
         stackView.layoutIfNeeded()
         view.layoutIfNeeded()
         getData()
-        scrollView.contentInset.bottom = getHeightDetailView() + 50
+        scrollView.contentInset.bottom = caculateHeightOfOneEkg() + 50
         scrollView.scrollToTop()
     }
     
     
-    func caculateHeightItemExpanding() -> CGFloat {
-        let totalHeight = vwGridBoard.frame.height - getHeightDetailView() + 60
+    func caculateHeightOfOneEkg() -> CGFloat {
+        let totalHeightDisplay = vwGridBoard.frame.height - getHeightSelectionsEkgView()// + 60
         var heightStackViewChart = 200.0
-        switch indexTypeDisplay {
+        switch indexListEkgDisplay {
         case 0:
-            heightStackViewChart = 200
+            heightStackViewChart = vwGridBoard.frame.height - 173
         case 1:
-            heightStackViewChart = totalHeight / 3.0
+            heightStackViewChart = totalHeightDisplay / 3.0
         case 2:
-            heightStackViewChart = totalHeight / 6.0
+            if isShowingGrid {
+                heightStackViewChart = totalHeightDisplay / 3.0
+            } else {
+                heightStackViewChart = totalHeightDisplay / 6.0
+            }
+            
         case 3:
-            heightStackViewChart = totalHeight / 12.0
+            if isShowingGrid {
+                heightStackViewChart = totalHeightDisplay / 3.0
+            } else {
+                heightStackViewChart = totalHeightDisplay / 12.0
+            }
+            
         default:
             break
         }

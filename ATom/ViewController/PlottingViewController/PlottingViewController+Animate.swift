@@ -7,10 +7,9 @@
 import UIKit
 
 extension PlottingViewController {
-    /// animation show detail view
-    func showInfoBoard() {
-        setupControlStactView()
-        let y = !isShowingSelectionsEkg ? getHeightMax(): getYMinOfDetailView()
+    /// animation show selection ekg
+    func showSelectionEkgBoard() {
+        let y = isShowingSelectionsEkg ? getMinYOfSelectionsEkgViewView() : getMaxYOfSelectionsView()
         setUpBottomCollectionView(y: y)
     }
     
@@ -24,16 +23,7 @@ extension PlottingViewController {
             self?.view.layoutIfNeeded()
         }
     }
-    
-    /// show-hide control stack view
-    func setupControlStactView() {
-//      if isShowingSelectionsEkg {
-//        controlStackView.isHidden = false
-//      } else {
-//        controlStackView.isHidden = isExpanding
-//      }
-    }
-    //
+        
     func hideDetailIfNeed() {
         contentCollectionView.isHidden = false
         setHeightCollectionView()
@@ -44,46 +34,65 @@ extension PlottingViewController {
     }
     
     func getYDetailView() -> CGFloat {
-        switch (isShowingSelectionsEkg, isExpanding) {
+        switch (isShowingSelectionsEkg, false) {
         case (true, _):
-            return view.frame.height - getHeightDetailView()
+            return view.frame.height - getHeightSelectionsEkgView()
         case (false, true):
             return view.frame.height - 90
         default:
-            return view.frame.height - 179
+            return view.frame.height - 173
         }
     }
     
-    func getYMinOfDetailView() -> CGFloat {
-        return view.frame.height - getHeightDetailView()
+    func getMinYOfSelectionsEkgViewView() -> CGFloat {
+        return view.frame.height - getHeightSelectionsEkgView()
     }
     
-    func getHeightDetailView() -> CGFloat {
+    func getHeightSelectionsEkgView() -> CGFloat {
         return viewContainSelectionsEkg.frame.height
     }
     
-    func getHeightMax() -> CGFloat {
-        if isShowingGrid {
+    func getMaxYOfSelectionsView() -> CGFloat {
+        if isShowingSelectionsEkg {
             return view.frame.height - 90
         } else {
-            return view.frame.height - 179
+            return view.frame.height - 173
         }
     }
     
     fileprivate func tableviewAction() {
         reloadData()
-        titleCollectionView.scrollToItem(at: IndexPath(item: indexTypeDisplay, section: 0),
+        titleCollectionView.scrollToItem(at: IndexPath(item: indexListEkgDisplay, section: 0),
                                          at: .centeredHorizontally,
                                          animated: true)
     }
     
     func changeTypeDisplay() {
+        if indexListEkgDisplay == 3 {
+            hideAllViewBottm(true)
+            let tap = UITapGestureRecognizer(target: self, action: #selector(showSelectionsEkgViewWhenTapGridView(_:)))
+            scrollView.addGestureRecognizer(tap)
+        } else {
+            vwGridBoard.gestureRecognizers?.forEach({ tap in
+                vwGridBoard.removeGestureRecognizer(tap)
+            })
+        }
+        
         indexHighLight = 0
         isShowingSelectionsEkg = false
-//        isExpanding = false
         tableviewAction()
         hideDetailIfNeed()
-        setupControlStactView()
-        setupGridBoard()
+    }
+    
+    func hideAllViewBottm(_ isHidden: Bool) {
+        viewContainSelectionsEkg.isHidden = isHidden
+        controlStackView.isHidden = isHidden
+    }
+    
+    @objc func showSelectionsEkgViewWhenTapGridView(_ sender: Any?) {
+        hideAllViewBottm(false)
+        DispatchQueue.main.asyncAfter(deadline: .now() + 3) {[weak self] in
+            self?.hideAllViewBottm(true)
+        }
     }
 }

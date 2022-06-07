@@ -24,6 +24,10 @@ extension PlottingViewController {
       girdButton.setImage(UIImage(named: "GridON"), for: .normal)
     }
     setupGridBoard()
+      
+      if indexListEkgDisplay == 2 || indexListEkgDisplay == 3 {
+          showChartEkg()
+      }
   }
   
   @IBAction func onActionAmplitudeButton(_ sender: Any) {
@@ -44,25 +48,25 @@ extension PlottingViewController {
   /// show collection list Ekg
   @IBAction func onTapShowSelectionEkg(_ sender: Any) {
     isShowingSelectionsEkg = !isShowingSelectionsEkg
-    showInfoBoard()
+      showSelectionEkgBoard()
   }
   
   @IBAction func onTapNext(_ sender: Any?) {
-      guard indexTypeDisplay < displayList.count - 1 else {
+      guard indexListEkgDisplay < displayList.count - 1 else {
           return
       }
-      indexTypeDisplay += 1
+      indexListEkgDisplay += 1
       changeTypeDisplay()
-      btnAmplitude.isHidden = !(indexTypeDisplay == 0)
+      btnAmplitude.isHidden = !(indexListEkgDisplay == 0)
   }
   
   @IBAction func onTapBack(_ sender: Any?) {
-      guard indexTypeDisplay > 0 else {
+      guard indexListEkgDisplay > 0 else {
           return
       }
-      indexTypeDisplay -= 1
+      indexListEkgDisplay -= 1
       changeTypeDisplay()
-      btnAmplitude.isHidden = !(indexTypeDisplay == 0)
+      btnAmplitude.isHidden = !(indexListEkgDisplay == 0)
   }
   
 //  @IBAction func onTapExpandButton(_ sender: Any) {
@@ -85,13 +89,12 @@ extension PlottingViewController {
   
   @IBAction func onTapPause(_ sender: Any?) {
     isPlaying = !isPlaying
-    infoStackview.isHidden = !isPlaying
-      btnAmplitude.isHidden = !isPlaying
+    btnAmplitude.isHidden = !isPlaying
     if isPlaying {
       btnPause.setImage(UIImage(named: "pause"), for: .normal)
       pauseLabel.text = "Pause"
       infoStackview.isHidden = false
-      DispatchQueue.main.asyncAfter(deadline: .now() + 15) {[weak self] in
+      DispatchQueue.main.asyncAfter(deadline: .now() + 20) {[weak self] in
         self?.btnReport.isEnabled = true
       }
     } else {
@@ -106,7 +109,7 @@ extension PlottingViewController {
     
   func expandChartEkg() {
     isShowingSelectionsEkg = false
-    setupControlStactView()
+//    setupControlStactView()
     hideDetailIfNeed()
     }
 }

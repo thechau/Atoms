@@ -17,7 +17,7 @@ extension PlottingViewController: UICollectionViewDelegate, UICollectionViewData
     }
     
     func setHeightCollectionView() {
-        switch displayList[indexTypeDisplay] {
+        switch displayList[indexListEkgDisplay] {
         case .oneEkg:
             heightCollectionView.constant = 4 * (heightItem + 10)
         case .threeEkg:
@@ -37,11 +37,11 @@ extension PlottingViewController: UICollectionViewDelegate, UICollectionViewData
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         if collectionView === self.contentCollectionView {
-            if indexTypeDisplay == 0 {
+            if indexListEkgDisplay == 0 {
                 return oneLeadList.count
-            } else if indexTypeDisplay == 1 {
+            } else if indexListEkgDisplay == 1 {
                 return threeLeadList.count
-            } else if indexTypeDisplay == 2 {
+            } else if indexListEkgDisplay == 2 {
                 return sixLeadList.count
             }
             return 0
@@ -53,17 +53,17 @@ extension PlottingViewController: UICollectionViewDelegate, UICollectionViewData
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         if collectionView === self.contentCollectionView {
-            if indexTypeDisplay == 0 {
+            if indexListEkgDisplay == 0 {
                 let cell = contentCollectionView.dequeueReusableCell(withReuseIdentifier: "OneLeadCell", for: indexPath) as! OneLeadCell
                 cell.set(title: oneLeadList[indexPath.item], isHighlight: indexHighLight == indexPath.item)
                 return cell
                 
-            } else if indexTypeDisplay == 1 {
+            } else if indexListEkgDisplay == 1 {
                 let cell = contentCollectionView.dequeueReusableCell(withReuseIdentifier: "ThreeLeadCell", for: indexPath) as! ThreeLeadCell
                 cell.set(titles: threeLeadList[indexPath.item],
                          isHighlight: indexHighLight == indexPath.item)
                 return cell
-            } else if indexTypeDisplay == 2 {
+            } else if indexListEkgDisplay == 2 {
                 let cell = contentCollectionView.dequeueReusableCell(withReuseIdentifier: "SixLeadCell", for: indexPath) as! SixLeadCell
                 cell.set(titles: sixLeadList[indexPath.item],
                          isHighlight: indexHighLight == indexPath.item)
@@ -74,7 +74,7 @@ extension PlottingViewController: UICollectionViewDelegate, UICollectionViewData
             
         } else {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "TitleClvCell", for: indexPath) as! TitleClvCell
-            cell.set(displayList[indexTypeDisplay])
+            cell.set(displayList[indexListEkgDisplay])
             return cell
         }
     }
@@ -91,7 +91,7 @@ extension PlottingViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         if collectionView === contentCollectionView {
             var witdhCell: CGFloat
-            switch displayList[indexTypeDisplay] {
+            switch displayList[indexListEkgDisplay] {
             case .oneEkg:
                 witdhCell = (contentCollectionView.frame.width - 50 ) / 3
             case .threeEkg:
@@ -111,7 +111,7 @@ extension PlottingViewController: UICollectionViewDelegateFlowLayout {
 extension PlottingViewController: UIScrollViewDelegate {
     func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
         let pageWidth = self.titleCollectionView.frame.size.width
-        indexTypeDisplay = Int(self.titleCollectionView.contentOffset.x / pageWidth)
+        indexListEkgDisplay = Int(self.titleCollectionView.contentOffset.x / pageWidth)
         titleCollectionView.reloadData()
         reloadData()
       changeTypeDisplay()
