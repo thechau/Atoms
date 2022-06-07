@@ -16,17 +16,14 @@ extension PlottingViewController {
   
   @IBAction func onActionGridOnOffButton(_ sender: Any) {
     isShowingGrid = !isShowingGrid
-      showChartEkg()
-    vwGridBoard.isHidden = !isShowingGrid
-      if isShowingGrid {
-          gridOnLabel.text = "Grid On"
-          girdButton.setImage(UIImage(named: "Grid On"), for: .normal)
-      } else {
-          gridOnLabel.text = "Grid Off"
-          girdButton.setImage(UIImage(named: "Grid Off"), for: .normal)
-      }
-    gridOnLabel.text = isShowingGrid ? "Grid On" : "Grid Off"
-      
+    if isShowingGrid {
+      gridOnLabel.text = "Grid Off"
+      girdButton.setImage(UIImage(named: "GridOFF"), for: .normal)
+    } else {
+      gridOnLabel.text = "Grid On"
+      girdButton.setImage(UIImage(named: "GridON"), for: .normal)
+    }
+    setupGridBoard()
   }
   
   @IBAction func onActionAmplitudeButton(_ sender: Any) {
@@ -35,7 +32,12 @@ extension PlottingViewController {
     } else {
         indexHeightChartRatio += 1
     }
-      ampValueLabel.text = " " + ampList[indexHeightChartRatio].description + "mm/mV"
+    if indexHeightChartRatio == 3 {
+      btnAmplitude.setImage(UIImage(named: "GainOFF"), for: .normal)
+    } else {
+      btnAmplitude.setImage(UIImage(named: "GainON"), for: .normal)
+    }
+    ampValueLabel.text = " " + ampList[indexHeightChartRatio].description + "mm/mV"
     showChartEkg()
   }
   
@@ -63,22 +65,22 @@ extension PlottingViewController {
       btnAmplitude.isHidden = !(indexTypeDisplay == 0)
   }
   
-  @IBAction func onTapExpandButton(_ sender: Any) {
-    isExpanding = !isExpanding
-    expandChartEkg()
+//  @IBAction func onTapExpandButton(_ sender: Any) {
+//    isExpanding = !isExpanding
+//    expandChartEkg()
       //showInfoBoard()
 //
 //      let y = !isExpanding ? getHeightMax(): getYMinOfDetailView()
 //      setUpBottomCollectionView(y: y)
-  }
+//  }
   
   func setupGridBoard() {
-    if isExpanding {
-      removeGridView()
-    } else {
+    if isShowingGrid {
       drawGridBoard()
+    } else {
+      drawSampleGridView()
     }
-    scrollView.isScrollEnabled = !isExpanding
+    scrollView.isScrollEnabled = !isShowingGrid
   }
   
   @IBAction func onTapPause(_ sender: Any?) {
@@ -88,21 +90,23 @@ extension PlottingViewController {
     if isPlaying {
       btnPause.setImage(UIImage(named: "pause"), for: .normal)
       pauseLabel.text = "Pause"
-        infoStackview.isHidden = false
+      infoStackview.isHidden = false
+      DispatchQueue.main.asyncAfter(deadline: .now() + 15) {[weak self] in
+        self?.btnReport.isEnabled = true
+      }
     } else {
       btnPause.setImage(UIImage(named: "play-button"), for: .normal)
       pauseLabel.text = "Play"
       infoStackview.isHidden = true
-        expandChartEkg()
+      expandChartEkg()
+      btnReport.isEnabled = false
     }
-      showChartEkg()
+    showChartEkg()
   }
     
-    func expandChartEkg() {
-        isShowingDetail = false
-        setupControlStactView()
-        setupGridBoard()
-        hideDetailIfNeed()
-        showChartEkg()
+  func expandChartEkg() {
+    isShowingDetail = false
+    setupControlStactView()
+    hideDetailIfNeed()
     }
 }

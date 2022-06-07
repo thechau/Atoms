@@ -1618,6 +1618,10 @@
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="D5a-7o-Z2D">
                                         <rect key="frame" x="0.0" y="104" width="414" height="656"/>
                                         <subviews>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4wD-3f-sTK">
+                                                <rect key="frame" x="0.0" y="0.0" width="414" height="656"/>
+                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            </view>
                                             <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" alignment="bottom" translatesAutoresizingMaskIntoConstraints="NO" id="Cmp-Aw-daw" userLabel="Stack View info">
                                                 <rect key="frame" x="0.0" y="0.0" width="414" height="40"/>
                                                 <subviews>
@@ -1648,43 +1652,32 @@
                                                         </constraints>
                                                     </view>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="60Hz Filter" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cTN-Os-Urz">
-                                                        <rect key="frame" x="91.5" y="15" width="71.5" height="17"/>
+                                                        <rect key="frame" x="118" y="15" width="71.5" height="17"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                         <color key="textColor" red="0.29803921570000003" green="0.31764705879999999" blue="0.38431372549999998" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
-                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rxJ-pj-EuG">
-                                                        <rect key="frame" x="188.5" y="8" width="164" height="24"/>
+                                                    <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="H7I-q6-oHr">
+                                                        <rect key="frame" x="241.5" y="10" width="84.5" height="22"/>
                                                         <subviews>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text=" 5mm/mV" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZGv-Ob-UV0">
-                                                                <rect key="frame" x="0.0" y="0.0" width="137" height="24"/>
+                                                                <rect key="frame" x="0.0" y="0.0" width="61.5" height="22"/>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                                 <color key="textColor" red="0.29803921570000003" green="0.31764705879999999" blue="0.38431372549999998" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AGw-GS-Eeo">
-                                                                <rect key="frame" x="140" y="0.0" width="24" height="24"/>
+                                                                <rect key="frame" x="61.5" y="0.0" width="23" height="22"/>
                                                                 <constraints>
-                                                                    <constraint firstAttribute="width" secondItem="AGw-GS-Eeo" secondAttribute="height" id="UG4-DA-j3E"/>
+                                                                    <constraint firstAttribute="width" secondItem="AGw-GS-Eeo" secondAttribute="height" constant="1" id="8cp-2Y-Hyx"/>
                                                                 </constraints>
-                                                                <inset key="imageEdgeInsets" minX="5" minY="5" maxX="5" maxY="5"/>
-                                                                <state key="normal" image="amplitude_active"/>
+                                                                <state key="normal" image="GainON"/>
                                                                 <connections>
                                                                     <action selector="onActionAmplitudeButton:" destination="afg-KX-tiP" eventType="touchUpInside" id="D03-6K-9JJ"/>
                                                                 </connections>
                                                             </button>
                                                         </subviews>
-                                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                                        <constraints>
-                                                            <constraint firstItem="ZGv-Ob-UV0" firstAttribute="top" secondItem="rxJ-pj-EuG" secondAttribute="top" id="663-p7-RrZ"/>
-                                                            <constraint firstAttribute="bottom" secondItem="ZGv-Ob-UV0" secondAttribute="bottom" id="7rH-e2-1H6"/>
-                                                            <constraint firstItem="ZGv-Ob-UV0" firstAttribute="leading" secondItem="rxJ-pj-EuG" secondAttribute="leading" id="YB7-Uy-Hav"/>
-                                                            <constraint firstItem="AGw-GS-Eeo" firstAttribute="leading" secondItem="ZGv-Ob-UV0" secondAttribute="trailing" constant="3" id="exG-kU-Lq2"/>
-                                                            <constraint firstAttribute="trailing" secondItem="AGw-GS-Eeo" secondAttribute="trailing" id="exj-d5-3LC"/>
-                                                            <constraint firstAttribute="bottom" secondItem="AGw-GS-Eeo" secondAttribute="bottom" id="g5M-3W-cnm"/>
-                                                            <constraint firstItem="AGw-GS-Eeo" firstAttribute="top" secondItem="rxJ-pj-EuG" secondAttribute="top" id="xt6-G2-AeY"/>
-                                                        </constraints>
-                                                    </view>
+                                                    </stackView>
                                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="volume" translatesAutoresizingMaskIntoConstraints="NO" id="liF-dU-ZKP">
                                                         <rect key="frame" x="378" y="16.5" width="20" height="15.5"/>
                                                         <constraints>
@@ -1697,10 +1690,6 @@
                                                 </constraints>
                                                 <edgeInsets key="layoutMargins" top="8" left="16" bottom="8" right="16"/>
                                             </stackView>
-                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4wD-3f-sTK">
-                                                <rect key="frame" x="0.0" y="0.0" width="414" height="656"/>
-                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                            </view>
                                         </subviews>
                                         <color key="backgroundColor" red="0.98823529409999999" green="0.98823529409999999" blue="0.98823529409999999" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
@@ -1965,8 +1954,8 @@
                                                     <action selector="onActionGridOnOffButton:" destination="afg-KX-tiP" eventType="touchUpInside" id="2kd-xa-ncb"/>
                                                 </connections>
                                             </button>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Grid Off" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xNx-ba-U98">
-                                                <rect key="frame" x="45" y="49" width="48.5" height="16"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Grid On" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xNx-ba-U98">
+                                                <rect key="frame" x="45.5" y="49" width="47" height="16"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                                 <color key="textColor" red="0.5725490196078431" green="0.62352941176470589" blue="0.68235294117647061" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
@@ -2014,7 +2003,7 @@
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="d1E-94-5gR">
                                         <rect key="frame" x="276" y="0.0" width="138" height="65"/>
                                         <subviews>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="bottom" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oIO-3L-TjI" customClass="RoundedButtonWithShadow" customModule="ATom" customModuleProvider="target">
+                                            <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="bottom" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oIO-3L-TjI" customClass="RoundedButtonWithShadow" customModule="ATom" customModuleProvider="target">
                                                 <rect key="frame" x="54" y="4.5" width="36" height="36"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <constraints>
@@ -2117,9 +2106,6 @@
         <designable name="8Dd-pv-qFl">
             <size key="intrinsicContentSize" width="60" height="16"/>
         </designable>
-        <designable name="AGw-GS-Eeo">
-            <size key="intrinsicContentSize" width="33" height="33"/>
-        </designable>
         <designable name="HSd-ZC-4Xn">
             <size key="intrinsicContentSize" width="61.5" height="16"/>
         </designable>
@@ -2128,6 +2114,9 @@
         </designable>
         <designable name="Wcx-bm-DUN">
             <size key="intrinsicContentSize" width="58.5" height="16"/>
+        </designable>
+        <designable name="gJk-be-JQi">
+            <size key="intrinsicContentSize" width="33" height="33"/>
         </designable>
         <designable name="oIO-3L-TjI">
             <size key="intrinsicContentSize" width="33" height="33"/>
@@ -2141,8 +2130,8 @@
     </designables>
     <resources>
         <image name="Ecgreport" width="33" height="33"/>
+        <image name="GainON" width="12.5" height="17.5"/>
         <image name="GridON" width="33" height="33"/>
-        <image name="amplitude_active" width="33" height="33"/>
         <image name="back" width="24" height="24"/>
         <image name="battery" width="20.5" height="19"/>
         <image name="doctor" width="300" height="300"/>

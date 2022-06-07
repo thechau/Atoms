@@ -243,12 +243,12 @@ class PlottingViewController: BaseViewController {
         let indexDisplay = indexHighLight
         let listDisplay = getListChart()
         var height: CGFloat = 0
-        var heightItem = (isExpanding || !isShowingGrid) ? caculateHeightItemExpanding() : 200
+        var heightItem = !isShowingGrid ? caculateHeightItemExpanding() : 200
         
       if indexTypeDisplay == 0 {
         heightItem = getHeightSignleEkg()
       }
-        if (isExpanding || !isShowingGrid), indexTypeDisplay != 0 {
+        if !isShowingGrid, indexTypeDisplay != 0 {
             indexHeightChartRatio = indexHeightChartRatio / Int(120.0)
         }
         

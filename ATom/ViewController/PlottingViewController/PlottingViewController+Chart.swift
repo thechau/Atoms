@@ -79,12 +79,12 @@ extension PlottingViewController {
         }
     }
     
-    func removeGridView() {
+    func drawSampleGridView() {
         removeSubViewInGridBorad()
         drawGrid(vwGridBoard.bounds,
-                 0.25,
+                 1.5,
                  smallColor,
-                 size: 10)
+                 size: 100)
         view.layoutIfNeeded()
     }
     

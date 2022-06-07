@@ -63,7 +63,7 @@ extension PlottingViewController {
     }
     
     func getHeightMax() -> CGFloat {
-        if isExpanding {
+        if isShowingGrid {
             return view.frame.height - 90
         } else {
             return view.frame.height - 179
@@ -80,7 +80,7 @@ extension PlottingViewController {
     func changeTypeDisplay() {
         indexHighLight = 0
         isShowingDetail = false
-        isExpanding = false
+//        isExpanding = false
         tableviewAction()
         hideDetailIfNeed()
         setupControlStactView()
