@@ -301,9 +301,9 @@ class PlottingViewController: BaseViewController {
             
         case 3:
             if isShowingGrid {
-                heightStackViewChart = totalHeightDisplay / 3.0
+                heightStackViewChart = vwGridBoard.frame.height - 50 / 3.0
             } else {
-                heightStackViewChart = totalHeightDisplay / 12.0
+                heightStackViewChart = vwGridBoard.frame.height - 50 / 12.0
             }
             
         default:

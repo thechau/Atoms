@@ -68,8 +68,13 @@ extension PlottingViewController {
     }
     
     func changeTypeDisplay() {
+        if indexListEkgDisplay == 0 {
+            btnAmplitude.isHidden = false
+        } else {
+            btnAmplitude.isHidden = true
+        }
         if indexListEkgDisplay == 3 {
-            hideAllViewBottm(true)
+            hideAllViewBottm(!isShowingGrid)
             let tap = UITapGestureRecognizer(target: self, action: #selector(showSelectionsEkgViewWhenTapGridView(_:)))
             scrollView.addGestureRecognizer(tap)
         } else {

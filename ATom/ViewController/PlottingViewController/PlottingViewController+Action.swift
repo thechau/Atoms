@@ -57,7 +57,6 @@ extension PlottingViewController {
       }
       indexListEkgDisplay += 1
       changeTypeDisplay()
-      btnAmplitude.isHidden = !(indexListEkgDisplay == 0)
   }
   
   @IBAction func onTapBack(_ sender: Any?) {
@@ -66,18 +65,9 @@ extension PlottingViewController {
       }
       indexListEkgDisplay -= 1
       changeTypeDisplay()
-      btnAmplitude.isHidden = !(indexListEkgDisplay == 0)
+      
   }
-  
-//  @IBAction func onTapExpandButton(_ sender: Any) {
-//    isExpanding = !isExpanding
-//    expandChartEkg()
-      //showInfoBoard()
-//
-//      let y = !isExpanding ? getHeightMax(): getYMinOfDetailView()
-//      setUpBottomCollectionView(y: y)
-//  }
-  
+    
   func setupGridBoard() {
     if isShowingGrid {
       drawGridBoard()
@@ -109,7 +99,6 @@ extension PlottingViewController {
     
   func expandChartEkg() {
     isShowingSelectionsEkg = false
-//    setupControlStactView()
     hideDetailIfNeed()
     }
 }
