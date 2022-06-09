@@ -80,6 +80,7 @@ extension PlottingViewController {
             scrollView.addGestureRecognizer(tap)
         } else {
             scrollView.removeGestureRecognizer(tap)
+            hideSelectionEkgTimer?.invalidate()
         }
         
         isShowingSelectionsEkg = false
@@ -90,15 +91,35 @@ extension PlottingViewController {
     }
     
     func hideAllViewBottm(_ isHidden: Bool) {
-        viewContainSelectionsEkg.isHidden = isHidden
-        controlStackView.isHidden = isHidden
-        viewBottom.isHidden = isHidden
+        if isHidden {
+            UIView.animate(withDuration: 0.5, delay: 0, options: .curveEaseOut) {[weak self] in
+                self?.viewContainSelectionsEkg.alpha = 0
+                self?.controlStackView.alpha = 0
+                self?.viewBottom.alpha = 0
+//                controlStackView.isHidden = isHidden
+//                viewBottom.isHidden = isHidden
+            }
+        } else {
+            UIView.animate(withDuration: 0.5, delay: 0, options: .curveEaseOut) {[weak self] in
+                self?.viewContainSelectionsEkg.alpha = 1
+                self?.controlStackView.alpha = 1
+                self?.viewBottom.alpha = 1
+//                controlStackView.isHidden = isHidden
+//                viewBottom.isHidden = isHidden
+            }
+        }
+//        viewContainSelectionsEkg.isHidden = isHidden
+//        controlStackView.isHidden = isHidden
+//        viewBottom.isHidden = isHidden
+    }
+    
+    @objc func hide() {
+        hideAllViewBottm(true)
     }
     
     @objc func showSelectionsEkgViewWhenTapGridView(_ sender: Any?) {
         hideAllViewBottm(false)
-        DispatchQueue.main.asyncAfter(deadline: .now() + 3) {[weak self] in
-            self?.hideAllViewBottm(true)
-        }
+        hideSelectionEkgTimer?.invalidate()
+        hideSelectionEkgTimer = Timer.scheduledTimer(timeInterval: 3, target: self, selector: #selector(hide), userInfo: nil, repeats: false)
     }
 }

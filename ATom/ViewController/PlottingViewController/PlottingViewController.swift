@@ -44,6 +44,7 @@ class PlottingViewController: BaseViewController {
     
     let disposeBag = DisposeBag()
     var chartTimer: Timer?
+    var hideSelectionEkgTimer: Timer?
     let smallColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.7)
     var duration = 0.02
     var isPausing = false
