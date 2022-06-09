@@ -2084,6 +2084,7 @@
                         <outlet property="scrollView" destination="vSa-LO-OZj" id="WNh-DI-kTy"/>
                         <outlet property="stackView" destination="8cB-hc-tpV" id="HIP-d3-Ed1"/>
                         <outlet property="titleCollectionView" destination="8mb-45-yfQ" id="eKq-hL-D7I"/>
+                        <outlet property="viewBottom" destination="GHR-zy-6bJ" id="sRu-p0-9eg"/>
                         <outlet property="viewContainSelectionsEkg" destination="wJH-5I-FPT" id="rlp-sd-7Ap"/>
                         <outlet property="viewContainerGridView" destination="D5a-7o-Z2D" id="DwP-JV-dg8"/>
                         <outlet property="viewPan" destination="UWZ-fk-JTj" id="Uy5-hZ-eaW"/>

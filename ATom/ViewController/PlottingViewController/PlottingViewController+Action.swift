@@ -31,24 +31,24 @@ extension PlottingViewController {
   }
   
   @IBAction func onActionAmplitudeButton(_ sender: Any) {
-    if indexHeightChartRatio == 3 {
-        indexHeightChartRatio = 0
+    if indexShowAmp == 3 {
+        indexShowAmp = 0
     } else {
-        indexHeightChartRatio += 1
+        indexShowAmp += 1
     }
-    if indexHeightChartRatio == 3 {
+    if indexShowAmp == 3 {
       btnAmplitude.setImage(UIImage(named: "GainOFF"), for: .normal)
     } else {
       btnAmplitude.setImage(UIImage(named: "GainON"), for: .normal)
     }
-    ampValueLabel.text = " " + ampList[indexHeightChartRatio].description + "mm/mV"
+    ampValueLabel.text = " " + ampList[indexShowAmp].description + "mm/mV"
     showChartEkg()
   }
   
   /// show collection list Ekg
   @IBAction func onTapShowSelectionEkg(_ sender: Any) {
     isShowingSelectionsEkg = !isShowingSelectionsEkg
-      showSelectionEkgBoard()
+    showSelectionEkgBoard()
   }
   
   @IBAction func onTapNext(_ sender: Any?) {
@@ -80,6 +80,7 @@ extension PlottingViewController {
   @IBAction func onTapPause(_ sender: Any?) {
     isPlaying = !isPlaying
     btnAmplitude.isHidden = !isPlaying
+      hideAllViewBottm(isPlaying && indexListEkgDisplay == 3)
     if isPlaying {
       btnPause.setImage(UIImage(named: "pause"), for: .normal)
       pauseLabel.text = "Pause"

@@ -72,26 +72,27 @@ extension PlottingViewController {
             btnAmplitude.isHidden = false
         } else {
             btnAmplitude.isHidden = true
+            indexShowAmp = 1
+            ampValueLabel.text = " " + ampList[indexShowAmp].description + "mm/mV"
         }
         if indexListEkgDisplay == 3 {
-            hideAllViewBottm(!isShowingGrid)
-            let tap = UITapGestureRecognizer(target: self, action: #selector(showSelectionsEkgViewWhenTapGridView(_:)))
+            hideAllViewBottm(isPlaying)
             scrollView.addGestureRecognizer(tap)
         } else {
-            vwGridBoard.gestureRecognizers?.forEach({ tap in
-                vwGridBoard.removeGestureRecognizer(tap)
-            })
+            scrollView.removeGestureRecognizer(tap)
         }
         
-        indexHighLight = 0
         isShowingSelectionsEkg = false
         tableviewAction()
         hideDetailIfNeed()
+        indexHighLight = 0
+
     }
     
     func hideAllViewBottm(_ isHidden: Bool) {
         viewContainSelectionsEkg.isHidden = isHidden
         controlStackView.isHidden = isHidden
+        viewBottom.isHidden = isHidden
     }
     
     @objc func showSelectionsEkgViewWhenTapGridView(_ sender: Any?) {

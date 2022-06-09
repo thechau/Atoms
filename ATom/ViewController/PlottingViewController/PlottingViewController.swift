@@ -29,8 +29,9 @@ class PlottingViewController: BaseViewController {
     @IBOutlet weak var girdButton: RoundedButtonWithShadow!
     @IBOutlet weak var pauseLabel: UILabel!
     @IBOutlet weak var ampValueLabel: UILabel!
-//    @IBOutlet weak var expandButton: UIButton!
     @IBOutlet weak var controlStackView: UIStackView!
+    @IBOutlet weak var viewBottom: UIView!
+
     // Chart
     @IBOutlet weak var vwGridBoard: UIView!
     @IBOutlet weak var stackView: UIStackView!
@@ -49,6 +50,7 @@ class PlottingViewController: BaseViewController {
     
     /// One EKG, Three EKG, Six EKG, Twelve EKG
     var indexListEkgDisplay = 0
+    
     var indexHighLight = 0 {
         didSet {
             showChartEkg()
@@ -84,10 +86,11 @@ class PlottingViewController: BaseViewController {
     var heightItem = 40.0
     let displayList: [NumberEkg] = [.oneEkg, .threeEkg, .sixEkg, .twelveEkg]
     let ampList = [5, 10, 15, 20]
-    var indexHeightChartRatio: Int = 1
+    var indexShowAmp: Int = 1
     var timeSpeed = 0.02
     var isShowingGrid = true
     var isPlaying = false
+    var tap = UITapGestureRecognizer()
     override func viewDidLoad() {
         super.viewDidLoad()
         initView()
@@ -192,6 +195,7 @@ class PlottingViewController: BaseViewController {
     }
     
     private func initView() {
+        tap = UITapGestureRecognizer(target: self, action: #selector(showSelectionsEkgViewWhenTapGridView(_:)))
         viewPan.layer.cornerRadius = viewPan.frame.height / 2
         viewPan.clipsToBounds = true
         viewContainSelectionsEkg.roundCorners(corners: [.topLeft, .topRight], radius: 30)
@@ -199,7 +203,7 @@ class PlottingViewController: BaseViewController {
         setupCollectionView()
         hideDetailIfNeed()
         infoStackview.isHidden = true
-        ampValueLabel.text = ampList[indexHeightChartRatio].description + "mm/mV"
+        ampValueLabel.text = ampList[indexShowAmp].description + "mm/mV"
     }
     
     func getListChart() -> [[PlottingChartView]] {
@@ -243,23 +247,22 @@ class PlottingViewController: BaseViewController {
             vi.isHidden = false
         }
         if indexListEkgDisplay != 0 {
-            indexHeightChartRatio = 1
+            indexShowAmp = 1
         }
         let listDisplay = getListChart()
         var height: CGFloat = 0
-        var heightItem: CGFloat
+        let heightItem = caculateHeightOfOneEkg()
         
-          heightItem = caculateHeightOfOneEkg()
+        let pixel = 30.0
+        let valueHeightDraw = [5.0, 10.0, 15.0, 20.0]
         
-        if !isShowingGrid, indexListEkgDisplay != 0 {
-            indexHeightChartRatio = indexHeightChartRatio / Int(120.0)
-        }
+        let heightDraw = valueHeightDraw[indexShowAmp] * pixel / 2.0
         
         for index in 0 ..< listDisplay.count {
             for charView in listDisplay[index] {
                 charView.isHidden = !(index == indexHighLight)
                 charView.backgroundColor = .clear
-                charView.drawingHeight = heightChart * CGFloat(indexHeightChartRatio)
+                charView.drawingHeight = heightDraw
                 if !charView.isHidden {
                     height += heightItem
                 }
@@ -285,7 +288,7 @@ class PlottingViewController: BaseViewController {
     
     
     func caculateHeightOfOneEkg() -> CGFloat {
-        let totalHeightDisplay = vwGridBoard.frame.height - getHeightSelectionsEkgView()// + 60
+        let totalHeightDisplay = vwGridBoard.frame.height - getHeightSelectionsEkgView() - 100
         var heightStackViewChart = 200.0
         switch indexListEkgDisplay {
         case 0:
@@ -301,9 +304,9 @@ class PlottingViewController: BaseViewController {
             
         case 3:
             if isShowingGrid {
-                heightStackViewChart = vwGridBoard.frame.height - 50 / 3.0
+                heightStackViewChart = (vwGridBoard.frame.height - 100.0) / 3.0
             } else {
-                heightStackViewChart = vwGridBoard.frame.height - 50 / 12.0
+                heightStackViewChart = (vwGridBoard.frame.height - 100.0) / 12.0
             }
             
         default:
