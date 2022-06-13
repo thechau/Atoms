@@ -18,10 +18,7 @@
 		029773B927C8BAF2007D2C41 /* MainElectrodesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 029773B827C8BAF2007D2C41 /* MainElectrodesViewController.swift */; };
 		02D879E22806BBFD00C28209 /* PlottingViewController+Chart.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02D879D82806BBFC00C28209 /* PlottingViewController+Chart.swift */; };
 		02D879E32806BBFD00C28209 /* PlottingViewController+CollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02D879D92806BBFD00C28209 /* PlottingViewController+CollectionView.swift */; };
-		02D879E42806BBFD00C28209 /* Chart.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02D879DA2806BBFD00C28209 /* Chart.swift */; };
-		02D879E52806BBFD00C28209 /* ChartColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02D879DB2806BBFD00C28209 /* ChartColors.swift */; };
 		02D879E62806BBFD00C28209 /* PlottingViewController+Animate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02D879DC2806BBFD00C28209 /* PlottingViewController+Animate.swift */; };
-		02D879E72806BBFD00C28209 /* ChartSeries.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02D879DD2806BBFD00C28209 /* ChartSeries.swift */; };
 		02D879E92806BBFD00C28209 /* PlottingChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02D879DF2806BBFD00C28209 /* PlottingChartView.swift */; };
 		02D879EA2806BBFD00C28209 /* PlottingChartView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 02D879E02806BBFD00C28209 /* PlottingChartView.xib */; };
 		02D879EB2806BBFD00C28209 /* PlottingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02D879E12806BBFD00C28209 /* PlottingViewController.swift */; };
@@ -165,10 +162,7 @@
 		029773B827C8BAF2007D2C41 /* MainElectrodesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainElectrodesViewController.swift; sourceTree = "<group>"; };
 		02D879D82806BBFC00C28209 /* PlottingViewController+Chart.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "PlottingViewController+Chart.swift"; sourceTree = "<group>"; };
 		02D879D92806BBFD00C28209 /* PlottingViewController+CollectionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "PlottingViewController+CollectionView.swift"; sourceTree = "<group>"; };
-		02D879DA2806BBFD00C28209 /* Chart.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Chart.swift; sourceTree = "<group>"; };
-		02D879DB2806BBFD00C28209 /* ChartColors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChartColors.swift; sourceTree = "<group>"; };
 		02D879DC2806BBFD00C28209 /* PlottingViewController+Animate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "PlottingViewController+Animate.swift"; sourceTree = "<group>"; };
-		02D879DD2806BBFD00C28209 /* ChartSeries.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChartSeries.swift; sourceTree = "<group>"; };
 		02D879DF2806BBFD00C28209 /* PlottingChartView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlottingChartView.swift; sourceTree = "<group>"; };
 		02D879E02806BBFD00C28209 /* PlottingChartView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PlottingChartView.xib; sourceTree = "<group>"; };
 		02D879E12806BBFD00C28209 /* PlottingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlottingViewController.swift; sourceTree = "<group>"; };
@@ -444,11 +438,8 @@
 				02D879F82806BE3200C28209 /* ThreeLeadCell.xib */,
 				02D879F72806BE3200C28209 /* TitleClvCell.swift */,
 				02D879EC2806BC0400C28209 /* ecg_miBEAT.txt */,
-				02D879DA2806BBFD00C28209 /* Chart.swift */,
 				02D87A092806BE4400C28209 /* CharEGCViewModel.swift */,
 				02D87A082806BE4400C28209 /* GridView.swift */,
-				02D879DB2806BBFD00C28209 /* ChartColors.swift */,
-				02D879DD2806BBFD00C28209 /* ChartSeries.swift */,
 				02D879DF2806BBFD00C28209 /* PlottingChartView.swift */,
 				02D879E02806BBFD00C28209 /* PlottingChartView.xib */,
 			);
@@ -1066,7 +1057,6 @@
 			files = (
 				D93539632402766300776673 /* SettingViewController.swift in Sources */,
 				C40F0C5723C837440087F8A2 /* CustomTextField.swift in Sources */,
-				02D879E52806BBFD00C28209 /* ChartColors.swift in Sources */,
 				C44A163A23F64549005A4626 /* SearchPatientViewController.swift in Sources */,
 				02D87A0B2806BE4400C28209 /* CharEGCViewModel.swift in Sources */,
 				847DA27528241C020039CF6F /* PlottingViewController+Action.swift in Sources */,
@@ -1088,7 +1078,6 @@
 				D93B313923CAFBC700ABEC54 /* BaseViewController.swift in Sources */,
 				5D0F42BB24176CD200A0392A /* DashBoardTopView.swift in Sources */,
 				D9874F3F23EEB3A700910FAE /* FailedToconnectDeviceView.swift in Sources */,
-				02D879E72806BBFD00C28209 /* ChartSeries.swift in Sources */,
 				C43DCB8423964356007388EF /* circleView.swift in Sources */,
 				5A3EC54523A24263004D67C1 /* PanDirectionGestureRecognizer.swift in Sources */,
 				5A3EC55423A24272004D67C1 /* PatientInformationController.swift in Sources */,
@@ -1122,7 +1111,6 @@
 				5A3EC55623A24272004D67C1 /* BloodTableviewCell.swift in Sources */,
 				A04A58B4238E5AE100A0CEAD /* UIButton+.swift in Sources */,
 				5D9E384D23A779FE00307FDA /* DashBoardCollectionViewCell.swift in Sources */,
-				02D879E42806BBFD00C28209 /* Chart.swift in Sources */,
 				5D85603D2404F986007FA6F8 /* ElectrodecsController.swift in Sources */,
 				A04A58BF238E5B1200A0CEAD /* DateCell.swift in Sources */,
 				C43549B623C866950040866E /* SelectView.swift in Sources */,

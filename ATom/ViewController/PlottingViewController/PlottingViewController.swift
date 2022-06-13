@@ -52,7 +52,7 @@ class PlottingViewController: BaseViewController {
     var indexListEkgDisplay = 0
     var heightItem = 40.0
     var indexShowAmp: Int = 1
-    var timeSpeed = 0.01
+    var timeSpeed = 0.02
     var isShowingGrid = true
     var isPlaying = false
     var indexHighLight = 0 {
@@ -62,7 +62,6 @@ class PlottingViewController: BaseViewController {
     }
     
     var vw = UIView()
-    var ppi: Float = 0
     var screenScale = 0
     
     // Chart
@@ -97,6 +96,7 @@ class PlottingViewController: BaseViewController {
         initCollectionView()
         vwModel = ChartECGViewModel(value: 1500)
         hideDetailIfNeed()
+        ppi = UIDevice.setPPIValue()
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -163,22 +163,22 @@ class PlottingViewController: BaseViewController {
                                         name: "aVF",
                                         timer: chartTimer)
         plottingChartViewaV1.setupChart(viewController: self,
-                                        name: "aV1",
+                                        name: "V1",
                                         timer: chartTimer)
         plottingChartViewaV2.setupChart(viewController: self,
-                                        name: "aV2",
+                                        name: "V2",
                                         timer: chartTimer)
         plottingChartViewaV3.setupChart(viewController: self,
-                                        name: "aV3",
+                                        name: "V3",
                                         timer: chartTimer)
         plottingChartViewaV4.setupChart(viewController: self,
-                                        name: "aV4",
+                                        name: "V4",
                                         timer: chartTimer)
         plottingChartViewaV5.setupChart(viewController: self,
-                                        name: "aV5",
+                                        name: "V5",
                                         timer: chartTimer)
         plottingChartViewaV6.setupChart(viewController: self,
-                                        name: "aV6",
+                                        name: "V6",
                                         timer: chartTimer)
         showChartEkg()
         hideDetailIfNeed()
@@ -254,16 +254,22 @@ class PlottingViewController: BaseViewController {
         var height: CGFloat = 0
         let heightItem = caculateHeightOfOneEkg()
         
-        let pixel = 30.0
+        let pixel = 70.0
         let valueHeightDraw = [5.0, 10.0, 15.0, 20.0]
         
-        let heightDraw = valueHeightDraw[indexShowAmp] * pixel / 2.0
+        var heightDraw = valueHeightDraw[indexShowAmp] * pixel / 2.0
+         
+        if indexListEkgDisplay == 3  && !isShowingGrid {
+            heightDraw = 3 * pixel / 2.0
+        }
         
         for index in 0 ..< listDisplay.count {
             for charView in listDisplay[index] {
+                charView.drawingHeight
                 charView.isHidden = !(index == indexHighLight)
                 charView.backgroundColor = .clear
                 charView.drawingHeight = heightDraw
+                charView.setDrawingRatio(isHighSpeed: scaleSwitch.isOn)
                 if !charView.isHidden {
                     height += heightItem
                 }
@@ -282,7 +288,11 @@ class PlottingViewController: BaseViewController {
             chart.setLayoutChart()
         }
         chartTimer?.invalidate()
-        chartTimer = Timer.scheduledTimer(timeInterval: timeSpeed, target: self, selector: #selector(drawForAMonment), userInfo: nil, repeats: true)
+        chartTimer = Timer.scheduledTimer(timeInterval: timeSpeed,
+                                          target: self,
+                                          selector: #selector(drawForAMonment),
+                                          userInfo: nil, repeats: true)
+        RunLoop.current.add(self.chartTimer!, forMode: RunLoop.Mode.common)
         stackView.layoutIfNeeded()
         view.layoutIfNeeded()
         getData()

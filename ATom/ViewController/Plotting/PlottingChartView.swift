@@ -7,18 +7,18 @@
 
 import UIKit
 import RxSwift
-//import SwiftChart
+import SwiftChart
 
 class PlottingChartView: UIView {
-
+    
     @IBOutlet weak var chartView: Chart!
     @IBOutlet weak var heightChartView: NSLayoutConstraint!
     @IBOutlet weak var namePlotLabel: UILabel!
     let nbOfYValue = 1500
-    var step = 5 // 10 : 3000 5: 1500
+    var step = 5 //Space// 10 : 3000 5: 1500
     
     var listPointTemp = [(x: -1.0, y: -1.0), (x: -1.0, y: -1.0)]
-  //  var listPointPrevous = [(x: -1.0, y: -1.0)]
+    //  var listPointPrevous = [(x: -1.0, y: -1.0)]
     
     var listPoint = [(x: 0.0, y: 0.0), (x: 1.0, y: 1.0)]
     var coordinate_Line = Point_Coordinate(x: 0, y: 0)
@@ -29,13 +29,14 @@ class PlottingChartView: UIView {
     var countSeries = 0
     var arrInt : [Int] = []
     var startRemoveLayer = false
-//    var duration = 0.025
+    //    var duration = 0.025
     var drawingHeight: CGFloat = 150
+    var drwaingRatio: Double = 2
     override class func awakeFromNib() {
         super.awakeFromNib()
     }
     
-  func setupChart(viewController: PlottingViewController, name: String, timer: Timer?) {
+    func setupChart(viewController: PlottingViewController, name: String, timer: Timer?) {
         chartView.delegate = viewController
         chartView.lineWidth = 1.5
         chartView.showXLabelsAndGrid = false
@@ -47,34 +48,34 @@ class PlottingChartView: UIView {
         chartView.backgroundColor = .clear
         chartView.axesColor = .clear
         setLayoutChart()
-       // layoutIfNeeded()
+        // layoutIfNeeded()
     }
-  
-  func setLayoutChart() {
-      arrInt = []
-      countSeries = 0
-      startRemoveLayer = false
-      step = 5
-      chartView.lineWidth = 1.5
-      chartView.showXLabelsAndGrid = false
-      chartView.showYLabelsAndGrid = false
-      chartView.yLabels = [-0.5, 1.3]
-      chartView.xLabels = [0.0, Double(1500)]
-      chartView.gridColor = .clear
-      chartView.backgroundColor = .clear
-      chartView.axesColor = .clear
-      seriesChart.removeAll()
-      coordinate_Line = Point_Coordinate(x: 0, y: 0)
-      listDataFromFileSample = []
-      arrSeries = []
-      listPointTemp = [(x: -1.0, y: -1.0), (x: -1.0, y: -1.0)]
-      chartView.removeAllSeries()
-      chartView.removeSubView()
-      heightChartView.constant = drawingHeight
-      chartView.drawingHeight = drawingHeight//bounds.height
-      chartView.drawingWidth = bounds.width
-      chartView.getMinMaxs()
-  }
+    
+    func setLayoutChart() {
+        arrInt = []
+        countSeries = 0
+        startRemoveLayer = false
+        step = 5
+        chartView.lineWidth = 1.5
+        chartView.showXLabelsAndGrid = false
+        chartView.showYLabelsAndGrid = false
+        chartView.yLabels = [-0.5, 1.3]
+        chartView.xLabels = [0.0, Double(1500)]
+        chartView.gridColor = .clear
+        chartView.backgroundColor = .clear
+        chartView.axesColor = .clear
+        seriesChart.removeAll()
+        coordinate_Line = Point_Coordinate(x: 0, y: 0)
+        listDataFromFileSample = []
+        arrSeries = []
+        listPointTemp = [(x: -1.0, y: -1.0), (x: -1.0, y: -1.0)]
+        chartView.removeAllSeries()
+        chartView.removeSubView()
+        heightChartView.constant = drawingHeight
+        chartView.drawingHeight = drawingHeight//bounds.height
+        chartView.drawingWidth = bounds.width
+        chartView.getMinMaxs()
+    }
     
     class func instanceFromNib() -> PlottingChartView {
         guard let view = UINib(nibName: "PlottingChartView", bundle: nil)
@@ -90,18 +91,12 @@ class PlottingChartView: UIView {
         }
         set {
             chartView.series = newValue
-            
-           // DispatchQueue.main.async { [weak self] in
-                //self?.chartView.series = newValue
-               // self?.layoutIfNeeded()
-           // }
         }
     }
     
     func handelData(_ contents: String) {
         caculateNumberSeries()
-//      self.chartTimer = chartTimer
-      drawChart()
+        drawChart()
     }
     
     private func caculateNumberSeries() {
@@ -111,13 +106,13 @@ class PlottingChartView: UIView {
         //listPointPrevous = [(x: Double, y: Double)](repeating: (x: 0.0, y: 0.0), count: nbOfYValue)
     }
     
-  fileprivate func drawChart() {
+    fileprivate func drawChart() {
         self.listPoint.removeAll()
         coordinate_Line.resetValue()
     }
     
     @objc func drawForAMonment(){
-        if coordinate_Line.x%nbOfYValue == 0 && coordinate_Line.x != 0 {
+        if coordinate_Line.x % (nbOfYValue / Int(drwaingRatio)) == 0 && coordinate_Line.x != 0 {
             coordinate_Line.y = 0
             countSeries = 0
             startRemoveLayer = true
@@ -128,23 +123,22 @@ class PlottingChartView: UIView {
         listPoint.removeAll()
         addListPoint(coordinate_Line.x)
         setPrevouseStep()
-        if listPoint.count > 0, !seriesChart.isEmpty {
+        if listPoint.count > 0,
+           !seriesChart.isEmpty {
             drawChartBySeries()
         }
         coordinate_Line.setValueCoordinateNext(value: step)
+    //print(coordinate_Line.x)
     }
     
     private func setPrevouseStep() {
         if countSeries < nbOfYValue/step - 3 {
             let char1 = ChartSeries(data: listPoint)
-//            char1.colors = (above: ChartColors.redColor(), below: ChartColors.redColor(), 0)
             char1.area = false
             if startRemoveLayer {
-            chartView.removeLayer(index: countSeries + 1)
-            chartView.removeLayer(index: countSeries + 2)
+                chartView.removeLayer(index: countSeries + 1)
+                chartView.removeLayer(index: countSeries + 2)
             }
-//            chartView.drawlineWithSeries(char1, countSeries, colors: .white)
-//            chartView.drawlineWithSeries(char1, countSeries + 2, colors: .white)
         }
         countSeries += 1
     }
@@ -152,7 +146,9 @@ class PlottingChartView: UIView {
     private func addListPoint(_ i: Int) {
         for z in 0...step {
             if i + z < listDataFromFileSample.count - 1 {
-                listPoint.append((x: Double(coordinate_Line.y) + Double(z), y: Double(listDataFromFileSample[i + z])!/256)) // 0 -- 10 // 5 - 15 // -- 10 -20
+                listPoint.append((x: (Double(coordinate_Line.y) + Double(z)) * drwaingRatio,
+                                  y: Double(listDataFromFileSample[i + z])!/256))
+                // 0 -- 10 // 5 - 15 // -- 10 -20
             }
         }
     }
@@ -161,9 +157,15 @@ class PlottingChartView: UIView {
         let series = ChartSeries(data: listPoint)
         series.color = UIColor.black
         series.area = false
+       // print(listPoint)
         if countSeries <  seriesChart.count - 1 {
             seriesChart[countSeries] = series
             chartView.drawlineWithSeries(series, countSeries, colors: .black)
         }
+    }
+    
+    func setDrawingRatio(isHighSpeed: Bool) {
+        drwaingRatio = isHighSpeed ? 2 : 1
+        chartView.drwaingRatio = isHighSpeed ? 2 : 1
     }
 }

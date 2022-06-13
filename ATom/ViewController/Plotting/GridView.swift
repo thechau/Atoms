@@ -9,13 +9,14 @@
 import Foundation
 import UIKit
 
+var ppi: CGFloat = 0
+
 class GridView: UIView
 {
     private var path = UIBezierPath()
     public var widthMin: CGFloat = 2.5
     public var sizeCell : CGFloat = 32.0
     public var color : UIColor = .purple
-    var ppi: CGFloat = 0
     
     fileprivate var gridWidth: CGFloat
     {
@@ -58,14 +59,13 @@ class GridView: UIView
         
     }
     
-    func mmToPoints(_ value: CGFloat) -> CGFloat{
-        return ppi * value / 122
-    }
-    
     override func draw(_ rect: CGRect) {
-        ppi = UIDevice.setPPIValue()
         drawGrid(size: mmToPoints(sizeCell))
         color.setStroke()
         path.stroke()
     }
+}
+
+func mmToPoints(_ value: CGFloat) -> CGFloat{
+    return ppi * value / 122
 }

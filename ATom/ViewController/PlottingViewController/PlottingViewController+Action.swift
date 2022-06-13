@@ -10,7 +10,6 @@ import UIKit
 
 extension PlottingViewController {
   @IBAction func onActionChangeSpeedSwicthButton(_ sender: Any) {
-    timeSpeed = timeSpeed == 0.01 ? 0.02 : 0.01
     showChartEkg()
   }
   

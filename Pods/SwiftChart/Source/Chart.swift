@@ -207,14 +207,16 @@ open class Chart: UIControl {
     Alpha component for the area color.
     */
     open var areaAlphaComponent: CGFloat = 0.1
+    
+    open var drwaingRatio: CGFloat = 1
 
     // MARK: Private variables
 
     fileprivate var highlightShapeLayer: CAShapeLayer!
-    var layerStore: [CAShapeLayer] = []
+    public var layerStore: [CAShapeLayer] = []
 
-    var drawingHeight: CGFloat!
-    var drawingWidth: CGFloat!
+    public var drawingHeight: CGFloat!
+    public var drawingWidth: CGFloat!
 
     // Minimum and maximum values represented in the chart
     fileprivate var min: ChartPoint!
@@ -307,7 +309,7 @@ open class Chart: UIControl {
         addSubview(placeholder)
     }
 
-    func removeSubView() {
+    public func removeSubView() {
         // Remove things before drawing, e.g. when changing orientation
         
         for view in self.subviews.filter({!($0 is UILabel)}) {
@@ -320,15 +322,16 @@ open class Chart: UIControl {
         layoutIfNeeded()
     }
     
-    func removeLayer(index: Int) {
+    public func removeLayer(index: Int) {
         if index < layerStore.count {
             layerStore[index].removeFromSuperlayer()
         }
     }
     
-    func drawlineWithSeries(_ series: ChartSeries, _ index: Int, colors: UIColor = .black) {
+    public func drawlineWithSeries(_ series: ChartSeries, _ index: Int, colors: UIColor = .black) {
         // Separate each line in multiple segments over and below the x axis
-        let segments = Chart.segmentLine(series.data as ChartLineSegment, zeroLevel: series.colors.zeroLevel)
+        let segments = Chart.segmentLine(series.data as ChartLineSegment,
+                                         zeroLevel: series.colors.zeroLevel)
         
         // segments.last!.forEach({ segment in
         let scaledXValues = scaleValuesOnXAxis( segments.last!.map { $0.x } )
@@ -339,10 +342,10 @@ open class Chart: UIControl {
         }
     }
     
-    func getMinMaxs() {
+    public func getMinMaxs() {
         let minMax = getMinMax()
         min = minMax.min
-        max = minMax.max
+       max = minMax.max
     }
     
     func drawChart() {
@@ -382,7 +385,7 @@ open class Chart: UIControl {
             let newMaxX = xValues.maxOrZero()
             let newMaxY = yValues.maxOrZero()
 
-            if min.x == nil || newMinX < min.x! { min.x = newMinX }
+            if min.x == nil || newMinX < min.x! { min.x = newMinX  }
             if min.y == nil || newMinY < min.y! { min.y = newMinY }
             if max.x == nil || newMaxX > max.x! { max.x = newMaxX }
             if max.y == nil || newMaxY > max.y! { max.y = newMaxY }
@@ -394,7 +397,7 @@ open class Chart: UIControl {
             let newMinX = xLabels.minOrZero()
             let newMaxX = xLabels.maxOrZero()
             if min.x == nil || newMinX < min.x! { min.x = newMinX }
-            if max.x == nil || newMaxX > max.x! { max.x = newMaxX }
+            if max.x == nil || (newMaxX) > (max.x! ) { max.x = newMaxX }
         }
 
         if let yLabels = self.yLabels {
@@ -422,7 +425,7 @@ open class Chart: UIControl {
             factor = width / (max.x - min.x)
         }
 
-        let scaled = values.map { factor * ($0 - self.min.x) }
+        let scaled = values.map { (factor * ($0 - self.min.x)) }
         return scaled
     }
 
@@ -546,48 +549,6 @@ open class Chart: UIControl {
     }
 
     // MARK: - Utilities
-
-    fileprivate func valueFromPointAtX(_ x: CGFloat) -> Double {
-        let value = ((max.x-min.x) / Double(drawingWidth)) * Double(x) + min.x
-        return value
-    }
-
-    fileprivate func valueFromPointAtY(_ y: CGFloat) -> Double {
-        let value = ((max.y - min.y) / Double(drawingHeight)) * Double(y) + min.y
-        return -value
-    }
-
-    fileprivate class func findClosestInValues(
-        _ values: [Double],
-        forValue value: Double
-    ) -> (
-            lowestValue: Double?,
-            highestValue: Double?,
-            lowestIndex: Int?,
-            highestIndex: Int?
-        ) {
-        var lowestValue: Double?, highestValue: Double?, lowestIndex: Int?, highestIndex: Int?
-
-        values.enumerated().forEach { (i, currentValue) in
-
-            if currentValue <= value && (lowestValue == nil || lowestValue! < currentValue) {
-                lowestValue = currentValue
-                lowestIndex = i
-            }
-            if currentValue >= value && (highestValue == nil || highestValue! > currentValue) {
-                highestValue = currentValue
-                highestIndex = i
-            }
-
-        }
-        return (
-            lowestValue: lowestValue,
-            highestValue: highestValue,
-            lowestIndex: lowestIndex,
-            highestIndex: highestIndex
-        )
-    }
-
     /**
     Segment a line in multiple lines when the line touches the x-axis, i.e. separating
     positive from negative values.
@@ -602,7 +563,9 @@ open class Chart: UIControl {
                 let nextPoint = line[i+1]
                 if point.y >= zeroLevel && nextPoint.y < zeroLevel || point.y < zeroLevel && nextPoint.y >= zeroLevel {
                     // The segment intersects zeroLevel, close the segment with the intersection point
-                    let closingPoint = Chart.intersectionWithLevel(point, and: nextPoint, level: zeroLevel)
+                    let closingPoint = Chart.intersectionWithLevel(point,
+                                                                   and: nextPoint,
+                                                                   level: zeroLevel)
                     segment.append(closingPoint)
                     segments.append(segment)
                     // Start a new segment
