@@ -10,7 +10,7 @@ import UIKit
 
 extension PlottingViewController {
   @IBAction func onActionChangeSpeedSwicthButton(_ sender: Any) {
-    duration = duration == 0.02 ? 0.01 : 0.02
+    timeSpeed = timeSpeed == 0.01 ? 0.02 : 0.01
     showChartEkg()
   }
   
@@ -27,6 +27,9 @@ extension PlottingViewController {
       
       if indexListEkgDisplay == 2 || indexListEkgDisplay == 3 {
           showChartEkg()
+      }
+      if indexListEkgDisplay == 3 {
+          hideAllViewBottm(!isShowingGrid)
       }
   }
   

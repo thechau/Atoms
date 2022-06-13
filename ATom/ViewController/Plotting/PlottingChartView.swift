@@ -29,7 +29,7 @@ class PlottingChartView: UIView {
     var countSeries = 0
     var arrInt : [Int] = []
     var startRemoveLayer = false
-    var duration = 0.025
+//    var duration = 0.025
     var drawingHeight: CGFloat = 150
     override class func awakeFromNib() {
         super.awakeFromNib()

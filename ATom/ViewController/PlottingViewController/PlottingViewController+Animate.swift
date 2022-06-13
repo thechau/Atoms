@@ -68,6 +68,7 @@ extension PlottingViewController {
     }
     
     func changeTypeDisplay() {
+        contentCollectionView.isHidden = true
         if indexListEkgDisplay == 0 {
             btnAmplitude.isHidden = false
         } else {
@@ -76,7 +77,8 @@ extension PlottingViewController {
             ampValueLabel.text = " " + ampList[indexShowAmp].description + "mm/mV"
         }
         if indexListEkgDisplay == 3 {
-            hideAllViewBottm(isPlaying)
+//            hideAllViewBottm(isPlaying)
+            
             scrollView.addGestureRecognizer(tap)
         } else {
             scrollView.removeGestureRecognizer(tap)
@@ -91,26 +93,23 @@ extension PlottingViewController {
     }
     
     func hideAllViewBottm(_ isHidden: Bool) {
+        let heightView = view.frame.height
+        let heightSelectionsView = viewContainSelectionsEkg.frame.height
+        infoStackview.isHidden = isHidden
         if isHidden {
-            UIView.animate(withDuration: 0.5, delay: 0, options: .curveEaseOut) {[weak self] in
-                self?.viewContainSelectionsEkg.alpha = 0
-                self?.controlStackView.alpha = 0
-                self?.viewBottom.alpha = 0
-//                controlStackView.isHidden = isHidden
-//                viewBottom.isHidden = isHidden
+            UIView.animate(withDuration: 0.3, delay: 0, options: .curveEaseOut) {[weak self] in
+                self?.viewContainSelectionsEkg.frame.origin.y = heightView
+                self?.viewBottom.frame.origin.y = heightView + heightSelectionsView
+                self?.view.layoutIfNeeded()
             }
+            
         } else {
-            UIView.animate(withDuration: 0.5, delay: 0, options: .curveEaseOut) {[weak self] in
-                self?.viewContainSelectionsEkg.alpha = 1
-                self?.controlStackView.alpha = 1
-                self?.viewBottom.alpha = 1
-//                controlStackView.isHidden = isHidden
-//                viewBottom.isHidden = isHidden
-            }
+                UIView.animate(withDuration: 0.3, delay: 0, options: .curveEaseOut) {[weak self] in
+                    self?.viewContainSelectionsEkg.frame.origin.y = heightView - heightSelectionsView
+                    self?.viewBottom.frame.origin.y = heightView - (self?.viewBottom.frame.height ?? 0)
+                    self?.view.layoutIfNeeded()
+                }
         }
-//        viewContainSelectionsEkg.isHidden = isHidden
-//        controlStackView.isHidden = isHidden
-//        viewBottom.isHidden = isHidden
     }
     
     @objc func hide() {

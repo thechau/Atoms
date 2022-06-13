@@ -19,11 +19,11 @@ extension PlottingViewController: UICollectionViewDelegate, UICollectionViewData
     func setHeightCollectionView() {
         switch displayList[indexListEkgDisplay] {
         case .oneEkg:
-            heightCollectionView.constant = 4 * (heightItem + 10)
+            heightCollectionView.constant = 4 * (heightItem + 0)
         case .threeEkg:
-            heightCollectionView.constant = 2 * (heightItem + 10)
+            heightCollectionView.constant = 2 * (heightItem + 0)
         case .sixEkg:
-            heightCollectionView.constant = 2 * (heightItem + 10)
+            heightCollectionView.constant = 2 * (heightItem + 0)
         case .twelveEkg:
             heightCollectionView.constant = 0
         }

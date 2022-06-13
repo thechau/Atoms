@@ -46,12 +46,15 @@ class PlottingViewController: BaseViewController {
     var chartTimer: Timer?
     var hideSelectionEkgTimer: Timer?
     let smallColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.7)
-    var duration = 0.02
     var isPausing = false
     
     /// One EKG, Three EKG, Six EKG, Twelve EKG
     var indexListEkgDisplay = 0
-    
+    var heightItem = 40.0
+    var indexShowAmp: Int = 1
+    var timeSpeed = 0.01
+    var isShowingGrid = true
+    var isPlaying = false
     var indexHighLight = 0 {
         didSet {
             showChartEkg()
@@ -84,14 +87,10 @@ class PlottingViewController: BaseViewController {
     var plottingChartViewaV5: PlottingChartView!
     var plottingChartViewaV6: PlottingChartView!
     
-    var heightItem = 40.0
     let displayList: [NumberEkg] = [.oneEkg, .threeEkg, .sixEkg, .twelveEkg]
     let ampList = [5, 10, 15, 20]
-    var indexShowAmp: Int = 1
-    var timeSpeed = 0.02
-    var isShowingGrid = true
-    var isPlaying = false
     var tap = UITapGestureRecognizer()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         initView()
@@ -143,7 +142,7 @@ class PlottingViewController: BaseViewController {
         stackView.addArrangedSubview(plottingChartViewaV6)
         
         stackView.layoutIfNeeded()
-        chartTimer = Timer.scheduledTimer(timeInterval: duration, target: self, selector: #selector(drawForAMonment), userInfo: nil, repeats: true)
+        chartTimer = Timer.scheduledTimer(timeInterval: timeSpeed, target: self, selector: #selector(drawForAMonment), userInfo: nil, repeats: true)
         
         plottingChartViewI.setupChart(viewController: self,
                                       name: "I",
@@ -247,6 +246,7 @@ class PlottingViewController: BaseViewController {
         stackView.subviews.forEach { vi in
             vi.isHidden = false
         }
+        
         if indexListEkgDisplay != 0 {
             indexShowAmp = 1
         }
@@ -273,13 +273,16 @@ class PlottingViewController: BaseViewController {
         heightStackView.constant = height
         view.layoutIfNeeded()
         stackView.layoutIfNeeded()
+        
         stackView.subviews.forEach { uiview in
             guard let chart = uiview as? PlottingChartView else {
                 return
             }
-            chart.duration = timeSpeed
+//            chart.duration = timeSpeed
             chart.setLayoutChart()
         }
+        chartTimer?.invalidate()
+        chartTimer = Timer.scheduledTimer(timeInterval: timeSpeed, target: self, selector: #selector(drawForAMonment), userInfo: nil, repeats: true)
         stackView.layoutIfNeeded()
         view.layoutIfNeeded()
         getData()
