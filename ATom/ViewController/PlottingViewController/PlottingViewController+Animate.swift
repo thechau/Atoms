@@ -25,7 +25,7 @@ extension PlottingViewController {
     }
         
     func hideDetailIfNeed() {
-        contentCollectionView.isHidden = false
+        contentCollectionView.isHidden = true
         setHeightCollectionView()
         heightCollectionView.constant = 0
         viewContainSelectionsEkg.frame.origin = CGPoint(x: 0, y: getYDetailView())
