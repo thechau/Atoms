@@ -30,6 +30,7 @@ extension PlottingViewController {
       if indexListEkgDisplay == 3 {
           hideAllViewBottm(!isShowingGrid)
       }
+      setupScrollView()
   }
   
   @IBAction func onActionAmplitudeButton(_ sender: Any) {
@@ -49,6 +50,9 @@ extension PlottingViewController {
   
   /// show collection list Ekg
   @IBAction func onTapShowSelectionEkg(_ sender: Any) {
+      guard indexListEkgDisplay != 3 else {
+          return
+      }
     isShowingSelectionsEkg = !isShowingSelectionsEkg
     showSelectionEkgBoard()
   }
@@ -76,7 +80,6 @@ extension PlottingViewController {
     } else {
       drawSampleGridView()
     }
-    scrollView.isScrollEnabled = !isShowingGrid
   }
   
   @IBAction func onTapPause(_ sender: Any?) {

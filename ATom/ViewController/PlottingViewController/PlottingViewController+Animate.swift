@@ -26,7 +26,6 @@ extension PlottingViewController {
         
     func hideDetailIfNeed() {
         contentCollectionView.isHidden = true
-        setHeightCollectionView()
         heightCollectionView.constant = 0
         viewContainSelectionsEkg.frame.origin = CGPoint(x: 0, y: getYDetailView())
         viewContainSelectionsEkg.layoutSubviews()
@@ -76,20 +75,15 @@ extension PlottingViewController {
             indexShowAmp = 1
             ampValueLabel.text = " " + ampList[indexShowAmp].description + "mm/mV"
         }
-        if indexListEkgDisplay == 3 {
-//            hideAllViewBottm(isPlaying)
-            
-            scrollView.addGestureRecognizer(tap)
-        } else {
-            scrollView.removeGestureRecognizer(tap)
-            hideSelectionEkgTimer?.invalidate()
-        }
-        
         isShowingSelectionsEkg = false
         tableviewAction()
         hideDetailIfNeed()
         indexHighLight = 0
-
+        setupScrollView()
+        scrollView.isScrollEnabled = !(indexListEkgDisplay == 0)
+        if indexListEkgDisplay == 3 {
+            hideAllViewBottm(!isShowingGrid)
+        }
     }
     
     func hideAllViewBottm(_ isHidden: Bool) {

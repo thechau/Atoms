@@ -187,7 +187,19 @@ class PlottingViewController: BaseViewController {
                          forMode: .common)
     }
     
-    
+    func setupScrollView() {
+        if indexListEkgDisplay == 0 || !isShowingGrid {
+            scrollView.isScrollEnabled = false
+        } else {
+            scrollView.isScrollEnabled = true
+        }
+        if indexListEkgDisplay == 3, !isShowingGrid {
+            scrollView.addGestureRecognizer(tap)
+        } else {
+            scrollView.removeGestureRecognizer(tap)
+            hideSelectionEkgTimer?.invalidate()
+        }
+    }
     
     fileprivate func setupCollectionView() {
         let collectionLayout = UICollectionViewFlowLayout()
@@ -204,6 +216,7 @@ class PlottingViewController: BaseViewController {
         hideDetailIfNeed()
         infoStackview.isHidden = true
         ampValueLabel.text = ampList[indexShowAmp].description + "mm/mV"
+        setupScrollView()
     }
     
     func getListChart() -> [[PlottingChartView]] {
@@ -261,11 +274,12 @@ class PlottingViewController: BaseViewController {
          
         if indexListEkgDisplay == 3  && !isShowingGrid {
             heightDraw = 3 * pixel / 2.0
+        } else if indexListEkgDisplay == 2  && !isShowingGrid {
+            heightDraw = 4 * pixel / 2.0
         }
         
         for index in 0 ..< listDisplay.count {
             for charView in listDisplay[index] {
-                charView.drawingHeight
                 charView.isHidden = !(index == indexHighLight)
                 charView.backgroundColor = .clear
                 charView.drawingHeight = heightDraw
@@ -284,7 +298,6 @@ class PlottingViewController: BaseViewController {
             guard let chart = uiview as? PlottingChartView else {
                 return
             }
-//            chart.duration = timeSpeed
             chart.setLayoutChart()
         }
         chartTimer?.invalidate()
@@ -302,31 +315,28 @@ class PlottingViewController: BaseViewController {
     
     
     func caculateHeightOfOneEkg() -> CGFloat {
-        let totalHeightDisplay = vwGridBoard.frame.height - getHeightSelectionsEkgView() - 100
+        let totalHeightDisplay = vwGridBoard.frame.height - getHeightSelectionsEkgView() - 80
         var heightStackViewChart = 200.0
         switch indexListEkgDisplay {
         case 0:
             heightStackViewChart = vwGridBoard.frame.height - 173
         case 1:
             heightStackViewChart = totalHeightDisplay / 3.0
+
+//            if isShowingGrid {
+//                heightStackViewChart = totalHeightDisplay / 3
+//            }
         case 2:
-            if isShowingGrid {
-                heightStackViewChart = totalHeightDisplay / 3.0
-            } else {
+            if !isShowingGrid {
                 heightStackViewChart = totalHeightDisplay / 6.0
             }
-            
         case 3:
-            if isShowingGrid {
-                heightStackViewChart = (vwGridBoard.frame.height - 100.0) / 3.0
-            } else {
+            if !isShowingGrid {
                 heightStackViewChart = (vwGridBoard.frame.height - 100.0) / 12.0
             }
-            
         default:
             break
         }
-        
         return heightStackViewChart
     }
 }
