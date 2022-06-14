@@ -100,7 +100,7 @@ class PlottingChartView: UIView {
     }
     
     private func caculateNumberSeries() {
-        let nbTemp = nbOfYValue/step
+        let nbTemp = (nbOfYValue / Int(drwaingRatio) )/step
         chartView.layerStore = [CAShapeLayer](repeating: CAShapeLayer(), count: nbTemp)
         seriesChart = [ChartSeries](repeating: ChartSeries(data: listPointTemp), count: nbTemp)
         //listPointPrevous = [(x: Double, y: Double)](repeating: (x: 0.0, y: 0.0), count: nbOfYValue)
