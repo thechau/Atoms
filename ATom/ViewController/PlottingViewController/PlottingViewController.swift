@@ -265,7 +265,7 @@ class PlottingViewController: BaseViewController {
         }
         let listDisplay = getListChart()
         let heightDraw = caculateHeightOfOneEkg()
-        heightStackView.constant = caculateTotalHeightEkg(heightItem: heightDraw)
+        heightStackView.constant = caculateTotalHeightEkg()
         stackView.layoutIfNeeded()
 
         for index in 0 ..< listDisplay.count {
@@ -298,31 +298,22 @@ class PlottingViewController: BaseViewController {
         RunLoop.current.add(self.chartTimer!, forMode: RunLoop.Mode.common)
     }
     
-    func caculateTotalHeightEkg(heightItem: CGFloat) -> CGFloat {
+    func caculateTotalHeightEkg() -> CGFloat {
         print("height: \(heightItem)")
         var height = 0.0
+        
         switch indexListEkgDisplay {
         case 0:
             height = getHeightDisplayChart()
         case 1:
-            if isShowingGrid {
-                height = 3 * heightItem
-            } else {
-                height = getHeightDisplayChart()
-            }
+            height = 3 * caculateHeightOfOneEkg()
 
         case 2:
-            if isShowingGrid {
-                height = 6 * heightItem
-            } else {
-                height = getHeightDisplayChart()
-            }
+            height = 6 * caculateHeightOfOneEkg()
+     
         case 3:
-            if isShowingGrid {
-                height = 12 * heightItem
-            } else {
-                height = 12 * heightItem
-            }
+            height = 12 * caculateHeightOfOneEkg()
+
         default:
             height = 0
         }
@@ -333,7 +324,7 @@ class PlottingViewController: BaseViewController {
     
     func caculateHeightOfOneEkg() -> CGFloat {
         let pixel = 70.0
-        let totalHeightDisplay = scrollView.frame.height - frameSelections.height - 60
+        let totalHeightDisplay = getHeightDisplayChart() - 60
         var heightStackViewChart = valueHeightDraw[indexShowAmp] * pixel / 2.0
         switch indexListEkgDisplay {
         case 0:
@@ -341,8 +332,6 @@ class PlottingViewController: BaseViewController {
         case 1:
             if !isShowingGrid {
                 heightStackViewChart = totalHeightDisplay / 3.0
-            } else {
-                heightStackViewChart = getHeightDisplayChart()
             }
             
         case 2:
