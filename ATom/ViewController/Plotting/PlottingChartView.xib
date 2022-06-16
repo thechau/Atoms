@@ -19,7 +19,7 @@
                     <rect key="frame" x="0.0" y="8.5" width="556" height="150"/>
                     <subviews>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="I" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="t4M-aI-kFg">
-                            <rect key="frame" x="10" y="104.5" width="4.5" height="21"/>
+                            <rect key="frame" x="10" y="74.5" width="4.5" height="21"/>
                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                             <nil key="textColor"/>
                             <nil key="highlightedColor"/>
@@ -27,7 +27,7 @@
                     </subviews>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
-                        <constraint firstItem="t4M-aI-kFg" firstAttribute="centerY" secondItem="FRI-ab-Nne" secondAttribute="centerY" constant="40" id="G8N-dv-fFp"/>
+                        <constraint firstItem="t4M-aI-kFg" firstAttribute="centerY" secondItem="FRI-ab-Nne" secondAttribute="centerY" constant="10" id="G8N-dv-fFp"/>
                         <constraint firstItem="t4M-aI-kFg" firstAttribute="leading" secondItem="FRI-ab-Nne" secondAttribute="leading" constant="10" id="NJS-mj-moc"/>
                         <constraint firstAttribute="height" constant="150" id="yqZ-Kk-6W7"/>
                     </constraints>

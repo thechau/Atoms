@@ -467,6 +467,7 @@ open class Chart: UIControl {
     // MARK: - Drawings
 
     fileprivate func drawLine(_ xValues: [Double], yValues: [Double], seriesIndex: Int, colors: UIColor = .black) {
+        let yValues = yValues.map({$0 - 20})
         // YValues are "reverted" from top to bottom, so 'above' means <= level
         let isAboveZeroLine = yValues.max()! <= self.scaleValueOnYAxis(series[seriesIndex].colors.zeroLevel)
         let path = CGMutablePath()
