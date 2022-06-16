@@ -87,6 +87,7 @@ extension PlottingViewController: UICollectionViewDelegate, UICollectionViewData
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         if collectionView === self.contentCollectionView {
             indexHighLight = indexPath.item
+            showChartEkg()
             reloadData()
         }
     }
