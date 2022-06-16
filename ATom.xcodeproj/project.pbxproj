@@ -366,10 +366,10 @@
 			isa = PBXGroup;
 			children = (
 				02D879D72806BBEE00C28209 /* Plotting */,
-				02D879E12806BBFD00C28209 /* PlottingViewController.swift */,
 				02D879D82806BBFC00C28209 /* PlottingViewController+Chart.swift */,
 				02D879D92806BBFD00C28209 /* PlottingViewController+CollectionView.swift */,
 				02D879DC2806BBFD00C28209 /* PlottingViewController+Animate.swift */,
+				02D879E12806BBFD00C28209 /* PlottingViewController.swift */,
 				847DA27428241C020039CF6F /* PlottingViewController+Action.swift */,
 			);
 			path = PlottingViewController;

@@ -22,15 +22,16 @@ extension PlottingViewController {
       gridOnLabel.text = "Grid On"
       girdButton.setImage(UIImage(named: "GridON"), for: .normal)
     }
-    setupGridBoard()
-      
-      if indexListEkgDisplay == 2 || indexListEkgDisplay == 3 {
-          showChartEkg()
-      }
       if indexListEkgDisplay == 3 {
-          hideAllViewBottm(!isShowingGrid)
+          if isPlaying {
+              hideAllViewBottm(true)
+          }
+//          hideAllViewBottm(!isShowingGrid)
       }
+      showChartEkg()
       setupScrollView()
+      setupGridBoard()
+      
   }
   
   @IBAction func onActionAmplitudeButton(_ sender: Any) {
@@ -73,18 +74,10 @@ extension PlottingViewController {
       changeTypeDisplay()
       
   }
-    
-  func setupGridBoard() {
-    if isShowingGrid {
-      drawGridBoard()
-    } else {
-      drawSampleGridView()
-    }
-  }
   
   @IBAction func onTapPause(_ sender: Any?) {
-    isPlaying = !isPlaying
-    btnAmplitude.isHidden = !isPlaying
+      isPlaying = !isPlaying
+      btnAmplitude.isHidden = !isPlaying
       hideAllViewBottm(isPlaying && indexListEkgDisplay == 3)
     if isPlaying {
       btnPause.setImage(UIImage(named: "pause"), for: .normal)
@@ -97,14 +90,8 @@ extension PlottingViewController {
       btnPause.setImage(UIImage(named: "play-button"), for: .normal)
       pauseLabel.text = "Play"
       infoStackview.isHidden = true
-      expandChartEkg()
       btnReport.isEnabled = false
     }
     showChartEkg()
   }
-    
-  func expandChartEkg() {
-    isShowingSelectionsEkg = false
-    hideDetailIfNeed()
-    }
 }

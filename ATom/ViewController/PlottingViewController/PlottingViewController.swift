@@ -23,6 +23,7 @@ class PlottingViewController: BaseViewController {
     @IBOutlet weak var titleCollectionView: UICollectionView!
     @IBOutlet weak var scaleSwitch: ScaleSwitch!
     @IBOutlet weak var scrollView: UIScrollView!
+    @IBOutlet weak var contentScrollView: UIView!
     @IBOutlet weak var viewPan: UIView!
     @IBOutlet weak var bpmLabel: UILabel!
     @IBOutlet weak var gridOnLabel: UILabel!
@@ -37,8 +38,7 @@ class PlottingViewController: BaseViewController {
     @IBOutlet weak var stackView: UIStackView!
     @IBOutlet weak var viewContainerGridView: UIView!
     var vwModel = ChartECGViewModel()
-    
-    private let heightChart: CGFloat = 120
+    private let heightItemEkg: CGFloat = 220
     var isFirstTime = true
     var isShowingSelectionsEkg = false
     
@@ -63,9 +63,9 @@ class PlottingViewController: BaseViewController {
     
     var vw = UIView()
     var screenScale = 0
-    
+    var frameSelections = CGRect()
     // Chart
-    
+    let valueHeightDraw = [5.0, 10.0, 15.0, 20.0]
     let oneLeadList = ["I", "II", "III", "aVR","aVL", "aVF","V1","V2","V3", "V4","V5","V6"]
     let threeLeadList = [["I", "II", "III"],
                          ["aVR", "aVL", "aVF"],
@@ -95,14 +95,15 @@ class PlottingViewController: BaseViewController {
         initView()
         initCollectionView()
         vwModel = ChartECGViewModel(value: 1500)
-        hideDetailIfNeed()
         ppi = UIDevice.setPPIValue()
+        frameSelections = viewContainSelectionsEkg.frame
+        
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         //getData()
-        drawGridBoard()
+        setupGridBoard()
         getAllOfLead()
     }
     
@@ -181,7 +182,6 @@ class PlottingViewController: BaseViewController {
                                         name: "V6",
                                         timer: chartTimer)
         showChartEkg()
-        hideDetailIfNeed()
         RunLoop.main
             .add(chartTimer ?? Timer(),
                          forMode: .common)
@@ -189,6 +189,8 @@ class PlottingViewController: BaseViewController {
     
     func setupScrollView() {
         if indexListEkgDisplay == 0 || !isShowingGrid {
+            scrollView.isScrollEnabled = false
+        } else if indexListEkgDisplay == 3, !isShowingGrid {
             scrollView.isScrollEnabled = false
         } else {
             scrollView.isScrollEnabled = true
@@ -213,10 +215,13 @@ class PlottingViewController: BaseViewController {
         viewContainSelectionsEkg.roundCorners(corners: [.topLeft, .topRight], radius: 30)
         viewContainerGridView.roundCorners(corners: [.topLeft, .topRight], radius: 30)
         setupCollectionView()
-        hideDetailIfNeed()
         infoStackview.isHidden = true
         ampValueLabel.text = ampList[indexShowAmp].description + "mm/mV"
         setupScrollView()
+    }
+    
+    func getHeightDisplayChart() -> CGFloat {
+        return scrollView.frame.height - frameSelections.height - 60//heightItemEkg //- 50
     }
     
     func getListChart() -> [[PlottingChartView]] {
@@ -244,11 +249,7 @@ class PlottingViewController: BaseViewController {
                      plottingChartViewaV4, plottingChartViewaV5,plottingChartViewaV6]]
         }
     }
-    
-  func getHeightSignleEkg() -> CGFloat {
-      return vwGridBoard.frame.height - 173
-  }
-    
+        
     func showChartEkg() {
         guard isPlaying else {
             stackView.subviews.forEach { vi in
@@ -264,68 +265,87 @@ class PlottingViewController: BaseViewController {
             indexShowAmp = 1
         }
         let listDisplay = getListChart()
-        var height: CGFloat = 0
-        let heightItem = caculateHeightOfOneEkg()
-        
         let pixel = 70.0
-        let valueHeightDraw = [5.0, 10.0, 15.0, 20.0]
-        
         var heightDraw = valueHeightDraw[indexShowAmp] * pixel / 2.0
          
         if indexListEkgDisplay == 3  && !isShowingGrid {
-            heightDraw = 3 * pixel / 2.0
+            heightDraw = getHeightDisplayChart() / 12
         } else if indexListEkgDisplay == 2  && !isShowingGrid {
-            heightDraw = 4 * pixel / 2.0
+            heightDraw = getHeightDisplayChart() / 6 - 10
         }
-        
+        heightStackView.constant = caculateTotalHeightEkg()
+        stackView.layoutIfNeeded()
+
         for index in 0 ..< listDisplay.count {
             for charView in listDisplay[index] {
                 charView.isHidden = !(index == indexHighLight)
                 charView.backgroundColor = .clear
                 charView.drawingHeight = heightDraw
                 charView.setDrawingRatio(isHighSpeed: scaleSwitch.isOn)
-                if !charView.isHidden {
-                    height += heightItem
-                }
             }
         }
         
-        heightStackView.constant = height
-        view.layoutIfNeeded()
-        stackView.layoutIfNeeded()
-        
+
         stackView.subviews.forEach { uiview in
             guard let chart = uiview as? PlottingChartView else {
                 return
             }
             chart.setLayoutChart()
         }
+        stackView.layoutIfNeeded()
+        getData()
+        scrollView.contentInset.bottom = 173 - 50
+        scrollView.scrollToTop()
+        view.layoutIfNeeded()
+        setupGridBoard()
         chartTimer?.invalidate()
         chartTimer = Timer.scheduledTimer(timeInterval: timeSpeed,
                                           target: self,
                                           selector: #selector(drawForAMonment),
                                           userInfo: nil, repeats: true)
         RunLoop.current.add(self.chartTimer!, forMode: RunLoop.Mode.common)
-        stackView.layoutIfNeeded()
-        view.layoutIfNeeded()
-        getData()
-        scrollView.contentInset.bottom = caculateHeightOfOneEkg() + 50
-        scrollView.scrollToTop()
+    }
+    
+    func caculateTotalHeightEkg() -> CGFloat {
+        var height = 0.0
+        switch indexListEkgDisplay {
+        case 0:
+            height = getHeightDisplayChart()
+        case 1:
+            if isShowingGrid {
+                height = 3 * heightItemEkg
+            } else {
+                height = 3 * caculateHeightOfOneEkg()
+            }
+
+        case 2:
+            if isShowingGrid {
+                height = 6 * heightItemEkg
+            } else {
+                height = getHeightDisplayChart()
+            }
+        case 3:
+            if isShowingGrid {
+                height = 12 * heightItemEkg
+            } else {
+                height = 12 * caculateHeightOfOneEkg()
+            }
+        default:
+            height = 0
+        }
+        print("height total: \(height)")
+        return height
     }
     
     
     func caculateHeightOfOneEkg() -> CGFloat {
-        let totalHeightDisplay = vwGridBoard.frame.height - getHeightSelectionsEkgView() - 80
-        var heightStackViewChart = 200.0
+        let totalHeightDisplay = scrollView.frame.height - frameSelections.height - 60
+        var heightStackViewChart = heightItemEkg
         switch indexListEkgDisplay {
         case 0:
-            heightStackViewChart = vwGridBoard.frame.height - 173
+            heightStackViewChart = totalHeightDisplay
         case 1:
             heightStackViewChart = totalHeightDisplay / 3.0
-
-//            if isShowingGrid {
-//                heightStackViewChart = totalHeightDisplay / 3
-//            }
         case 2:
             if !isShowingGrid {
                 heightStackViewChart = totalHeightDisplay / 6.0

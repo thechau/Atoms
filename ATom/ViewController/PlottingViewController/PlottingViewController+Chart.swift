@@ -63,25 +63,33 @@ extension PlottingViewController {
         }
     }
     
-    func drawGridBoard() {
+    private func drawGridBoard() {
         removeSubViewInGridBorad()
-        drawGrid(vwGridBoard.bounds, 0.3, smallColor, size: 10)
-        drawGrid(vwGridBoard.bounds, 0.7, smallColor, size: 50)
-        drawGrid(vwGridBoard.bounds, 1.5, smallColor, size: 100)
+        drawGrid(contentScrollView.bounds, 0.3, smallColor, size: 10)
+        drawGrid(contentScrollView.bounds, 0.7, smallColor, size: 50)
+        drawGrid(contentScrollView.bounds, 1.5, smallColor, size: 100)
         view.layoutIfNeeded()
     }
     
     private func removeSubViewInGridBorad() {
-        vwGridBoard.subviews.forEach { view in
+        contentScrollView.subviews.forEach { view in
             if !(view is UIStackView) {
                 view.removeFromSuperview()
             }
         }
     }
     
-    func drawSampleGridView() {
+    func setupGridBoard() {
+      if isShowingGrid {
+        drawGridBoard()
+      } else {
+        drawSampleGridView()
+      }
+    }
+    
+    private func drawSampleGridView() {
         removeSubViewInGridBorad()
-        drawGrid(vwGridBoard.bounds,
+        drawGrid(contentScrollView.bounds,
                  0.7,
                  smallColor,
                  size: 50)
@@ -93,13 +101,15 @@ extension PlottingViewController {
                               _ colorLine: UIColor,
                               size: CGFloat) {
         let vwGrid = GridView()
+
         vwGrid.frame = frame
+        vwGrid.bounds = frame
         vwGrid.sizeCell = size
         vwGrid.widthMin = widthLine
         vwGrid.color = UIColor.lightGray.withAlphaComponent(0.8)
         vwGrid.draw(CGRect(x: 0, y: 0, width: 0, height: 0))
         vwGrid.backgroundColor = .clear
-        vwGridBoard.addSubview(vwGrid)
+        contentScrollView.addSubview(vwGrid)
     }
 }
 
