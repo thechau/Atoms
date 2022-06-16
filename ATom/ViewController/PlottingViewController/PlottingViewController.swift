@@ -267,13 +267,13 @@ class PlottingViewController: BaseViewController {
         let heightDraw = caculateHeightOfOneEkg()
         heightStackView.constant = caculateTotalHeightEkg()
         stackView.layoutIfNeeded()
-
+        let isShowLine = !isShowingGrid && (indexListEkgDisplay == 2 || indexListEkgDisplay == 3)
         for index in 0 ..< listDisplay.count {
             for charView in listDisplay[index] {
                 charView.isHidden = !(index == indexHighLight)
                 charView.backgroundColor = .clear
                 charView.drawingHeight = heightDraw
-                charView.lineView.isHidden = (indexListEkgDisplay == 0)
+                charView.lineView.isHidden = !isShowLine
                 charView.setDrawingRatio(isHighSpeed: scaleSwitch.isOn)
             }
         }
