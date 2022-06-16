@@ -7,29 +7,21 @@
 import UIKit
 
 extension PlottingViewController {
-    /// animation show selection ekg
-//    func showSelectionEkgBoard() {
-//        setUpBottomCollectionView()
-//    }
     
     func setUpBottomCollectionView() {
         if isShowingSelectionsEkg {
-            contentCollectionView.isHidden = false
             self.heightCollectionView.constant = getHeightCollectionView()
             contentCollectionView.reloadData()
         }
         
         let y = isShowingSelectionsEkg ? getMinYOfSelectionsEkgViewView() : frameSelections.origin.y
         UIView.animate(withDuration: 0.3) { [weak self] in
-//            self?.viewContainSelectionsEkg.frame.origin = CGPoint(x: 0, y: y)
             self?.heightCollectionView.constant = self?.getHeightCollectionView() ?? 0
             self?.view.layoutIfNeeded()
         } completion: { [weak self]_ in
             self?.contentCollectionView.reloadData()
             if self?.isShowingSelectionsEkg == false {
-                self?.contentCollectionView.isHidden = true
                 self?.heightCollectionView.constant = 0
-                
             }
             self?.view.setNeedsDisplay()
         }
@@ -63,8 +55,8 @@ extension PlottingViewController {
         setupScrollView()
         view.layoutIfNeeded()
         showChartEkg()
-        if indexListEkgDisplay == 3 {
-            hideAllViewBottm(isPlaying && !isShowingGrid)
+        if indexListEkgDisplay == 3, !isShowingGrid, isPlaying {
+            hideAllViewBottm(true)
             isShowingSelectionsEkg = false
         } else {
             isShowingSelectionsEkg = false
@@ -74,6 +66,7 @@ extension PlottingViewController {
     }
     
     func hideAllViewBottm(_ isHidden: Bool) {
+        isShowingSelectionsEkg = false
         let heightView = view.frame.height
         let heightSelectionsView = viewContainSelectionsEkg.frame.height
         infoStackview.isHidden = isHidden
@@ -86,7 +79,7 @@ extension PlottingViewController {
         } else {
             UIView.animate(withDuration: 0.3) { [weak self] in
                 self?.viewContainSelectionsEkg.frame.origin.y = self?.frameSelections.origin.y ?? .zero
-                self?.viewBottom.frame.origin.y = self?.frameSelections.origin.y ?? .zero
+                self?.viewBottom.frame = self?.frameBottomView ?? .zero
                 self?.view.layoutIfNeeded()
             }
         }

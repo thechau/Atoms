@@ -60,6 +60,7 @@ class PlottingViewController: BaseViewController {
     var vw = UIView()
     var screenScale = 0
     var frameSelections = CGRect()
+    var frameBottomView = CGRect()
     // Chart
     let valueHeightDraw = [5.0, 10.0, 15.0, 20.0]
     let oneLeadList = ["I", "II", "III", "aVR","aVL", "aVF","V1","V2","V3", "V4","V5","V6"]
@@ -92,8 +93,9 @@ class PlottingViewController: BaseViewController {
         initCollectionView()
         vwModel = ChartECGViewModel(value: 1500)
         ppi = UIDevice.setPPIValue()
+        setUpBottomCollectionView()
         frameSelections = viewContainSelectionsEkg.frame
-        
+        frameBottomView = viewBottom.frame
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -217,7 +219,7 @@ class PlottingViewController: BaseViewController {
     }
     
     func getHeightDisplayChart() -> CGFloat {
-        return scrollView.frame.height - frameSelections.height - 60
+        return scrollView.frame.height - frameSelections.height
     }
     
     func getListChart() -> [[PlottingChartView]] {
@@ -339,6 +341,8 @@ class PlottingViewController: BaseViewController {
         case 1:
             if !isShowingGrid {
                 heightStackViewChart = totalHeightDisplay / 3.0
+            } else {
+                heightStackViewChart = getHeightDisplayChart()
             }
             
         case 2:

@@ -17,6 +17,9 @@ extension PlottingViewController: UICollectionViewDelegate, UICollectionViewData
     }
     
     func getHeightCollectionView() -> CGFloat {
+        guard isShowingSelectionsEkg else {
+            return 0
+        }
         var height: CGFloat = 0
         switch displayList[indexListEkgDisplay] {
         case .oneEkg:

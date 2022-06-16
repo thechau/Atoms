@@ -94,7 +94,6 @@ extension PlottingViewController {
   @IBAction func onTapPause(_ sender: Any?) {
       isPlaying = !isPlaying
       btnAmplitude.isHidden = !isPlaying
-      hideAllViewBottm(isPlaying && indexListEkgDisplay == 3)
     if isPlaying {
       btnPause.setImage(UIImage(named: "pause"), for: .normal)
       pauseLabel.text = "Pause"
@@ -108,6 +107,12 @@ extension PlottingViewController {
       infoStackview.isHidden = true
       btnReport.isEnabled = false
     }
+      if indexListEkgDisplay == 3, !isShowingGrid, isPlaying {
+          hideAllViewBottm(true)
+          isShowingSelectionsEkg = false
+      } else {
+          setUpBottomCollectionView()
+      }
     showChartEkg()
   }
 }
