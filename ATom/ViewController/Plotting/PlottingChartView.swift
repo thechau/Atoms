@@ -14,6 +14,7 @@ class PlottingChartView: UIView {
     @IBOutlet weak var chartView: Chart!
     @IBOutlet weak var heightChartView: NSLayoutConstraint!
     @IBOutlet weak var namePlotLabel: UILabel!
+    @IBOutlet weak var lineView: UIView!
     let nbOfYValue = 1500
     var step = 5 //Space// 10 : 3000 5: 1500
     

@@ -8,35 +8,35 @@ import UIKit
 
 extension PlottingViewController {
     /// animation show selection ekg
-    func showSelectionEkgBoard() {
-        let y = isShowingSelectionsEkg ? getMinYOfSelectionsEkgViewView() : frameSelections.origin.y //getMaxYOfSelectionsView()
-        setUpBottomCollectionView(y: y)
-    }
+//    func showSelectionEkgBoard() {
+//        setUpBottomCollectionView()
+//    }
     
-    func setUpBottomCollectionView(y: CGFloat) {
+    func setUpBottomCollectionView() {
         if isShowingSelectionsEkg {
             contentCollectionView.isHidden = false
-            self.setHeightCollectionView()
+            self.heightCollectionView.constant = getHeightCollectionView()
+            contentCollectionView.reloadData()
         }
+        
+        let y = isShowingSelectionsEkg ? getMinYOfSelectionsEkgViewView() : frameSelections.origin.y
         UIView.animate(withDuration: 0.3) { [weak self] in
-            self?.viewContainSelectionsEkg.frame.origin = CGPoint(x: 0, y: y)
+//            self?.viewContainSelectionsEkg.frame.origin = CGPoint(x: 0, y: y)
+            self?.heightCollectionView.constant = self?.getHeightCollectionView() ?? 0
             self?.view.layoutIfNeeded()
         } completion: { [weak self]_ in
+            self?.contentCollectionView.reloadData()
             if self?.isShowingSelectionsEkg == false {
                 self?.contentCollectionView.isHidden = true
+                self?.heightCollectionView.constant = 0
+                
             }
+            self?.view.setNeedsDisplay()
         }
     }
-        
-    func hideSelectionsEkgView() {
-        isShowingSelectionsEkg = false
-        viewContainSelectionsEkg.frame = frameSelections
-        view.layoutIfNeeded()
-    }
-    
     
     func getMinYOfSelectionsEkgViewView() -> CGFloat {
-        return view.frame.height - getHeightSelectionsEkgView()
+        return viewContainSelectionsEkg.frame.maxY - frameSelections.height - getHeightCollectionView()
     }
     
     func getHeightSelectionsEkgView() -> CGFloat {
@@ -50,20 +50,25 @@ extension PlottingViewController {
                                          animated: true)
     }
     
-    func changeTypeDisplay() {
+    func changeIndexEkgDisplay() {
+        indexShowAmp = 1
         if indexListEkgDisplay == 0 {
             btnAmplitude.isHidden = false
         } else {
             btnAmplitude.isHidden = true
-            indexShowAmp = 1
-            ampValueLabel.text = " " + ampList[indexShowAmp].description + "mm/mV"
+            
         }
+        setupApm()
         scrollToTop()
-        hideSelectionsEkgView()
         setupScrollView()
-        scrollView.isScrollEnabled = !(indexListEkgDisplay == 0)
+        view.layoutIfNeeded()
+        showChartEkg()
         if indexListEkgDisplay == 3 {
-            hideAllViewBottm(!isShowingGrid)
+            hideAllViewBottm(isPlaying && !isShowingGrid)
+            isShowingSelectionsEkg = false
+        } else {
+            isShowingSelectionsEkg = false
+            setUpBottomCollectionView()
         }
         indexHighLight = 0
     }
@@ -73,17 +78,17 @@ extension PlottingViewController {
         let heightSelectionsView = viewContainSelectionsEkg.frame.height
         infoStackview.isHidden = isHidden
         if isHidden {
-            UIView.animate(withDuration: 0.3, delay: 0, options: .curveEaseOut) {[weak self] in
-                self?.viewContainSelectionsEkg.frame.origin.y = heightView
+            UIView.animate(withDuration: 0.3) {[weak self] in
+                self?.viewContainSelectionsEkg.frame.origin.y = self?.view.frame.maxY ?? 0
                 self?.viewBottom.frame.origin.y = heightView + heightSelectionsView
                 self?.view.layoutIfNeeded()
             }
         } else {
-                UIView.animate(withDuration: 0.3, delay: 0, options: .curveEaseOut) {[weak self] in
-                    self?.viewContainSelectionsEkg.frame = self?.frameSelections ?? .zero
-                    self?.viewBottom.frame.origin.y = heightView - (self?.viewBottom.frame.height ?? 0)
-                    self?.view.layoutIfNeeded()
-                }
+            UIView.animate(withDuration: 0.3) { [weak self] in
+                self?.viewContainSelectionsEkg.frame.origin.y = self?.frameSelections.origin.y ?? .zero
+                self?.viewBottom.frame.origin.y = self?.frameSelections.origin.y ?? .zero
+                self?.view.layoutIfNeeded()
+            }
         }
     }
     

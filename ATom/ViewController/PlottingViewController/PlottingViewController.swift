@@ -55,11 +55,7 @@ class PlottingViewController: BaseViewController {
     var timeSpeed = 0.02
     var isShowingGrid = true
     var isPlaying = false
-    var indexHighLight = 0 {
-        didSet {
-            showChartEkg()
-        }
-    }
+    var indexHighLight = 0
     
     var vw = UIView()
     var screenScale = 0
@@ -216,12 +212,12 @@ class PlottingViewController: BaseViewController {
         viewContainerGridView.roundCorners(corners: [.topLeft, .topRight], radius: 30)
         setupCollectionView()
         infoStackview.isHidden = true
-        ampValueLabel.text = ampList[indexShowAmp].description + "mm/mV"
+        setupApm()
         setupScrollView()
     }
     
     func getHeightDisplayChart() -> CGFloat {
-        return scrollView.frame.height - frameSelections.height - 60//heightItemEkg //- 50
+        return scrollView.frame.height - frameSelections.height - 60
     }
     
     func getListChart() -> [[PlottingChartView]] {
@@ -255,6 +251,7 @@ class PlottingViewController: BaseViewController {
             stackView.subviews.forEach { vi in
                 vi.isHidden = true
             }
+            chartTimer?.invalidate()
             return
         }
         stackView.subviews.forEach { vi in
@@ -265,15 +262,8 @@ class PlottingViewController: BaseViewController {
             indexShowAmp = 1
         }
         let listDisplay = getListChart()
-        let pixel = 70.0
-        var heightDraw = valueHeightDraw[indexShowAmp] * pixel / 2.0
-         
-        if indexListEkgDisplay == 3  && !isShowingGrid {
-            heightDraw = getHeightDisplayChart() / 12
-        } else if indexListEkgDisplay == 2  && !isShowingGrid {
-            heightDraw = getHeightDisplayChart() / 6 - 10
-        }
-        heightStackView.constant = caculateTotalHeightEkg()
+        let heightDraw = caculateHeightOfOneEkg()
+        heightStackView.constant = caculateTotalHeightEkg(heightItem: heightDraw)
         stackView.layoutIfNeeded()
 
         for index in 0 ..< listDisplay.count {
@@ -281,6 +271,7 @@ class PlottingViewController: BaseViewController {
                 charView.isHidden = !(index == indexHighLight)
                 charView.backgroundColor = .clear
                 charView.drawingHeight = heightDraw
+                charView.lineView.isHidden = (indexListEkgDisplay == 0)
                 charView.setDrawingRatio(isHighSpeed: scaleSwitch.isOn)
             }
         }
@@ -296,7 +287,6 @@ class PlottingViewController: BaseViewController {
         getData()
         scrollView.contentInset.bottom = 173 - 50
         scrollView.scrollToTop()
-        view.layoutIfNeeded()
         setupGridBoard()
         chartTimer?.invalidate()
         chartTimer = Timer.scheduledTimer(timeInterval: timeSpeed,
@@ -306,29 +296,30 @@ class PlottingViewController: BaseViewController {
         RunLoop.current.add(self.chartTimer!, forMode: RunLoop.Mode.common)
     }
     
-    func caculateTotalHeightEkg() -> CGFloat {
+    func caculateTotalHeightEkg(heightItem: CGFloat) -> CGFloat {
+        print("height: \(heightItem)")
         var height = 0.0
         switch indexListEkgDisplay {
         case 0:
             height = getHeightDisplayChart()
         case 1:
             if isShowingGrid {
-                height = 3 * heightItemEkg
+                height = 3 * heightItem
             } else {
-                height = 3 * caculateHeightOfOneEkg()
+                height = getHeightDisplayChart()
             }
 
         case 2:
             if isShowingGrid {
-                height = 6 * heightItemEkg
+                height = 6 * heightItem
             } else {
                 height = getHeightDisplayChart()
             }
         case 3:
             if isShowingGrid {
-                height = 12 * heightItemEkg
+                height = 12 * heightItem
             } else {
-                height = 12 * caculateHeightOfOneEkg()
+                height = 12 * heightItem
             }
         default:
             height = 0
@@ -339,13 +330,17 @@ class PlottingViewController: BaseViewController {
     
     
     func caculateHeightOfOneEkg() -> CGFloat {
+        let pixel = 70.0
         let totalHeightDisplay = scrollView.frame.height - frameSelections.height - 60
-        var heightStackViewChart = heightItemEkg
+        var heightStackViewChart = valueHeightDraw[indexShowAmp] * pixel / 2.0
         switch indexListEkgDisplay {
         case 0:
-            heightStackViewChart = totalHeightDisplay
+            break
         case 1:
-            heightStackViewChart = totalHeightDisplay / 3.0
+            if !isShowingGrid {
+                heightStackViewChart = totalHeightDisplay / 3.0
+            }
+            
         case 2:
             if !isShowingGrid {
                 heightStackViewChart = totalHeightDisplay / 6.0

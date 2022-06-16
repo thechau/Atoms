@@ -24,22 +24,19 @@
                             <nil key="textColor"/>
                             <nil key="highlightedColor"/>
                         </label>
-                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="21U-cV-qxm">
-                            <rect key="frame" x="0.0" y="149" width="556" height="1"/>
-                            <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                            <constraints>
-                                <constraint firstAttribute="height" constant="1" id="kNa-Ks-Y9f"/>
-                            </constraints>
-                        </view>
                     </subviews>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
                         <constraint firstItem="t4M-aI-kFg" firstAttribute="centerY" secondItem="FRI-ab-Nne" secondAttribute="centerY" constant="40" id="G8N-dv-fFp"/>
-                        <constraint firstItem="21U-cV-qxm" firstAttribute="leading" secondItem="FRI-ab-Nne" secondAttribute="leading" id="LP7-9d-jCX"/>
-                        <constraint firstAttribute="trailing" secondItem="21U-cV-qxm" secondAttribute="trailing" id="Lhh-Qh-pBZ"/>
                         <constraint firstItem="t4M-aI-kFg" firstAttribute="leading" secondItem="FRI-ab-Nne" secondAttribute="leading" constant="10" id="NJS-mj-moc"/>
-                        <constraint firstAttribute="bottom" secondItem="21U-cV-qxm" secondAttribute="bottom" id="hCa-xX-0Q9"/>
                         <constraint firstAttribute="height" constant="150" id="yqZ-Kk-6W7"/>
+                    </constraints>
+                </view>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="21U-cV-qxm">
+                    <rect key="frame" x="0.0" y="157.5" width="556" height="1"/>
+                    <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="1" id="kNa-Ks-Y9f"/>
                     </constraints>
                 </view>
             </subviews>
@@ -47,13 +44,17 @@
             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
             <constraints>
                 <constraint firstItem="FRI-ab-Nne" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="2Xw-iQ-N0f"/>
+                <constraint firstAttribute="trailing" secondItem="21U-cV-qxm" secondAttribute="trailing" id="8k7-qF-gAa"/>
+                <constraint firstItem="21U-cV-qxm" firstAttribute="bottom" secondItem="FRI-ab-Nne" secondAttribute="bottom" id="Ayf-mN-GX9"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="FRI-ab-Nne" secondAttribute="trailing" id="IsE-ra-YCG"/>
                 <constraint firstItem="FRI-ab-Nne" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="eVE-mh-lzd"/>
+                <constraint firstItem="21U-cV-qxm" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="m2W-Ph-fWn"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <connections>
                 <outlet property="chartView" destination="FRI-ab-Nne" id="5yN-hy-6L8"/>
                 <outlet property="heightChartView" destination="yqZ-Kk-6W7" id="hvw-zC-akz"/>
+                <outlet property="lineView" destination="21U-cV-qxm" id="6y4-Hi-rkc"/>
                 <outlet property="namePlotLabel" destination="t4M-aI-kFg" id="hKJ-Xb-bHU"/>
             </connections>
             <point key="canvasLocation" x="237.68115942028987" y="-231.36160714285714"/>

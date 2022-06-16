@@ -16,17 +16,19 @@ extension PlottingViewController: UICollectionViewDelegate, UICollectionViewData
         titleCollectionView.reloadData()
     }
     
-    func setHeightCollectionView() {
+    func getHeightCollectionView() -> CGFloat {
+        var height: CGFloat = 0
         switch displayList[indexListEkgDisplay] {
         case .oneEkg:
-            heightCollectionView.constant = 4 * (heightItem + 10)
+            height = 4 * (heightItem + 10)
         case .threeEkg:
-            heightCollectionView.constant = 2 * (heightItem + 10)
+            height = 2 * (heightItem + 10)
         case .sixEkg:
-            heightCollectionView.constant = 2 * (heightItem + 10)
+            height = 2 * (heightItem + 10)
         case .twelveEkg:
-            heightCollectionView.constant = 0
+            height = 0
         }
+        return height
     }
     
     func initCollectionView() {
@@ -114,6 +116,6 @@ extension PlottingViewController: UIScrollViewDelegate {
         indexListEkgDisplay = Int(self.titleCollectionView.contentOffset.x / pageWidth)
         titleCollectionView.reloadData()
         reloadData()
-      changeTypeDisplay()
+        changeIndexEkgDisplay()
     }
 }

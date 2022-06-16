@@ -18,21 +18,37 @@ extension PlottingViewController {
     if isShowingGrid {
       gridOnLabel.text = "Grid Off"
       girdButton.setImage(UIImage(named: "GridOFF"), for: .normal)
+    
     } else {
       gridOnLabel.text = "Grid On"
       girdButton.setImage(UIImage(named: "GridON"), for: .normal)
+    
+    
     }
-      if indexListEkgDisplay == 3 {
-          if isPlaying {
-              hideAllViewBottm(true)
-          }
-//          hideAllViewBottm(!isShowingGrid)
-      }
       showChartEkg()
       setupScrollView()
       setupGridBoard()
+      setupApm()
+      showChartEkg()
+      if indexListEkgDisplay == 3, isPlaying, !isShowingGrid {
+          hideAllViewBottm(true)
+          isShowingSelectionsEkg = false
+      } else {
+          isShowingSelectionsEkg = false
+          hideAllViewBottm(false)
+      }
       
   }
+    
+    func setupApm() {
+        if !isShowingGrid {
+            ampValueLabel.text = "Not to Scale"
+            btnAmplitude.isHidden = true
+        } else {
+            ampValueLabel.text = " " + ampList[indexShowAmp].description + "mm/mV"
+            btnAmplitude.isHidden = !(indexListEkgDisplay == 0)
+        }
+    }
   
   @IBAction func onActionAmplitudeButton(_ sender: Any) {
     if indexShowAmp == 3 {
@@ -45,8 +61,8 @@ extension PlottingViewController {
     } else {
       btnAmplitude.setImage(UIImage(named: "GainON"), for: .normal)
     }
-    ampValueLabel.text = " " + ampList[indexShowAmp].description + "mm/mV"
     showChartEkg()
+    setupApm()
   }
   
   /// show collection list Ekg
@@ -54,16 +70,16 @@ extension PlottingViewController {
       guard indexListEkgDisplay != 3 else {
           return
       }
-    isShowingSelectionsEkg = !isShowingSelectionsEkg
-    showSelectionEkgBoard()
+      isShowingSelectionsEkg = !isShowingSelectionsEkg
+      setUpBottomCollectionView()
   }
-  
+    
   @IBAction func onTapNext(_ sender: Any?) {
-      guard indexListEkgDisplay < displayList.count - 1 else {
+      guard indexListEkgDisplay < 3 else {
           return
       }
       indexListEkgDisplay += 1
-      changeTypeDisplay()
+      changeIndexEkgDisplay()
   }
   
   @IBAction func onTapBack(_ sender: Any?) {
@@ -71,7 +87,7 @@ extension PlottingViewController {
           return
       }
       indexListEkgDisplay -= 1
-      changeTypeDisplay()
+      changeIndexEkgDisplay()
       
   }
   
@@ -88,7 +104,7 @@ extension PlottingViewController {
       }
     } else {
       btnPause.setImage(UIImage(named: "play-button"), for: .normal)
-      pauseLabel.text = "Play"
+      pauseLabel.text = "Record"
       infoStackview.isHidden = true
       btnReport.isEnabled = false
     }
