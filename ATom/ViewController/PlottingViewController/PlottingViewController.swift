@@ -267,13 +267,12 @@ class PlottingViewController: BaseViewController {
         let heightDraw = caculateHeightOfOneEkg()
         heightStackView.constant = caculateTotalHeightEkg()
         stackView.layoutIfNeeded()
-        let isShowLine = !isShowingGrid && (indexListEkgDisplay == 2 || indexListEkgDisplay == 3)
         for index in 0 ..< listDisplay.count {
             for charView in listDisplay[index] {
                 charView.isHidden = !(index == indexHighLight)
                 charView.backgroundColor = .clear
                 charView.drawingHeight = heightDraw
-                charView.lineView.isHidden = !isShowLine
+                charView.lineView.isHidden = (indexListEkgDisplay == 0)
                 charView.setDrawingRatio(isHighSpeed: scaleSwitch.isOn)
             }
         }
@@ -299,26 +298,34 @@ class PlottingViewController: BaseViewController {
     }
     
     func caculateTotalHeightEkg() -> CGFloat {
-        print("height: \(heightItem)")
-        var height = 0.0
-        
         switch indexListEkgDisplay {
         case 0:
-            height = getHeightDisplayChart()
+            return getHeightDisplayChart()
         case 1:
-            height = 3 * caculateHeightOfOneEkg()
+            if isShowingGrid {
+                return 3 * caculateHeightOfOneEkg() * 4 / 7
+            } else {
+                return 3 * caculateHeightOfOneEkg()
+            }
+            
 
         case 2:
-            height = 6 * caculateHeightOfOneEkg()
+            if isShowingGrid {
+                return 6 * caculateHeightOfOneEkg() * 4 / 7
+            } else {
+                return 6 * caculateHeightOfOneEkg()
+            }
      
         case 3:
-            height = 12 * caculateHeightOfOneEkg()
-
+            if isShowingGrid {
+                return 12 * caculateHeightOfOneEkg() * 4 / 7
+            } else {
+                return 12 * caculateHeightOfOneEkg()
+            }
+            
         default:
-            height = 0
+            return 0
         }
-        print("height total: \(height)")
-        return height
     }
     
     
@@ -326,22 +333,19 @@ class PlottingViewController: BaseViewController {
         let pixel = 70.0
         let totalHeightDisplay = getHeightDisplayChart() - 60
         var heightStackViewChart = valueHeightDraw[indexShowAmp] * pixel / 2.0
+        guard !isShowingGrid else {
+            return heightStackViewChart
+        }
         switch indexListEkgDisplay {
         case 0:
             break
         case 1:
-            if !isShowingGrid {
-                heightStackViewChart = totalHeightDisplay / 3.0
-            }
+            heightStackViewChart = totalHeightDisplay / 3.0
             
         case 2:
-            if !isShowingGrid {
-                heightStackViewChart = totalHeightDisplay / 6.0
-            }
+            heightStackViewChart = totalHeightDisplay / 6.0
         case 3:
-            if !isShowingGrid {
-                heightStackViewChart = (vwGridBoard.frame.height - 100.0) / 12.0
-            }
+            heightStackViewChart = (vwGridBoard.frame.height - 100.0) / 12.0
         default:
             break
         }

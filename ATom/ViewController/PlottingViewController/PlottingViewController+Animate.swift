@@ -14,7 +14,6 @@ extension PlottingViewController {
             contentCollectionView.reloadData()
         }
         
-        let y = isShowingSelectionsEkg ? getMinYOfSelectionsEkgViewView() : frameSelections.origin.y
         UIView.animate(withDuration: 0.3) { [weak self] in
             self?.heightCollectionView.constant = self?.getHeightCollectionView() ?? 0
             self?.view.layoutIfNeeded()
@@ -44,12 +43,7 @@ extension PlottingViewController {
     
     func changeIndexEkgDisplay() {
         indexShowAmp = 1
-        if indexListEkgDisplay == 0 {
-            btnAmplitude.isHidden = false
-        } else {
-            btnAmplitude.isHidden = true
-            
-        }
+        setupApm()
         setupApm()
         scrollToTop()
         setupScrollView()
@@ -78,7 +72,7 @@ extension PlottingViewController {
             }
         } else {
             UIView.animate(withDuration: 0.3) { [weak self] in
-                self?.viewContainSelectionsEkg.frame.origin.y = self?.frameSelections.origin.y ?? .zero
+                self?.viewContainSelectionsEkg.frame = self?.frameSelections ?? .zero
                 self?.viewBottom.frame = self?.frameBottomView ?? .zero
                 self?.view.layoutIfNeeded()
             }

@@ -41,16 +41,20 @@ extension PlottingViewController {
   }
     
     func setupApm() {
-        if !isShowingGrid {
+        if isShowingGrid {
+            ampValueLabel.text = " " + ampList[indexShowAmp].description + "mm/mV"
+            if indexListEkgDisplay == 0, isPlaying {
+                btnAmplitude.isHidden = false
+            } else {
+                btnAmplitude.isHidden = true
+            }
+        } else {
             ampValueLabel.text = "Not to Scale"
             btnAmplitude.isHidden = true
-        } else {
-            ampValueLabel.text = " " + ampList[indexShowAmp].description + "mm/mV"
-            btnAmplitude.isHidden = !(indexListEkgDisplay == 0)
         }
     }
-  
-  @IBAction func onActionAmplitudeButton(_ sender: Any) {
+    
+    @IBAction func onActionAmplitudeButton(_ sender: Any) {
     if indexShowAmp == 3 {
         indexShowAmp = 0
     } else {
@@ -93,7 +97,7 @@ extension PlottingViewController {
   
   @IBAction func onTapPause(_ sender: Any?) {
       isPlaying = !isPlaying
-      btnAmplitude.isHidden = !isPlaying
+      setupApm()
     if isPlaying {
       btnPause.setImage(UIImage(named: "pause"), for: .normal)
       pauseLabel.text = "Pause"
