@@ -72,6 +72,7 @@ extension PlottingViewController {
             }
         } else {
             UIView.animate(withDuration: 0.3) { [weak self] in
+                self?.heightCollectionView.constant = 0
                 self?.viewContainSelectionsEkg.frame = self?.frameSelections ?? .zero
                 self?.viewBottom.frame = self?.frameBottomView ?? .zero
                 self?.view.layoutIfNeeded()
