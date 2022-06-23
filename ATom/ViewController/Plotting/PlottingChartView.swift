@@ -11,6 +11,7 @@ import SwiftChart
 
 class PlottingChartView: UIView {
     
+    @IBOutlet weak var centerChartLayoutConstraint: NSLayoutConstraint!
     @IBOutlet weak var chartView: Chart!
     @IBOutlet weak var heightChartView: NSLayoutConstraint!
     @IBOutlet weak var namePlotLabel: UILabel!

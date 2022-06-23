@@ -274,6 +274,12 @@ class PlottingViewController: BaseViewController {
                 charView.drawingHeight = heightDraw
                 charView.lineView.isHidden = (indexListEkgDisplay == 0)
                 charView.setDrawingRatio(isHighSpeed: scaleSwitch.isOn)
+                if indexListEkgDisplay == 0 {
+                    charView.centerChartLayoutConstraint = charView.centerChartLayoutConstraint.setMultiplier(1)
+                } else {
+                    charView.centerChartLayoutConstraint = charView.centerChartLayoutConstraint.setMultiplier(1.3)
+                }
+                
             }
         }
         
@@ -286,7 +292,9 @@ class PlottingViewController: BaseViewController {
         }
         stackView.layoutIfNeeded()
         getData()
-        scrollView.contentInset.bottom = 173 - 50
+        if let root = UIApplication.shared.keyWindow?.rootViewController {
+            scrollView.contentInset.bottom = getHeightSelectionsEkgView() - root.view.safeAreaInsets.bottom
+        }
         scrollView.scrollToTop()
         setupGridBoard()
         chartTimer?.invalidate()
@@ -351,4 +359,28 @@ class PlottingViewController: BaseViewController {
         }
         return heightStackViewChart
     }
+    
+    
+}
+
+extension NSLayoutConstraint {
+    func setMultiplier(_ multiplier:CGFloat) -> NSLayoutConstraint {
+            NSLayoutConstraint.deactivate([self])
+
+            let newConstraint = NSLayoutConstraint(
+                item: firstItem!,
+                attribute: firstAttribute,
+                relatedBy: relation,
+                toItem: secondItem,
+                attribute: secondAttribute,
+                multiplier: multiplier,
+                constant: constant)
+
+            newConstraint.priority = priority
+            newConstraint.shouldBeArchived = shouldBeArchived
+            newConstraint.identifier = identifier
+
+            NSLayoutConstraint.activate([newConstraint])
+            return newConstraint
+        }
 }

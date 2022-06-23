@@ -16,7 +16,7 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FRI-ab-Nne" customClass="Chart" customModule="SwiftChart">
-                    <rect key="frame" x="0.0" y="8.5" width="556" height="150"/>
+                    <rect key="frame" x="0.0" y="33.5" width="556" height="150"/>
                     <subviews>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="I" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="t4M-aI-kFg">
                             <rect key="frame" x="10" y="74.5" width="4.5" height="21"/>
@@ -43,7 +43,7 @@
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
             <constraints>
-                <constraint firstItem="FRI-ab-Nne" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="2Xw-iQ-N0f"/>
+                <constraint firstItem="FRI-ab-Nne" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" multiplier="1.3" id="2Xw-iQ-N0f"/>
                 <constraint firstAttribute="trailing" secondItem="21U-cV-qxm" secondAttribute="trailing" id="8k7-qF-gAa"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="FRI-ab-Nne" secondAttribute="trailing" id="IsE-ra-YCG"/>
                 <constraint firstAttribute="bottom" secondItem="21U-cV-qxm" secondAttribute="bottom" id="JzH-JL-VvD"/>
@@ -52,6 +52,7 @@
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <connections>
+                <outlet property="centerChartLayoutConstraint" destination="2Xw-iQ-N0f" id="6I9-k7-TAs"/>
                 <outlet property="chartView" destination="FRI-ab-Nne" id="5yN-hy-6L8"/>
                 <outlet property="heightChartView" destination="yqZ-Kk-6W7" id="hvw-zC-akz"/>
                 <outlet property="lineView" destination="21U-cV-qxm" id="6y4-Hi-rkc"/>
