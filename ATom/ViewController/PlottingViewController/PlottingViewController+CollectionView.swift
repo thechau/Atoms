@@ -116,6 +116,7 @@ extension PlottingViewController: UICollectionViewDelegateFlowLayout {
 
 extension PlottingViewController: UIScrollViewDelegate {
     func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
+        removeSubViewInGridBorad()
         let pageWidth = self.titleCollectionView.frame.size.width
         indexListEkgDisplay = Int(self.titleCollectionView.contentOffset.x / pageWidth)
         titleCollectionView.reloadData()

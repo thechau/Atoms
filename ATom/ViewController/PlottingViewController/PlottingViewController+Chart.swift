@@ -64,17 +64,31 @@ extension PlottingViewController {
     }
     
     private func drawGridBoard() {
-        removeSubViewInGridBorad()
-        drawGrid(contentScrollView.bounds, 0.3, smallColor, size: 10)
-        drawGrid(contentScrollView.bounds, 0.7, smallColor, size: 50)
-        drawGrid(contentScrollView.bounds, 1.5, smallColor, size: 100)
+//        removeSubViewInGridBorad()
+        let listChart = getListChart()[indexHighLight]
+        listChart.forEach { chart in
+            drawGrid(chart.bounds, 0.3, smallColor, size: 10, in: chart)
+            drawGrid(chart.bounds, 0.7, smallColor, size: 50, in: chart)
+            drawGrid(chart.bounds, 1.5, smallColor, size: 100, in: chart)
+        }
+        drawGrid(infoStackview.bounds, 0.3, smallColor, size: 10, in: infoStackview)
+        drawGrid(infoStackview.bounds, 0.7, smallColor, size: 50, in: infoStackview)
+        drawGrid(infoStackview.bounds, 1.5, smallColor, size: 100, in: infoStackview)
         view.layoutIfNeeded()
     }
     
-    private func removeSubViewInGridBorad() {
-        contentScrollView.subviews.forEach { view in
-            if !(view is UIStackView) {
-                view.removeFromSuperview()
+    func removeSubViewInGridBorad() {
+        let listChart = getListChart()[indexHighLight]
+        listChart.forEach { chart in
+            chart.subviews.forEach { grid in
+                if grid is GridView {
+                    grid.removeFromSuperview()
+                }
+            }
+        }
+        infoStackview.subviews.forEach { grid in
+            if grid is GridView {
+                grid.removeFromSuperview()
             }
         }
     }
@@ -89,17 +103,19 @@ extension PlottingViewController {
     
     private func drawSampleGridView() {
         removeSubViewInGridBorad()
-        drawGrid(contentScrollView.bounds,
-                 0.7,
-                 smallColor,
-                 size: 50)
+        getListChart().forEach { listChart in
+            listChart.forEach { chart in
+                drawGrid(chart.bounds, 0.7, smallColor, size: 50, in: chart)
+            }
+        }
+        drawGrid(infoStackview.bounds, 0.7, smallColor, size: 50, in: infoStackview)
         view.layoutIfNeeded()
     }
     
     fileprivate func drawGrid(_ frame: CGRect,
                               _ widthLine: CGFloat,
                               _ colorLine: UIColor,
-                              size: CGFloat) {
+                              size: CGFloat, in vi: UIView) {
         let vwGrid = GridView()
 
         vwGrid.frame = frame
@@ -109,7 +125,7 @@ extension PlottingViewController {
         vwGrid.color = UIColor.lightGray.withAlphaComponent(0.8)
         vwGrid.draw(CGRect(x: 0, y: 0, width: 0, height: 0))
         vwGrid.backgroundColor = .clear
-        contentScrollView.addSubview(vwGrid)
+        vi.insertSubview(vwGrid, at: 1)
     }
 }
 

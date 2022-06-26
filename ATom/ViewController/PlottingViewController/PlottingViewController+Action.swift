@@ -82,6 +82,7 @@ extension PlottingViewController {
       guard indexListEkgDisplay < 3 else {
           return
       }
+      removeSubViewInGridBorad()
       indexListEkgDisplay += 1
       changeIndexEkgDisplay()
   }
@@ -90,6 +91,7 @@ extension PlottingViewController {
       guard indexListEkgDisplay > 0 else {
           return
       }
+      removeSubViewInGridBorad()
       indexListEkgDisplay -= 1
       changeIndexEkgDisplay()
       

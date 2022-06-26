@@ -1969,7 +1969,7 @@
                                 </constraints>
                             </view>
                             <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" alignment="bottom" translatesAutoresizingMaskIntoConstraints="NO" id="Cmp-Aw-daw" userLabel="Stack View info">
-                                <rect key="frame" x="0.0" y="148" width="414" height="30"/>
+                                <rect key="frame" x="0.0" y="148" width="414" height="40"/>
                                 <subviews>
                                     <view contentMode="bottom" translatesAutoresizingMaskIntoConstraints="NO" id="RHp-QT-SWc">
                                         <rect key="frame" x="16" y="0.0" width="50" height="30"/>
@@ -2032,9 +2032,9 @@
                                     </imageView>
                                 </subviews>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="30" id="Knr-xQ-3zo"/>
+                                    <constraint firstAttribute="height" constant="40" id="Knr-xQ-3zo"/>
                                 </constraints>
-                                <edgeInsets key="layoutMargins" top="0.0" left="16" bottom="0.0" right="16"/>
+                                <edgeInsets key="layoutMargins" top="0.0" left="16" bottom="10" right="16"/>
                             </stackView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="h0c-gv-DvE"/>

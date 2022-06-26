@@ -101,7 +101,7 @@ class PlottingViewController: BaseViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         //getData()
-        setupGridBoard()
+//        setupGridBoard()
         getAllOfLead()
     }
     
