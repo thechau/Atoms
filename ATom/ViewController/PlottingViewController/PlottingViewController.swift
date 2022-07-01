@@ -249,15 +249,20 @@ class PlottingViewController: BaseViewController {
     }
         
     func showChartEkg() {
-        guard isPlaying else {
+        if isPlaying {
             stackView.subviews.forEach { vi in
-                vi.isHidden = true
+                if let chartView = vi as? PlottingChartView {
+                    chartView.chartView.isHidden = false
+                }
+            }
+        } else {
+            stackView.subviews.forEach { vi in
+                if let chartView = vi as? PlottingChartView {
+                    chartView.chartView.isHidden = true
+                }
             }
             chartTimer?.invalidate()
-            return
-        }
-        stackView.subviews.forEach { vi in
-            vi.isHidden = false
+
         }
         
         if indexListEkgDisplay != 0 {
@@ -272,7 +277,6 @@ class PlottingViewController: BaseViewController {
                 charView.isHidden = !(index == indexHighLight)
                 charView.backgroundColor = .clear
                 charView.drawingHeight = heightDraw
-                charView.lineView.isHidden = (indexListEkgDisplay == 0)
                 charView.setDrawingRatio(isHighSpeed: scaleSwitch.isOn)
                 if indexListEkgDisplay == 0 {
                     charView.centerChartLayoutConstraint = charView.centerChartLayoutConstraint.setMultiplier(1)

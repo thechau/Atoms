@@ -32,7 +32,7 @@
                         <constraint firstAttribute="height" constant="150" id="yqZ-Kk-6W7"/>
                     </constraints>
                 </view>
-                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="21U-cV-qxm">
+                <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="21U-cV-qxm">
                     <rect key="frame" x="0.0" y="166" width="556" height="1"/>
                     <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>

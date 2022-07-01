@@ -18,12 +18,11 @@ extension PlottingViewController {
     if isShowingGrid {
       gridOnLabel.text = "Grid Off"
       girdButton.setImage(UIImage(named: "GridOFF"), for: .normal)
-    
+        stackView.spacing = 16
     } else {
       gridOnLabel.text = "Grid On"
       girdButton.setImage(UIImage(named: "GridON"), for: .normal)
-    
-    
+        stackView.spacing = 5
     }
       showChartEkg()
       setupScrollView()

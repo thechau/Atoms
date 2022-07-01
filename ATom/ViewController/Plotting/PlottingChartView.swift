@@ -77,6 +77,8 @@ class PlottingChartView: UIView {
         chartView.drawingHeight = drawingHeight//bounds.height
         chartView.drawingWidth = bounds.width
         chartView.getMinMaxs()
+        layer.borderColor = UIColor.lightGray.cgColor
+        layer.borderWidth = 1
     }
     
     class func instanceFromNib() -> PlottingChartView {

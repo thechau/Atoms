@@ -71,9 +71,9 @@ extension PlottingViewController {
             drawGrid(chart.bounds, 0.7, smallColor, size: 50, in: chart)
             drawGrid(chart.bounds, 1.5, smallColor, size: 100, in: chart)
         }
-        drawGrid(infoStackview.bounds, 0.3, smallColor, size: 10, in: infoStackview)
-        drawGrid(infoStackview.bounds, 0.7, smallColor, size: 50, in: infoStackview)
-        drawGrid(infoStackview.bounds, 1.5, smallColor, size: 100, in: infoStackview)
+//        drawGrid(infoStackview.bounds, 0.3, smallColor, size: 10, in: infoStackview)
+//        drawGrid(infoStackview.bounds, 0.7, smallColor, size: 50, in: infoStackview)
+//        drawGrid(infoStackview.bounds, 1.5, smallColor, size: 100, in: infoStackview)
         view.layoutIfNeeded()
     }
     
@@ -86,11 +86,11 @@ extension PlottingViewController {
                 }
             }
         }
-        infoStackview.subviews.forEach { grid in
-            if grid is GridView {
-                grid.removeFromSuperview()
-            }
-        }
+//        infoStackview.subviews.forEach { grid in
+//            if grid is GridView {
+//                grid.removeFromSuperview()
+//            }
+//        }
     }
     
     func setupGridBoard() {
@@ -108,7 +108,7 @@ extension PlottingViewController {
                 drawGrid(chart.bounds, 0.7, smallColor, size: 50, in: chart)
             }
         }
-        drawGrid(infoStackview.bounds, 0.7, smallColor, size: 50, in: infoStackview)
+//        drawGrid(infoStackview.bounds, 0.7, smallColor, size: 50, in: infoStackview)
         view.layoutIfNeeded()
     }
     
