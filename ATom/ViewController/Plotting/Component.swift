@@ -30,13 +30,13 @@ enum NumberEkg: Int {
   func getTitle() -> String {
     switch self {
     case .oneEkg:
-      return "ONE LEAD EKG"
+      return "One Lead EKG"
     case .threeEkg:
-      return "THREE LEAD EKG"
+      return "Three Lead EKG"
     case .sixEkg:
-      return "SIX LEAD EKG"
+      return "Six Lead EKG"
     case .twelveEkg:
-      return "TWELVE LEAD EKG"
+      return "Twelve Lead EKG"
     }
   }
 }

@@ -11,6 +11,10 @@ extension PlottingViewController {
     func showInfoBoard() {
         setupControlStactView()
         let y = !isShowingDetail ? getHeightMax(): getYMinOfDetailView()
+        setUpBottomCollectionView(y: y)
+    }
+    
+    func setUpBottomCollectionView(y: CGFloat) {
         contentCollectionView.isHidden = false
         UIView.animate(withDuration: 0.3,
                        delay: 0,
@@ -46,11 +50,11 @@ extension PlottingViewController {
         case (false, true):
             return view.frame.height - 90
         default:
-            return view.frame.height - 169
+            return view.frame.height - 179
         }
     }
     
-    private func getYMinOfDetailView() -> CGFloat {
+    func getYMinOfDetailView() -> CGFloat {
         return view.frame.height - getHeightDetailView()
     }
     
@@ -58,11 +62,11 @@ extension PlottingViewController {
         return viewCorners.frame.height
     }
     
-    private func getHeightMax() -> CGFloat {
-        if isExpanding {
+    func getHeightMax() -> CGFloat {
+        if isShowingGrid {
             return view.frame.height - 90
         } else {
-            return view.frame.height - 169
+            return view.frame.height - 179
         }
     }
     
@@ -76,7 +80,7 @@ extension PlottingViewController {
     func changeTypeDisplay() {
         indexHighLight = 0
         isShowingDetail = false
-        isExpanding = false
+//        isExpanding = false
         tableviewAction()
         hideDetailIfNeed()
         setupControlStactView()

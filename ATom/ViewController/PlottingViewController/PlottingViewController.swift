@@ -11,20 +11,25 @@ import RxSwift
 import Charts
 
 class PlottingViewController: BaseViewController {
+    @IBOutlet weak var infoStackview: UIStackView!
     @IBOutlet weak var heightStackView: NSLayoutConstraint!
     @IBOutlet weak var viewCorners: UIView!
     @IBOutlet weak var viewPanGuesture: UIView!
     @IBOutlet weak var heightCollectionView: NSLayoutConstraint!
     @IBOutlet weak var btnPause: RoundedButtonWithShadow!
     @IBOutlet weak var btnReport: RoundedButtonWithShadow!
-    @IBOutlet weak var btnAmplitude: RoundedButtonWithShadow!
+    @IBOutlet weak var btnAmplitude: UIButton!
     @IBOutlet weak var contentCollectionView: UICollectionView!
     @IBOutlet weak var titleCollectionView: UICollectionView!
     @IBOutlet weak var scaleSwitch: ScaleSwitch!
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var viewPan: UIView!
     @IBOutlet weak var bpmLabel: UILabel!
-    @IBOutlet weak var expandButton: UIButton!
+    @IBOutlet weak var gridOnLabel: UILabel!
+    @IBOutlet weak var girdButton: RoundedButtonWithShadow!
+    @IBOutlet weak var pauseLabel: UILabel!
+    @IBOutlet weak var ampValueLabel: UILabel!
+//    @IBOutlet weak var expandButton: UIButton!
     @IBOutlet weak var controlStackView: UIStackView!
     // Chart
     @IBOutlet weak var vwGridBoard: UIView!
@@ -40,12 +45,12 @@ class PlottingViewController: BaseViewController {
     let disposeBag = DisposeBag()
     var chartTimer: Timer?
     let smallColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.7)
-    var duration = 0.025
+    var duration = 0.02
     var isPausing = false
     var indexTypeDisplay = 0
     var indexHighLight = 0 {
         didSet {
-            showChartEkg(at: indexHighLight)
+            showChartEkg()
         }
     }
     
@@ -77,9 +82,11 @@ class PlottingViewController: BaseViewController {
     
     var heightItem = 40.0
     let displayList: [NumberEkg] = [.oneEkg, .threeEkg, .sixEkg, .twelveEkg]
-    var heightChartRatio: Double = 2
-    var timeSpeed = 0.025
-    
+    let ampList = [5, 10, 15, 20]
+    var indexHeightChartRatio: Int = 1
+    var timeSpeed = 0.02
+    var isShowingGrid = true
+    var isPlaying = false
     override func viewDidLoad() {
         super.viewDidLoad()
         initView()
@@ -169,7 +176,7 @@ class PlottingViewController: BaseViewController {
         plottingChartViewaV6.setupChart(viewController: self,
                                         name: "aV6",
                                         timer: chartTimer)
-        showChartEkg(at: indexHighLight)
+        showChartEkg()
         hideDetailIfNeed()
         RunLoop.main
             .add(chartTimer ?? Timer(),
@@ -190,6 +197,8 @@ class PlottingViewController: BaseViewController {
         viewContainerGridView.roundCorners(corners: [.topLeft, .topRight], radius: 30)
         setupCollectionView()
         hideDetailIfNeed()
+        infoStackview.isHidden = true
+        ampValueLabel.text = ampList[indexHeightChartRatio].description + "mm/mV"
     }
     
     func getListChart() -> [[PlottingChartView]] {
@@ -218,20 +227,36 @@ class PlottingViewController: BaseViewController {
         }
     }
     
-    func showChartEkg(at indexDisplay: Int) {
+  func getHeightSignleEkg() -> CGFloat {
+      return vwGridBoard.frame.height - 179
+  }
+    func showChartEkg() {
+        guard isPlaying else {
+            stackView.subviews.forEach { vi in
+                vi.isHidden = true
+            }
+            return
+        }
+        stackView.subviews.forEach { vi in
+            vi.isHidden = false
+        }
+        let indexDisplay = indexHighLight
         let listDisplay = getListChart()
         var height: CGFloat = 0
-        let heightItem = isExpanding ? caculateHeightItemExpanding() : 200
+        var heightItem = !isShowingGrid ? caculateHeightItemExpanding() : 200
         
-        if isExpanding {
-            heightChartRatio = heightItem / 120.0
+      if indexTypeDisplay == 0 {
+        heightItem = getHeightSignleEkg()
+      }
+        if !isShowingGrid, indexTypeDisplay != 0 {
+            indexHeightChartRatio = indexHeightChartRatio / Int(120.0)
         }
         
         for index in 0 ..< listDisplay.count {
             for charView in listDisplay[index] {
                 charView.isHidden = !(index == indexDisplay)
                 charView.backgroundColor = .clear
-                charView.drawingHeight = heightChart * heightChartRatio
+                charView.drawingHeight = heightChart * CGFloat(indexHeightChartRatio)
                 if !charView.isHidden {
                     height += heightItem
                 }

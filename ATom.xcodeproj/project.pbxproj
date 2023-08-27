@@ -371,6 +371,7 @@
 		026F2EF2284234AA001F39B5 /* PlottingViewController */ = {
 			isa = PBXGroup;
 			children = (
+				02D879D72806BBEE00C28209 /* Plotting */,
 				02D879E12806BBFD00C28209 /* PlottingViewController.swift */,
 				02D879D82806BBFC00C28209 /* PlottingViewController+Chart.swift */,
 				02D879D92806BBFD00C28209 /* PlottingViewController+CollectionView.swift */,
@@ -451,7 +452,8 @@
 				02D879DF2806BBFD00C28209 /* PlottingChartView.swift */,
 				02D879E02806BBFD00C28209 /* PlottingChartView.xib */,
 			);
-			path = Plotting;
+			name = Plotting;
+			path = ../Plotting;
 			sourceTree = "<group>";
 		};
 		5A3EC52223A241F1004D67C1 /* New Patient */ = {
@@ -750,7 +752,6 @@
 				026F2EFC28433D40001F39B5 /* BaseViewController */,
 				5A3EC52223A241F1004D67C1 /* New Patient */,
 				026F2EF2284234AA001F39B5 /* PlottingViewController */,
-				02D879D72806BBEE00C28209 /* Plotting */,
 				0200FE422788015B007C579E /* Report */,
 				D93539612402764100776673 /* SettingViewController */,
 				5D737F88237BD8B200B16C9C /* PageMainDashBoardViewController */,
@@ -1321,7 +1322,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = chau.ATom123;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OBJC_BRIDGING_HEADER = "/Users/mabu/Documents/Personal Project/AtomProject 3/ATom-Bridging-Header.h";
+				SWIFT_OBJC_BRIDGING_HEADER = "ATom-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -1341,7 +1342,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = chau.ATom123;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OBJC_BRIDGING_HEADER = "/Users/mabu/Documents/Personal Project/AtomProject 3/ATom-Bridging-Header.h";
+				SWIFT_OBJC_BRIDGING_HEADER = "ATom-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
